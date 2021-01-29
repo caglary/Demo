@@ -8,8 +8,7 @@ namespace Database.Concrete.Sqlite
 {
     public class DatabaseDb
     {
-        SQLiteConnection connection;
-        SQLiteCommand command;
+       
    
         public string ConnectionString = string.Empty;
 

@@ -29,7 +29,8 @@ namespace App.Forms
         /// </summary>
         private void InitializeComponent()
         {
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CiftciForm));
+            this.groupBoxCiftciIslemleri = new System.Windows.Forms.GroupBox();
             this.btnTbs = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
             this.label17 = new System.Windows.Forms.Label();
@@ -63,49 +64,64 @@ namespace App.Forms
             this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.groupBox2.SuspendLayout();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.statusStrip2 = new System.Windows.Forms.StatusStrip();
+            this.toolStripStatusExcel = new System.Windows.Forms.ToolStripSplitButton();
+            this.excelToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.jsonToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.dgwList = new System.Windows.Forms.DataGridView();
+            this.btnDelete = new System.Windows.Forms.Button();
+            this.lblKayitSayisi = new System.Windows.Forms.Label();
+            this.lblId = new System.Windows.Forms.Label();
+            this.groupBoxCiftciIslemleri.SuspendLayout();
+            this.groupBox1.SuspendLayout();
+            this.panel1.SuspendLayout();
+            this.statusStrip2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgwList)).BeginInit();
             this.SuspendLayout();
             // 
-            // groupBox2
+            // groupBoxCiftciIslemleri
             // 
-            this.groupBox2.Controls.Add(this.btnTbs);
-            this.groupBox2.Controls.Add(this.btnAdd);
-            this.groupBox2.Controls.Add(this.label17);
-            this.groupBox2.Controls.Add(this.label2);
-            this.groupBox2.Controls.Add(this.comboBoxVillage);
-            this.groupBox2.Controls.Add(this.comboBoxMaritalStatus);
-            this.groupBox2.Controls.Add(this.txtTc);
-            this.groupBox2.Controls.Add(this.txtNameSurname);
-            this.groupBox2.Controls.Add(this.comboBoxGender);
-            this.groupBox2.Controls.Add(this.label4);
-            this.groupBox2.Controls.Add(this.txtNote);
-            this.groupBox2.Controls.Add(this.label16);
-            this.groupBox2.Controls.Add(this.label5);
-            this.groupBox2.Controls.Add(this.txtTown);
-            this.groupBox2.Controls.Add(this.txtFatherName);
-            this.groupBox2.Controls.Add(this.label15);
-            this.groupBox2.Controls.Add(this.label6);
-            this.groupBox2.Controls.Add(this.txtCity);
-            this.groupBox2.Controls.Add(this.txtMotherName);
-            this.groupBox2.Controls.Add(this.label14);
-            this.groupBox2.Controls.Add(this.label7);
-            this.groupBox2.Controls.Add(this.txtEmail);
-            this.groupBox2.Controls.Add(this.txtBirthday);
-            this.groupBox2.Controls.Add(this.label13);
-            this.groupBox2.Controls.Add(this.label8);
-            this.groupBox2.Controls.Add(this.txtHomePhone);
-            this.groupBox2.Controls.Add(this.txtYearOfDeath);
-            this.groupBox2.Controls.Add(this.label12);
-            this.groupBox2.Controls.Add(this.label9);
-            this.groupBox2.Controls.Add(this.txtMobilePhone);
-            this.groupBox2.Controls.Add(this.label10);
-            this.groupBox2.Controls.Add(this.label11);
-            this.groupBox2.Location = new System.Drawing.Point(12, 12);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(520, 589);
-            this.groupBox2.TabIndex = 9;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Çiftçi İşlemleri";
+            this.groupBoxCiftciIslemleri.Controls.Add(this.btnTbs);
+            this.groupBoxCiftciIslemleri.Controls.Add(this.btnAdd);
+            this.groupBoxCiftciIslemleri.Controls.Add(this.lblId);
+            this.groupBoxCiftciIslemleri.Controls.Add(this.label17);
+            this.groupBoxCiftciIslemleri.Controls.Add(this.label2);
+            this.groupBoxCiftciIslemleri.Controls.Add(this.comboBoxVillage);
+            this.groupBoxCiftciIslemleri.Controls.Add(this.comboBoxMaritalStatus);
+            this.groupBoxCiftciIslemleri.Controls.Add(this.txtTc);
+            this.groupBoxCiftciIslemleri.Controls.Add(this.txtNameSurname);
+            this.groupBoxCiftciIslemleri.Controls.Add(this.comboBoxGender);
+            this.groupBoxCiftciIslemleri.Controls.Add(this.label4);
+            this.groupBoxCiftciIslemleri.Controls.Add(this.txtNote);
+            this.groupBoxCiftciIslemleri.Controls.Add(this.label16);
+            this.groupBoxCiftciIslemleri.Controls.Add(this.label5);
+            this.groupBoxCiftciIslemleri.Controls.Add(this.txtTown);
+            this.groupBoxCiftciIslemleri.Controls.Add(this.txtFatherName);
+            this.groupBoxCiftciIslemleri.Controls.Add(this.label15);
+            this.groupBoxCiftciIslemleri.Controls.Add(this.label6);
+            this.groupBoxCiftciIslemleri.Controls.Add(this.txtCity);
+            this.groupBoxCiftciIslemleri.Controls.Add(this.txtMotherName);
+            this.groupBoxCiftciIslemleri.Controls.Add(this.label14);
+            this.groupBoxCiftciIslemleri.Controls.Add(this.label7);
+            this.groupBoxCiftciIslemleri.Controls.Add(this.txtEmail);
+            this.groupBoxCiftciIslemleri.Controls.Add(this.txtBirthday);
+            this.groupBoxCiftciIslemleri.Controls.Add(this.label13);
+            this.groupBoxCiftciIslemleri.Controls.Add(this.label8);
+            this.groupBoxCiftciIslemleri.Controls.Add(this.txtHomePhone);
+            this.groupBoxCiftciIslemleri.Controls.Add(this.txtYearOfDeath);
+            this.groupBoxCiftciIslemleri.Controls.Add(this.label12);
+            this.groupBoxCiftciIslemleri.Controls.Add(this.label9);
+            this.groupBoxCiftciIslemleri.Controls.Add(this.txtMobilePhone);
+            this.groupBoxCiftciIslemleri.Controls.Add(this.label10);
+            this.groupBoxCiftciIslemleri.Controls.Add(this.label11);
+            this.groupBoxCiftciIslemleri.Location = new System.Drawing.Point(12, 12);
+            this.groupBoxCiftciIslemleri.Name = "groupBoxCiftciIslemleri";
+            this.groupBoxCiftciIslemleri.Size = new System.Drawing.Size(520, 589);
+            this.groupBoxCiftciIslemleri.TabIndex = 9;
+            this.groupBoxCiftciIslemleri.TabStop = false;
+            this.groupBoxCiftciIslemleri.Text = "Çiftçi İşlemleri";
             // 
             // btnTbs
             // 
@@ -380,18 +396,127 @@ namespace App.Forms
             this.label1.TabIndex = 2;
             this.label1.Text = "(*) ile işaretli alanlar boş geçilemez.";
             // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.panel1);
+            this.groupBox1.Controls.Add(this.btnDelete);
+            this.groupBox1.Controls.Add(this.lblKayitSayisi);
+            this.groupBox1.Location = new System.Drawing.Point(538, 12);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(573, 589);
+            this.groupBox1.TabIndex = 10;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Çiftçi Listesi";
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.statusStrip2);
+            this.panel1.Controls.Add(this.dgwList);
+            this.panel1.Location = new System.Drawing.Point(6, 21);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(561, 404);
+            this.panel1.TabIndex = 0;
+            // 
+            // statusStrip2
+            // 
+            this.statusStrip2.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.statusStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripStatusExcel});
+            this.statusStrip2.Location = new System.Drawing.Point(0, 378);
+            this.statusStrip2.Name = "statusStrip2";
+            this.statusStrip2.Padding = new System.Windows.Forms.Padding(1, 0, 16, 0);
+            this.statusStrip2.Size = new System.Drawing.Size(561, 26);
+            this.statusStrip2.TabIndex = 1;
+            this.statusStrip2.Text = "statusStrip2";
+            // 
+            // toolStripStatusExcel
+            // 
+            this.toolStripStatusExcel.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.excelToolStripMenuItem,
+            this.jsonToolStripMenuItem});
+            this.toolStripStatusExcel.Image = ((System.Drawing.Image)(resources.GetObject("toolStripStatusExcel.Image")));
+            this.toolStripStatusExcel.Name = "toolStripStatusExcel";
+            this.toolStripStatusExcel.Size = new System.Drawing.Size(96, 24);
+            this.toolStripStatusExcel.Text = "Backup";
+            // 
+            // excelToolStripMenuItem
+            // 
+            this.excelToolStripMenuItem.Name = "excelToolStripMenuItem";
+            this.excelToolStripMenuItem.Size = new System.Drawing.Size(146, 26);
+            this.excelToolStripMenuItem.Text = "To Excel";
+            this.excelToolStripMenuItem.Click += new System.EventHandler(this.excelToolStripMenuItem_Click);
+            // 
+            // jsonToolStripMenuItem
+            // 
+            this.jsonToolStripMenuItem.Name = "jsonToolStripMenuItem";
+            this.jsonToolStripMenuItem.Size = new System.Drawing.Size(146, 26);
+            this.jsonToolStripMenuItem.Text = "To Json";
+            this.jsonToolStripMenuItem.Click += new System.EventHandler(this.jsonToolStripMenuItem_Click);
+            // 
+            // dgwList
+            // 
+            this.dgwList.AllowUserToAddRows = false;
+            this.dgwList.AllowUserToDeleteRows = false;
+            this.dgwList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgwList.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgwList.Location = new System.Drawing.Point(0, 0);
+            this.dgwList.Name = "dgwList";
+            this.dgwList.ReadOnly = true;
+            this.dgwList.RowHeadersWidth = 51;
+            this.dgwList.RowTemplate.Height = 24;
+            this.dgwList.Size = new System.Drawing.Size(561, 404);
+            this.dgwList.TabIndex = 0;
+            this.dgwList.DataSourceChanged += new System.EventHandler(this.dgwList_DataSourceChanged);
+            this.dgwList.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgwList_CellClick);
+            this.dgwList.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgwList_CellDoubleClick);
+            // 
+            // btnDelete
+            // 
+            this.btnDelete.Location = new System.Drawing.Point(6, 464);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(241, 31);
+            this.btnDelete.TabIndex = 16;
+            this.btnDelete.Text = "Sil";
+            this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
+            // 
+            // lblKayitSayisi
+            // 
+            this.lblKayitSayisi.AutoSize = true;
+            this.lblKayitSayisi.Location = new System.Drawing.Point(6, 433);
+            this.lblKayitSayisi.Name = "lblKayitSayisi";
+            this.lblKayitSayisi.Size = new System.Drawing.Size(23, 17);
+            this.lblKayitSayisi.TabIndex = 2;
+            this.lblKayitSayisi.Text = "---";
+            // 
+            // lblId
+            // 
+            this.lblId.AutoSize = true;
+            this.lblId.Location = new System.Drawing.Point(175, 18);
+            this.lblId.Name = "lblId";
+            this.lblId.Size = new System.Drawing.Size(0, 17);
+            this.lblId.TabIndex = 2;
+            // 
             // CiftciForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(542, 640);
-            this.Controls.Add(this.groupBox2);
+            this.ClientSize = new System.Drawing.Size(1123, 640);
+            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.groupBoxCiftciIslemleri);
             this.Controls.Add(this.label1);
             this.Name = "CiftciForm";
             this.Text = "CiftciForm";
             this.Load += new System.EventHandler(this.CiftciForm_Load);
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
+            this.groupBoxCiftciIslemleri.ResumeLayout(false);
+            this.groupBoxCiftciIslemleri.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
+            this.statusStrip2.ResumeLayout(false);
+            this.statusStrip2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgwList)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -399,7 +524,7 @@ namespace App.Forms
 
         #endregion
 
-        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.GroupBox groupBoxCiftciIslemleri;
         private System.Windows.Forms.Button btnTbs;
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.Label label17;
@@ -433,5 +558,15 @@ namespace App.Forms
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.DataGridView dgwList;
+        private System.Windows.Forms.Button btnDelete;
+        private System.Windows.Forms.Label lblKayitSayisi;
+        private System.Windows.Forms.StatusStrip statusStrip2;
+        private System.Windows.Forms.ToolStripSplitButton toolStripStatusExcel;
+        private System.Windows.Forms.ToolStripMenuItem excelToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem jsonToolStripMenuItem;
+        private System.Windows.Forms.Label lblId;
     }
 }

@@ -10,3 +10,9 @@ C:\Users\caglar\Desktop\Demo\Entities\obj\Debug\Entities.csprojAssemblyReference
 C:\Users\caglar\Desktop\Demo\Entities\obj\Debug\Entities.csproj.CoreCompileInputs.cache
 C:\Users\caglar\Desktop\Demo\Entities\obj\Debug\Entities.dll
 C:\Users\caglar\Desktop\Demo\Entities\obj\Debug\Entities.pdb
+C:\Users\caglar\Documents\GitHub\Demo\Entities\bin\Debug\Entities.dll
+C:\Users\caglar\Documents\GitHub\Demo\Entities\bin\Debug\Entities.pdb
+C:\Users\caglar\Documents\GitHub\Demo\Entities\obj\Debug\Entities.csprojAssemblyReference.cache
+C:\Users\caglar\Documents\GitHub\Demo\Entities\obj\Debug\Entities.csproj.CoreCompileInputs.cache
+C:\Users\caglar\Documents\GitHub\Demo\Entities\obj\Debug\Entities.dll
+C:\Users\caglar\Documents\GitHub\Demo\Entities\obj\Debug\Entities.pdb

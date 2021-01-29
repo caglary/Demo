@@ -6,26 +6,26 @@ using System.Linq;
 
 namespace App.Business
 {
-    public class ServiceCks2020 : IService
+    public class CksManager : IService
     {
-        Cks2020Dal dal;
-        public ServiceCks2020()
+        CksDal dal;
+        public CksManager()
         {
-            dal = new Cks2020Dal();
+            dal = new CksDal();
         }
-        public List<Cks2020> GetAll()
+        public List<Cks> GetAll()
         {
             return dal.GetAll();
         }
-        public Cks2020 GetByTc(string tc)
+        public Cks GetByTc(string tc)
         {
             return dal.Get(tc);
         }
-        public int Add(Cks2020 entity)
+        public int Add(Cks entity)
         {
             return dal.Add(entity);
         }
-        public int Delete(Cks2020 entity)
+        public int Delete(Cks entity)
         {
             return dal.Delete(entity);
         }
@@ -37,18 +37,18 @@ namespace App.Business
             return liste.Count + 1;
         }
 
-        internal int Update(Cks2020 ciftci)
+        internal int Update(Cks ciftci)
         {
            return dal.Update(ciftci);
         }
 
-        internal List<Cks2020> Search(string text)
+        internal List<Cks> Search(string text)
         {
             var liste = GetAll();
-            List<Cks2020> filteredList = new List<Cks2020>();
+            List<Cks> filteredList = new List<Cks>();
             List<int> idList = new List<int>();
             //isimsoyisim içerisinde arama
-            IEnumerable<Cks2020> searchIsimSoyisim = liste.Where(I => I.IsimSoyisim.ToLower().Contains(text.ToLower()));
+            IEnumerable<Cks> searchIsimSoyisim = liste.Where(I => I.IsimSoyisim.ToLower().Contains(text.ToLower()));
             if (searchIsimSoyisim!=null)
             {
                 foreach (var item in searchIsimSoyisim)
@@ -58,7 +58,7 @@ namespace App.Business
             }
             
             //Tc no içerisinde arama
-            IEnumerable<Cks2020> searchTc = liste.Where(I => I.Tc.ToLower().Contains(text.ToLower()));
+            IEnumerable<Cks> searchTc = liste.Where(I => I.Tc.ToLower().Contains(text.ToLower()));
             if (searchTc != null)
             {
                 foreach (var item in searchTc)

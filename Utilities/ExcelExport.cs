@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Data;
 using System.Reflection;
+using System.Threading.Tasks;
 using Excel = Microsoft.Office.Interop.Excel;
 
 
@@ -42,9 +43,11 @@ namespace Utilities
             excelWorkBook.SaveAs(path);
             excelWorkBook.Close();
             excelApp.Quit();
+            Utilities.Mesaj.MessageBoxInformation($"Liste {path} adresine excel olarak kaydedildi.");
         }
         public static DataTable ConvertToDataTable<T>(List<T> models)
         {
+           
             DataTable dataTable = new DataTable(typeof(T).Name);
 
             //Get all the properties

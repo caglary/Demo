@@ -1,7 +1,7 @@
 ﻿
 namespace App.Forms
 {
-    partial class CksKayitDefteriForm
+    partial class CksForm
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@ namespace App.Forms
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CksKayitDefteriForm));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CksForm));
             this.panel1 = new System.Windows.Forms.Panel();
             this.dgwListe = new System.Windows.Forms.DataGridView();
             this.statusStrip2 = new System.Windows.Forms.StatusStrip();
@@ -66,6 +66,7 @@ namespace App.Forms
             this.btnSil = new System.Windows.Forms.Button();
             this.btnGuncelle = new System.Windows.Forms.Button();
             this.lblKayitSayisi = new System.Windows.Forms.Label();
+            this.btnCiftciler = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgwListe)).BeginInit();
             this.statusStrip2.SuspendLayout();
@@ -141,6 +142,7 @@ namespace App.Forms
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.panel2.Controls.Add(this.txtSearch);
+            this.panel2.Controls.Add(this.btnCiftciler);
             this.panel2.Controls.Add(this.btnSearch);
             this.panel2.Controls.Add(this.label10);
             this.panel2.Controls.Add(this.groupBox2);
@@ -452,6 +454,19 @@ namespace App.Forms
             this.lblKayitSayisi.TabIndex = 12;
             this.lblKayitSayisi.Text = "---";
             // 
+            // btnCiftciler
+            // 
+            this.btnCiftciler.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.btnCiftciler.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCiftciler.Location = new System.Drawing.Point(955, 222);
+            this.btnCiftciler.Margin = new System.Windows.Forms.Padding(4);
+            this.btnCiftciler.Name = "btnCiftciler";
+            this.btnCiftciler.Size = new System.Drawing.Size(122, 35);
+            this.btnCiftciler.TabIndex = 1;
+            this.btnCiftciler.Text = "Çiftçiler";
+            this.btnCiftciler.UseVisualStyleBackColor = false;
+            this.btnCiftciler.Click += new System.EventHandler(this.btnCiftciler_Click);
+            // 
             // CksKayitDefteriForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
@@ -524,6 +539,7 @@ namespace App.Forms
         private System.Windows.Forms.TextBox txtSearch;
         private System.Windows.Forms.Button btnSearch;
         private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Button btnCiftciler;
     }
 }
 

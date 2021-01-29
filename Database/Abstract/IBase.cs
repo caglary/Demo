@@ -13,7 +13,7 @@ namespace Database.Abstract
         int Delete(T Entity);
         int Update(T Entity);
         List<T> GetAll();
-        T Get(string Tc);
+      
 
     }
 }

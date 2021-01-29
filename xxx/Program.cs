@@ -97,13 +97,14 @@ namespace xxx
                 ciftci.Birthday = item.Birthday.ToString();
                 ciftci.DateOfDeath = item.DateOfDeath.ToString();
                 ciftci.Gender = item.Gender;
-                ciftci.MobilePhone = item.MaritalStatus;
-                ciftci.HomePhone = item.MaritalStatus;
-                ciftci.Email = item.MaritalStatus;
-                ciftci.City = item.MaritalStatus;
-                ciftci.Town = item.MaritalStatus;
-                ciftci.Village = item.MaritalStatus;
-                ciftci.Note = item.MaritalStatus;
+                ciftci.MaritalStatus = item.MaritalStatus;
+                ciftci.MobilePhone = item.MobilePhone;
+                ciftci.HomePhone = item.HomePhone;
+                ciftci.Email = item.Email;
+                ciftci.City = item.City;
+                ciftci.Town = item.Town;
+                ciftci.Village = item.Village;
+                ciftci.Note = item.Note;
                 ciftciler.Add(ciftci);
 
             }
@@ -136,10 +137,10 @@ namespace xxx
             //Insert
             string cks2020 = File.ReadAllText(@"C:\Users\caglar\Google Drive\YesilyurtProjects\Archive\Yesilyurt.UI.2021\bin\Debug\Backup\Cks2020.json");
             var liste = DeserializeObject<MyClass>(cks2020);
-            List<Cks2020> cksListe = new List<Cks2020>();
+            List<Cks> cksListe = new List<Cks>();
             foreach (var item in liste)
             {
-                Cks2020 cks = new Cks2020();
+                Cks cks = new Cks();
                 cks.DosyaNo = item.CksDosyaNo;
                 cks.CepTelefonu = item.MobilePhone;
                 cks.EvTelefonu = item.HomePhone;
@@ -151,7 +152,7 @@ namespace xxx
                 cksListe.Add(cks);
             }
 
-            Cks2020Dal dal = new Cks2020Dal();
+            CksDal dal = new CksDal();
 
             foreach (var kayit in cksListe)
             {
@@ -185,7 +186,7 @@ namespace xxx
         private static void Listele()
         {
             // GetAll
-            Cks2020Dal dal = new Cks2020Dal();
+            CksDal dal = new CksDal();
 
             var liste = dal.GetAll();
             foreach (var item in liste)

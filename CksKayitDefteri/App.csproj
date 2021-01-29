@@ -69,27 +69,37 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Business\Abstract\IService.cs" />
+    <Compile Include="Business\SertifikaliTohumManager.cs" />
     <Compile Include="Business\ServiceCiftciler.cs" />
-    <Compile Include="Business\ServiceCks2020.cs" />
+    <Compile Include="Business\CksManager.cs" />
     <Compile Include="Forms\CiftciForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\CiftciForm.Designer.cs">
       <DependentUpon>CiftciForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\CksKayitDefteriForm.cs">
+    <Compile Include="Forms\CksForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\CksKayitDefteriForm.Designer.cs">
-      <DependentUpon>CksKayitDefteriForm.cs</DependentUpon>
+    <Compile Include="Forms\CksForm.Designer.cs">
+      <DependentUpon>CksForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\SertifikaliTohumForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\SertifikaliTohumForm.Designer.cs">
+      <DependentUpon>SertifikaliTohumForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Forms\CiftciForm.resx">
       <DependentUpon>CiftciForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\CksKayitDefteriForm.resx">
-      <DependentUpon>CksKayitDefteriForm.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\CksForm.resx">
+      <DependentUpon>CksForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\SertifikaliTohumForm.resx">
+      <DependentUpon>SertifikaliTohumForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

@@ -39,5 +39,23 @@ namespace App.Business
             returnValue= dal.Add(ciftci);
             return returnValue;
         }
+
+        internal int Delete(Ciftci ciftci)
+        {
+            int returnValue = 0;
+            returnValue = dal.Delete(ciftci);
+            return returnValue;
+        }
+
+        internal int Update(Ciftci ciftci)
+        {
+            int returnValue = 0;
+            if (string.IsNullOrEmpty(ciftci.TcKimlikNo) || string.IsNullOrEmpty(ciftci.NameSurname) || string.IsNullOrEmpty(ciftci.FatherName) || string.IsNullOrEmpty(ciftci.City) || string.IsNullOrEmpty(ciftci.Town) || string.IsNullOrEmpty(ciftci.Village))
+            {
+                throw new Exception("Formu tekrar kontrol ediniz.Yıldızlı alanları doldurunuz.");
+            }
+            returnValue = dal.Update(ciftci);
+            return returnValue;
+        }
     }
 }

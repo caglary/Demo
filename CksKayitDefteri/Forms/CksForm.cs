@@ -7,22 +7,22 @@ using System.Windows.Forms;
 
 namespace App.Forms
 {
-    public partial class CksKayitDefteriForm : Form
+    public partial class CksForm : Form
     {
-        ServiceCks2020 serviceCks2020;
+        CksManager cksManager;
         ServiceCiftciler serviceCiftciler;
         
-        static Cks2020 ciftci = new Cks2020() { Id = -1 };
-        public CksKayitDefteriForm()
+        static Cks ciftci = new Cks() { Id = -1 };
+        public CksForm()
         {
             InitializeComponent();
-            serviceCks2020 = new ServiceCks2020();
+            cksManager = new CksManager();
             serviceCiftciler = new ServiceCiftciler();
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            dgwListe.DataSource = serviceCks2020.GetAll();
+            dgwListe.DataSource = cksManager.GetAll();
             Utilities.FormPreferences.DataGridSettings(dgwListe, new string[] { "Id" });
            
             formDoldur();
@@ -35,7 +35,7 @@ namespace App.Forms
             {
                 int index = dgwListe.CurrentCell.RowIndex;
                 string Tc = dgwListe.Rows[index].Cells["Tc"].Value.ToString();
-                ciftci = serviceCks2020.GetByTc(Tc);
+                ciftci = cksManager.GetByTc(Tc);
                 formDoldur();
             });
 
@@ -67,8 +67,8 @@ namespace App.Forms
                 }
                 else
                 {
-                    int dosyano = serviceCks2020.DosyaNoFactory();
-                    returnValue = serviceCks2020.Add(new Cks2020
+                    int dosyano = cksManager.DosyaNoFactory();
+                    returnValue = cksManager.Add(new Cks
                     {
                         DosyaNo = dosyano,
                         BabaAdi = ciftci.FatherName,
@@ -87,7 +87,7 @@ namespace App.Forms
 
         private void ShowList()
         {
-            dgwListe.DataSource = serviceCks2020.GetAll();
+            dgwListe.DataSource = cksManager.GetAll();
                     
             formDoldur();
         }
@@ -97,12 +97,12 @@ namespace App.Forms
             Utilities.ErrorHandle._try(() =>
             {
                 if (ciftci.Id == -1) throw new Exception("Listeden silmek istediğiniz kaydı seçiniz.");
-                int result = serviceCks2020.Delete(ciftci);
+                int result = cksManager.Delete(ciftci);
                 if (result > 0)
                 {
                     Utilities.Mesaj.MessageBoxInformation("Silme işlemi başarılı");
                     ShowList();
-                    ciftci = new Cks2020() { Id = -1 };
+                    ciftci = new Cks() { Id = -1 };
                     FormTemizle();
                 }
 
@@ -136,7 +136,7 @@ namespace App.Forms
                 ciftci.EvTelefonu = txtEvTelefon.Text;
                 ciftci.KayitTarihi = txtKayitTarihi.Text;
 
-                int result = serviceCks2020.Update(ciftci);
+                int result = cksManager.Update(ciftci);
                 if (result > 0)
                 {
                     Utilities.Mesaj.MessageBoxInformation("Güncelleme işlemi başarılı");
@@ -152,7 +152,7 @@ namespace App.Forms
             {
                 Utilities.ErrorHandle._try(() =>
             {
-                var liste = serviceCks2020.GetAll().OrderBy(I => I.DosyaNo).ToList();
+                var liste = cksManager.GetAll().OrderBy(I => I.DosyaNo).ToList();
                 var dataTable = Utilities.ExcelExport.ConvertToDataTable(liste);
 
                 var location = Utilities.FolderBrowser.Path();
@@ -176,7 +176,7 @@ namespace App.Forms
                     var path = Utilities.FolderBrowser.Path();          
                     Task t = Task.Run(() =>
                     {
-                        var list2020 = serviceCks2020.GetAll().OrderBy(I => I.DosyaNo).ToList();
+                        var list2020 = cksManager.GetAll().OrderBy(I => I.DosyaNo).ToList();
                         Utilities.Json.Backup(list2020, "Cks2020",path);
 
                         Utilities.Mesaj.MessageBoxInformation("Backup işlemi başarılı.");
@@ -192,17 +192,23 @@ namespace App.Forms
         {
             if (!string.IsNullOrEmpty(txtSearch.Text))
             {
-                dgwListe.DataSource= serviceCks2020.Search(txtSearch.Text);
+                dgwListe.DataSource= cksManager.Search(txtSearch.Text);
             }
             else
             {
-                dgwListe.DataSource = serviceCks2020.GetAll();
+                dgwListe.DataSource = cksManager.GetAll();
             }
         }
 
         private void dgwListe_DataSourceChanged(object sender, EventArgs e)
         {
             lblKayitSayisi.Text = $"Listede bulunan toplam kayıt sayısı: {dgwListe.RowCount.ToString()}";
+        }
+
+        private void btnCiftciler_Click(object sender, EventArgs e)
+        {
+            CiftciForm form = new CiftciForm();
+            form.ShowDialog();
         }
     }
 }

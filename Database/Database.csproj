@@ -77,8 +77,9 @@
   <ItemGroup>
     <Compile Include="Abstract\IBase.cs" />
     <Compile Include="Concrete\Sqlite\CiftciDal.cs" />
-    <Compile Include="Concrete\Sqlite\Cks2020Dal.cs" />
+    <Compile Include="Concrete\Sqlite\CksDal.cs" />
     <Compile Include="Concrete\Sqlite\DatabaseDb.cs" />
+    <Compile Include="Concrete\Sqlite\SertifikaliTohumDal.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

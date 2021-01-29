@@ -3,6 +3,8 @@ using Entities.Concrete;
 using System;
 using System.Collections;
 using System.IO;
+using System.Linq;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace App.Forms
@@ -11,40 +13,100 @@ namespace App.Forms
     {
         ServiceCiftciler serviceCiftciler;
         string _tc;
+        static Operation Islem = Operation.EklemeIslemi;
+        private FormNerdenGeldi _formNerdenGeldi;
+        //static Ciftci _activeCiftci = new Ciftci() { TcKimlikNo = string.Empty };
+        static Ciftci _activeCiftci = null;
+
         public CiftciForm(string tc)
         {
             InitializeComponent();
             serviceCiftciler = new ServiceCiftciler();
             _tc = tc;
+            _formNerdenGeldi = FormNerdenGeldi.CksKayitDefteri;
+        }
+        public CiftciForm()
+        {
+            InitializeComponent();
+            serviceCiftciler = new ServiceCiftciler();
+            _formNerdenGeldi = FormNerdenGeldi.KendiGeldi;
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
             Utilities.ErrorHandle._try(() =>
             {
-                var ciftci = FormToEntity();
-                int result = serviceCiftciler.Add(ciftci);
-                if (result > 0)
+                if (Islem == Operation.EklemeIslemi)
                 {
-                    Utilities.Mesaj.MessageBoxInformation("Kayıt Başarılı");
-                    Form f= Application.OpenForms["CksKayitDefteriForm"];
-                    foreach (var item in f.Controls)
+                    var ciftci = FormToEntity();
+                    int result = serviceCiftciler.Add(ciftci);
+                    if (result > 0)
                     {
-                        if (item is DataGridView)
+                        Utilities.Mesaj.MessageBoxInformation("Kayıt Başarılı");
+                        if (_formNerdenGeldi == FormNerdenGeldi.CksKayitDefteri)
                         {
-                            DataGridView dgw = (DataGridView)item;
-                            ServiceCks2020 cks = new ServiceCks2020();
-                            dgw.DataSource = cks.GetAll();
-                            
-                          
+                            Form f = Application.OpenForms["CksKayitDefteriForm"];
+                            foreach (var item in f.Controls)
+                            {
+                                if (item is DataGridView)
+                                {
+                                    DataGridView dgw = (DataGridView)item;
+                                    CksManager cksManager = new CksManager();
+                                    dgw.DataSource = cksManager.GetAll();
+
+
+                                }
+                            }
+                            this.Close();
                         }
                     }
-                    this.Close();
                 }
+                else if (Islem == Operation.GuncellemeIslemi)
+                {
+                    //guncelleme işlemi yap.
+                    var ciftci = FormToEntity();
+                    ciftci.Id =(int) txtTc.Tag;
+                    int result = serviceCiftciler.Update(ciftci);
+                    //formu temizle
+                    FormuTemizle();
+                    //Listeyi güncelle
+                    dgwList.DataSource = serviceCiftciler.GetAll().OrderByDescending(I => I.Id).ToList();
+
+                    btnAdd.Text = "Yeni Kayıt Ekle";
+                    Islem = Operation.EklemeIslemi;
+                }
+
             });
 
 
 
+        }
+
+        private void FormuTemizle()
+        {
+            foreach (var item in this.Controls)
+            {
+                if (item is GroupBox)
+                {
+                    GroupBox gb = (GroupBox)item;
+                    if (gb.Name == "groupBoxCiftciIslemleri")
+                    {
+                        foreach (var gbControl in gb.Controls)
+                        {
+                            if (gbControl is TextBox)
+                            {
+                                TextBox textBox = (TextBox)gbControl;
+                                textBox.Text = "";
+                            }
+                            else if (gbControl is ComboBox)
+                            {
+                                ComboBox comboBox = (ComboBox)gbControl;
+                                comboBox.Text = "";
+                            }
+                        }
+                    }
+                }
+            }
         }
 
         private Ciftci FormToEntity()
@@ -77,6 +139,10 @@ namespace App.Forms
             comboBoxGender.DataSource = Utilities.RequiredLists.GenderList();
             comboBoxMaritalStatus.DataSource = Utilities.RequiredLists.MaritalStatusList();
             comboBoxVillage.DataSource = Utilities.RequiredLists.VillageNameList();
+            dgwList.DataSource = serviceCiftciler.GetAll();
+            Utilities.FormPreferences.DataGridSettings(dgwList, new string[] { "Id","TcKimlikNo","MotherName","Birthday","DateOfDeath","Gender"
+            ,"MaritalStatus","MobilePhone","HomePhone","Email","City","Town","Note"
+            });
         }
 
         private void btnTbs_Click(object sender, EventArgs e)
@@ -163,5 +229,102 @@ namespace App.Forms
             //txtNote.Text = person.Note;
 
         }
+
+        private void dgwList_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            Utilities.ErrorHandle._try(() =>
+            {
+                int index = dgwList.CurrentCell.RowIndex;
+                string Tc = dgwList.Rows[index].Cells["TcKimlikNo"].Value.ToString();
+                _activeCiftci = serviceCiftciler.GetByTc(Tc);
+
+            });
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            if (_activeCiftci != null)
+            {
+                DialogResult dr = Utilities.Mesaj.MessageBoxQuestion($"{_activeCiftci.TcKimlikNo} tc nolu {_activeCiftci.NameSurname} isimli kaydı silmek istiyor musunuz?");
+                if (dr == DialogResult.Yes)
+                {
+                    int result = serviceCiftciler.Delete(_activeCiftci);
+                    _activeCiftci = null;
+                    dgwList.DataSource = serviceCiftciler.GetAll();
+                    Utilities.Mesaj.MessageBoxInformation("Silme işlemi başarılı");
+                }
+            }
+            else
+            {
+                Utilities.Mesaj.MessageBoxWarning("Listeden çiftçi seçiniz.");
+            }
+        }
+
+        private void dgwList_DataSourceChanged(object sender, EventArgs e)
+        {
+            lblKayitSayisi.Text = $"Listede bulunan toplam kayıt sayısı: {dgwList.RowCount.ToString()}";
+        }
+
+        private void dgwList_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            Utilities.ErrorHandle._try(() =>
+            {
+                int index = dgwList.CurrentCell.RowIndex;
+                string Tc = dgwList.Rows[index].Cells["TcKimlikNo"].Value.ToString();
+
+                _activeCiftci = serviceCiftciler.GetByTc(Tc);
+                //gelen çiftçinin Id sini txttc tag içerisinde saklıyoruz....
+                txtTc.Tag = (object)_activeCiftci.Id;
+                txtTc.Text = _activeCiftci.TcKimlikNo;
+                txtNameSurname.Text = _activeCiftci.NameSurname;
+                txtFatherName.Text = _activeCiftci.FatherName;
+                txtMotherName.Text = _activeCiftci.MotherName;
+                txtBirthday.Text = _activeCiftci.Birthday.Substring(0, 10);
+                txtYearOfDeath.Text = _activeCiftci.DateOfDeath;
+                comboBoxGender.Text = _activeCiftci.Gender;
+                comboBoxMaritalStatus.Text = _activeCiftci.MaritalStatus;
+                txtMobilePhone.Text = _activeCiftci.MobilePhone;
+                txtHomePhone.Text = _activeCiftci.HomePhone;
+                txtEmail.Text = _activeCiftci.Email;
+                txtCity.Text = _activeCiftci.City;
+                txtTown.Text = _activeCiftci.Town;
+                comboBoxVillage.Text = _activeCiftci.Village;
+                txtNote.Text = _activeCiftci.Note;
+
+
+
+
+
+                btnAdd.Text = "Güncelle";
+                Islem = Operation.GuncellemeIslemi;
+            });
+        }
+
+        private void excelToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+            var datatable = Utilities.ExcelExport.ConvertToDataTable<Ciftci>(serviceCiftciler.GetAll());
+            var path = Utilities.FolderBrowser.Path();
+            path = path + @"\Ciftciler.xlsx";
+            Task.Run(() => { Utilities.ExcelExport.GenerateExcel(datatable, path); });
+
+
+
+        }
+
+        private void jsonToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var path = Utilities.FolderBrowser.Path();
+
+            Utilities.Json.Backup<Ciftci>(serviceCiftciler.GetAll(), "Ciftciler", path);
+        }
+    }
+    enum Operation
+    {
+        EklemeIslemi, GuncellemeIslemi
+    }
+    enum FormNerdenGeldi
+    {
+        KendiGeldi, CksKayitDefteri
     }
 }

@@ -6,25 +6,25 @@ using System.Data.SQLite;
 
 namespace Database.Concrete.Sqlite
 {
-    public class Cks2020Dal : IBase<Cks2020>
+    public class CksDal : IBase<Cks>
     {
         SQLiteConnection connection;
         SQLiteDataReader dataReader;
         SQLiteCommand command;
         DatabaseDb database;
-        public Cks2020Dal()
+        public CksDal()
         {
             database = new DatabaseDb();
 
         }
-        public int Add(Cks2020 Entity)
+        public int Add(Cks Entity)
         {
             try
             {
                 connection = new SQLiteConnection(database.ConnectionString);
                 connection.Open();
                 command = new SQLiteCommand(connection);
-                command.CommandText = "INSERT INTO Cks2020(DosyaNo, Tc,IsimSoyisim,BabaAdi,KoyMahalle,CepTelefonu,EvTelefonu,KayitTarihi) VALUES(@DosyaNo, @Tc,@IsimSoyisim,@BabaAdi,@KoyMahalle,@CepTelefonu,@EvTelefonu,@KayitTarihi)";
+                command.CommandText = "INSERT INTO Cks(DosyaNo, Tc,IsimSoyisim,BabaAdi,KoyMahalle,CepTelefonu,EvTelefonu,KayitTarihi) VALUES(@DosyaNo, @Tc,@IsimSoyisim,@BabaAdi,@KoyMahalle,@CepTelefonu,@EvTelefonu,@KayitTarihi)";
                 command.Parameters.AddWithValue("@DosyaNo", Entity.DosyaNo);
                 command.Parameters.AddWithValue("@Tc", Entity.Tc);
                 command.Parameters.AddWithValue("@IsimSoyisim", Entity.IsimSoyisim);
@@ -40,8 +40,20 @@ namespace Database.Concrete.Sqlite
             }
             catch (Exception exception)
             {
-
-                throw exception;
+               
+                if (exception.Message== "constraint failed\r\nUNIQUE constraint failed: Cks2020.Tc")
+                {
+                    throw new Exception("Kaydetmek istediğiniz tc listede mevcut.");
+                }
+                else if (exception.Message == "constraint failed\r\nUNIQUE constraint failed: Cks2020.DosyaNo")
+                {
+                    throw new Exception("Kaydetmek istediğiniz dosya no listede başka bir kayda ait.\nDosya numarasını kontrol ediniz.");
+                }
+                else
+                {
+                    throw exception;
+                }
+                
             }
             finally
             {
@@ -50,7 +62,7 @@ namespace Database.Concrete.Sqlite
 
         }
 
-        public int Delete(Cks2020 Entity)
+        public int Delete(Cks Entity)
         {
             try
             {
@@ -58,7 +70,7 @@ namespace Database.Concrete.Sqlite
                 connection.Open();
                 command = new SQLiteCommand(connection);
 
-                command.CommandText = "DELETE FROM Cks2020 WHERE Tc=@Tc";
+                command.CommandText = "DELETE FROM Cks WHERE Tc=@Tc";
                 command.Parameters.AddWithValue("@Tc", Entity.Tc);
                 command.Prepare();
                 int result = command.ExecuteNonQuery();
@@ -76,19 +88,19 @@ namespace Database.Concrete.Sqlite
             }
         }
 
-        public Cks2020 Get(string Tc)
+        public Cks Get(string Tc)
         {
             try
             {
                 connection = new SQLiteConnection(database.ConnectionString);
                 command = new SQLiteCommand(connection);
-                command.CommandText = "SELECT * FROM Cks2020 Where Tc=@Tc";
+                command.CommandText = "SELECT * FROM Cks Where Tc=@Tc";
                 command.Parameters.AddWithValue("@Tc", Tc);
                 connection.Open();
                 dataReader = command.ExecuteReader();
                 if (dataReader.HasRows)
                 {
-                    Cks2020 cks = new Cks2020();
+                    Cks cks = new Cks();
 
                     while (dataReader.Read())
                     {
@@ -107,7 +119,7 @@ namespace Database.Concrete.Sqlite
                 }
                 else
                 {
-                    return new Cks2020() { Tc="-1"};
+                    return new Cks() { Tc="-1"};
                 }
 
             }
@@ -122,19 +134,19 @@ namespace Database.Concrete.Sqlite
             }
         }
 
-        public List<Cks2020> GetAll()
+        public List<Cks> GetAll()
         {
             try
             {
                 connection = new SQLiteConnection(database.ConnectionString);
                 command = new SQLiteCommand(connection);
-                command.CommandText = "SELECT * FROM Cks2020 ORDER BY DosyaNo DESC";
+                command.CommandText = "SELECT * FROM Cks ORDER BY DosyaNo DESC";
                 connection.Open();
                 dataReader = command.ExecuteReader();
-                List<Cks2020> liste = new List<Cks2020>();
+                List<Cks> liste = new List<Cks>();
                 while (dataReader.Read())
                 {
-                    Cks2020 cks = new Cks2020();
+                    Cks cks = new Cks();
                     cks.Id = dataReader.GetInt32(0);
                     cks.DosyaNo = dataReader.GetInt32(1);
                     cks.Tc = dataReader.GetString(2);
@@ -168,7 +180,7 @@ namespace Database.Concrete.Sqlite
 
         }
 
-        public int Update(Cks2020 Entity)
+        public int Update(Cks Entity)
         {
             try
             {
@@ -176,7 +188,7 @@ namespace Database.Concrete.Sqlite
                 connection.Open();
                 command = new SQLiteCommand(connection);
 
-                command.CommandText = "UPDATE Cks2020 SET " +
+                command.CommandText = "UPDATE Cks SET " +
                     "DosyaNo=@DosyaNo, Tc=@Tc, IsimSoyisim = @IsimSoyisim ," +
                     "BabaAdi=@BabaAdi ,KoyMahalle=@KoyMahalle ,CepTelefonu=@CepTelefonu ," +
                     "EvTelefonu=@EvTelefonu ,KayitTarihi=@KayitTarihi WHERE Id=@Id";

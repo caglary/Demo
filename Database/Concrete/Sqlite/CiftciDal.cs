@@ -103,6 +103,7 @@ namespace Database.Concrete.Sqlite
 
                     while (dataReader.Read())
                     {
+                        ciftci.Id = dataReader.IsDBNull(0) ? 0 : dataReader.GetInt32(0);
                         ciftci.TcKimlikNo = dataReader.IsDBNull(1) ? "" : dataReader.GetString(1);
                         ciftci.NameSurname = dataReader.IsDBNull(2) ? "" : dataReader.GetString(2);
                         ciftci.FatherName = dataReader.IsDBNull(3) ? "" : dataReader.GetString(3);
@@ -197,7 +198,7 @@ namespace Database.Concrete.Sqlite
                 connection = new SQLiteConnection(database.ConnectionString);
                 connection.Open();
                 command = new SQLiteCommand(connection);
-                command.CommandText = "UPDATE Ciftciler SET TcKimlikNo=@TcKimlikNo, NameSurname=@NameSurname,FatherName=@FatherName,MotherName=@MotherName,Birthday=@Birthday,DateOfDeath=@DateOfDeath,Gender=@Gender,MaritalStatus=@MaritalStatus,MobilePhone=@MobilePhone,HomePhone=@HomePhone,Email=@Email,City=@City,Town=@Town,Village=@Village,Note=@Note WHERE Id=@Id";
+                command.CommandText = "UPDATE Ciftciler SET TcKimlikNo=@TcKimlikNo, NameSurname=@NameSurname, FatherName=@FatherName, MotherName=@MotherName, Birthday=@Birthday, DateOfDeath=@DateOfDeath, Gender=@Gender, MaritalStatus=@MaritalStatus, MobilePhone=@MobilePhone, HomePhone=@HomePhone, Email=@Email, City=@City, Town=@Town, Village=@Village, Note=@Note WHERE Id=@Id";
                 command.Parameters.AddWithValue("@Id", Entity.Id);
                 command.Parameters.AddWithValue("@TcKimlikNo", Entity.TcKimlikNo);
                 command.Parameters.AddWithValue("@NameSurname", Entity.NameSurname);
@@ -206,7 +207,7 @@ namespace Database.Concrete.Sqlite
                 command.Parameters.AddWithValue("@Birthday", Entity.Birthday);
                 command.Parameters.AddWithValue("@DateOfDeath", Entity.DateOfDeath);
                 command.Parameters.AddWithValue("@Gender", Entity.Gender);
-                command.Parameters.AddWithValue("@MarialStatus", Entity.MaritalStatus);
+                command.Parameters.AddWithValue("@MaritalStatus", Entity.MaritalStatus);
                 command.Parameters.AddWithValue("@MobilePhone", Entity.MobilePhone);
                 command.Parameters.AddWithValue("@HomePhone", Entity.HomePhone);
                 command.Parameters.AddWithValue("@Email", Entity.Email);

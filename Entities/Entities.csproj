@@ -50,10 +50,11 @@
     <Compile Include="Abstract\IPerson.cs" />
     <Compile Include="Abstract\IProduct.cs" />
     <Compile Include="Concrete\Ciftci.cs" />
-    <Compile Include="Concrete\Cks2020.cs" />
+    <Compile Include="Concrete\Cks.cs" />
     <Compile Include="Concrete\Company.cs" />
     <Compile Include="Concrete\Dilekce.cs" />
     <Compile Include="Concrete\Product.cs" />
+    <Compile Include="Concrete\SertifikaliTohum.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />

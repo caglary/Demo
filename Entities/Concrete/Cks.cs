@@ -2,7 +2,7 @@
 
 namespace Entities.Concrete
 {
-    public class Cks2020 : ICks
+    public class Cks : ICks
     {
         public int Id { set; get; }
 
