@@ -38,6 +38,7 @@ namespace App.Forms
             this.jsonToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel2 = new System.Windows.Forms.Panel();
             this.txtSearch = new System.Windows.Forms.TextBox();
+            this.btnCiftciler = new System.Windows.Forms.Button();
             this.btnSearch = new System.Windows.Forms.Button();
             this.label10 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
@@ -46,6 +47,7 @@ namespace App.Forms
             this.label9 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.cmboxMahalleKoy = new System.Windows.Forms.ComboBox();
+            this.btnSertifikaliTohum = new System.Windows.Forms.Button();
             this.txtKayitTarihi = new System.Windows.Forms.TextBox();
             this.txtBabaAdi = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
@@ -66,7 +68,7 @@ namespace App.Forms
             this.btnSil = new System.Windows.Forms.Button();
             this.btnGuncelle = new System.Windows.Forms.Button();
             this.lblKayitSayisi = new System.Windows.Forms.Label();
-            this.btnCiftciler = new System.Windows.Forms.Button();
+            this.btnYemBitkileri = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgwListe)).BeginInit();
             this.statusStrip2.SuspendLayout();
@@ -162,6 +164,19 @@ namespace App.Forms
             this.txtSearch.Size = new System.Drawing.Size(252, 24);
             this.txtSearch.TabIndex = 13;
             // 
+            // btnCiftciler
+            // 
+            this.btnCiftciler.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.btnCiftciler.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCiftciler.Location = new System.Drawing.Point(955, 222);
+            this.btnCiftciler.Margin = new System.Windows.Forms.Padding(4);
+            this.btnCiftciler.Name = "btnCiftciler";
+            this.btnCiftciler.Size = new System.Drawing.Size(122, 35);
+            this.btnCiftciler.TabIndex = 1;
+            this.btnCiftciler.Text = "Çiftçiler";
+            this.btnCiftciler.UseVisualStyleBackColor = false;
+            this.btnCiftciler.Click += new System.EventHandler(this.btnCiftciler_Click);
+            // 
             // btnSearch
             // 
             this.btnSearch.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
@@ -230,6 +245,8 @@ namespace App.Forms
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.cmboxMahalleKoy);
+            this.groupBox1.Controls.Add(this.btnYemBitkileri);
+            this.groupBox1.Controls.Add(this.btnSertifikaliTohum);
             this.groupBox1.Controls.Add(this.txtKayitTarihi);
             this.groupBox1.Controls.Add(this.txtBabaAdi);
             this.groupBox1.Controls.Add(this.label8);
@@ -260,6 +277,19 @@ namespace App.Forms
             this.cmboxMahalleKoy.Name = "cmboxMahalleKoy";
             this.cmboxMahalleKoy.Size = new System.Drawing.Size(180, 26);
             this.cmboxMahalleKoy.TabIndex = 4;
+            // 
+            // btnSertifikaliTohum
+            // 
+            this.btnSertifikaliTohum.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.btnSertifikaliTohum.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSertifikaliTohum.Location = new System.Drawing.Point(540, 214);
+            this.btnSertifikaliTohum.Margin = new System.Windows.Forms.Padding(4);
+            this.btnSertifikaliTohum.Name = "btnSertifikaliTohum";
+            this.btnSertifikaliTohum.Size = new System.Drawing.Size(122, 35);
+            this.btnSertifikaliTohum.TabIndex = 1;
+            this.btnSertifikaliTohum.Text = "Sertifikalı T.";
+            this.btnSertifikaliTohum.UseVisualStyleBackColor = false;
+            this.btnSertifikaliTohum.Click += new System.EventHandler(this.btnSertifikaliTohum_Click);
             // 
             // txtKayitTarihi
             // 
@@ -454,20 +484,20 @@ namespace App.Forms
             this.lblKayitSayisi.TabIndex = 12;
             this.lblKayitSayisi.Text = "---";
             // 
-            // btnCiftciler
+            // btnYemBitkileri
             // 
-            this.btnCiftciler.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            this.btnCiftciler.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCiftciler.Location = new System.Drawing.Point(955, 222);
-            this.btnCiftciler.Margin = new System.Windows.Forms.Padding(4);
-            this.btnCiftciler.Name = "btnCiftciler";
-            this.btnCiftciler.Size = new System.Drawing.Size(122, 35);
-            this.btnCiftciler.TabIndex = 1;
-            this.btnCiftciler.Text = "Çiftçiler";
-            this.btnCiftciler.UseVisualStyleBackColor = false;
-            this.btnCiftciler.Click += new System.EventHandler(this.btnCiftciler_Click);
+            this.btnYemBitkileri.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.btnYemBitkileri.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnYemBitkileri.Location = new System.Drawing.Point(410, 214);
+            this.btnYemBitkileri.Margin = new System.Windows.Forms.Padding(4);
+            this.btnYemBitkileri.Name = "btnYemBitkileri";
+            this.btnYemBitkileri.Size = new System.Drawing.Size(122, 35);
+            this.btnYemBitkileri.TabIndex = 1;
+            this.btnYemBitkileri.Text = "Yem Bitkileri";
+            this.btnYemBitkileri.UseVisualStyleBackColor = false;
+            this.btnYemBitkileri.Click += new System.EventHandler(this.btnYemBitkileri_Click);
             // 
-            // CksKayitDefteriForm
+            // CksForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -480,7 +510,7 @@ namespace App.Forms
             this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "CksKayitDefteriForm";
+            this.Name = "CksForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Çks Kayıt Defteri";
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -540,6 +570,8 @@ namespace App.Forms
         private System.Windows.Forms.Button btnSearch;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Button btnCiftciler;
+        private System.Windows.Forms.Button btnSertifikaliTohum;
+        private System.Windows.Forms.Button btnYemBitkileri;
     }
 }
 

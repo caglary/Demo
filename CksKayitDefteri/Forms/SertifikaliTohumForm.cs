@@ -1,4 +1,5 @@
-﻿using CksKayitDefteri.Business;
+﻿using App.Business;
+using CksKayitDefteri.Business;
 using Database.Concrete.Sqlite;
 using Entities.Concrete;
 using System;
@@ -18,30 +19,48 @@ namespace App.Forms
         SertifikaliTohumManager _bll;
         CksDal _cksDal;
         SertifikaliTohum st;
-
-        public SertifikaliTohumForm()
+        Cks _cksKayit;
+        UrunManager _urunManager;
+        FirmaManager _firmaManager;
+        public SertifikaliTohumForm(string TcNo)
         {
             InitializeComponent();
             _bll = new SertifikaliTohumManager();
             _cksDal = new CksDal();
+            _cksKayit = _cksDal.Get(TcNo);
+            _urunManager = new UrunManager();
+
+            _firmaManager = new FirmaManager();
         }
-
-        private void dgwListe_DataSourceChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void SertifikaliTohumForm_Load(object sender, EventArgs e)
         {
+
+
             Utilities.ErrorHandle._try(() =>
-            {  //datagridviewdatasource will code...
+            {
+                lblCiftciBilgi.Text = $"{_cksKayit.Tc} ---> {_cksKayit.IsimSoyisim} ";
                 TumListe();
                 dgwListe.Tag = 0;
-                int KayitSayisi = dgwListe.RowCount;
-                this.Text = $"Sertifikalı Tohum Kayıt Formu  -  Toplam Kayıt Sayısı: {KayitSayisi}";
+
+                //comboBox ayarları
+                Utilities.FormPreferences.ComboxSetUrun(cmbNewUrunAdi, _urunManager.GetAll());
+                Utilities.FormPreferences.ComboxSetUrun(cmbUpdateUrun, _urunManager.GetAll());
+                Utilities.FormPreferences.ComboxSetFirma(cmbNewFirmaAdi, _firmaManager.GetAll());
+                Utilities.FormPreferences.ComboxSetFirma(cmbUpdateFirmaAdi, _firmaManager.GetAll());
+
+                this.Text = $"Sertifikalı Tohum Kayıt Formu  -  Toplam Kayıt Sayısı: {dgwListe.RowCount}";
+                ComboBoxFillData();
+
             });
 
         }
+        private void dgwListe_DataSourceChanged(object sender, EventArgs e)
+        {
+            this.Text = $"Sertifikalı Tohum Kayıt Formu  -  Toplam Kayıt Sayısı: {dgwListe.RowCount}";
+
+        }
+
+
 
         private void dgwListe_CellClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -59,27 +78,35 @@ namespace App.Forms
 
         private void InsertToFormForUpdateEntity(SertifikaliTohum st)
         {
-            txtSertifikaDosyaNo.Text = st.SertifikaliDosyaNo.ToString();
-            txtMuracaatTarihi.Text = st.MuracaatTarihi;
-            txtSertifikaNo.Text = st.SertifikaNo;
-            txtFaturaNo.Text = st.FaturaNo;
-            txtFaturaTarihi.Text = st.FaturaTarihi;
-            txtFirmaAdi.Text = st.FirmaAdi;
-            txtUrun.Text = st.Urun;
-            txtUrunCesidi.Text = st.UrunCesidi;
-            txtMiktari.Text = st.Miktari;
-            txtBirimFiyati.Text = st.BirimFiyati;
-            txtToplamMaliyet.Text = st.ToplamMaliyet;
+
+            txtUpdateDosyaNo.Text = st.SertifikaliDosyaNo.ToString();
+            txtUpdateMuracaatTarihi.Text = st.MuracaatTarihi;
+            txtUpdateSertifikaNo.Text = st.SertifikaNo;
+            txtUpdateFaturaNo.Text = st.FaturaNo;
+            txtUpdateFaturaTarihi.Text = st.FaturaTarihi;
+            //cmbUpdateFirmaAdi.Text = _firmaManager.GetAll().Where(I => I.Id == st.FirmaId).FirstOrDefault().FirmaAdi;
+            cmbUpdateFirmaAdi.SelectedValue = st.FirmaId;
+
+            //cmbUpdateUrun.Text = _urunManager.GetAll().Where(I => I.Id == st.Id).FirstOrDefault().UrunAdi;
+            cmbUpdateUrun.SelectedValue = st.UrunId;
+            txtUpdateMiktarı.Text = st.Miktari;
+            txtUpdateBirimFiyati.Text = st.BirimFiyati;
+
+            txtUpdateNot.Text = st.Not;
+
         }
 
-        private void btnTumListe_Click(object sender, EventArgs e)
+        private void ComboBoxFillData()
         {
-            TumListe();
+            cmbUpdateUrun.DataSource = _urunManager.GetAll();
+            cmbUpdateUrun.DisplayMember = "UrunAdi";
+            cmbUpdateFirmaAdi.DataSource = _firmaManager.GetAll();
+            cmbUpdateFirmaAdi.DisplayMember = "FirmaAdi";
         }
 
         private void TumListe()
         {
-            Utilities.ErrorHandle._try(() => { dgwListe.DataSource = _bll.GetAll(); });
+            Utilities.ErrorHandle._try(() => { dgwListe.DataSource = _bll.Get(_cksKayit.Tc); });
 
         }
 
@@ -96,58 +123,45 @@ namespace App.Forms
         }
         SertifikaliTohum CreateEntityForAdd()
         {
-            string tc = txtNewTcNo.Text;
             st = new SertifikaliTohum();
-            var ciftci = _cksDal.Get(tc);
-            if (ciftci != null || ciftci.Id != 0)
-            {
-                st.CksId = ciftci.Id;
-                st.MuracaatTarihi = txtNewMuracaatTarihi.Text;
-                st.SertifikaliDosyaNo = string.IsNullOrEmpty(txtNewSertifikaliDosyaNo.Text) ? 0 : Convert.ToInt32(txtNewSertifikaliDosyaNo.Text);
-                st.SertifikaNo = txtNewSertifikaNo.Text;
-                st.FaturaNo = txtNewFaturaNo.Text;
-                st.FaturaTarihi = txtNewFaturaTarihi.Text;
-                st.FirmaAdi = txtNewFirmaAdi.Text;
-                st.Urun = txtNewUrun.Text;
-                st.UrunCesidi = txtNewUrunCesidi.Text;
-                st.BirimFiyati = txtNewBirimFiyati.Text;
-                st.Miktari = txtNewMiktari.Text;
-                st.ToplamMaliyet = txtNewToplamMaliyet.Text;
-            }
+
+            st.CksId = _cksKayit.Id;
+            st.MuracaatTarihi = txtNewMuracaatTarihi.Text;
+            st.SertifikaliDosyaNo = string.IsNullOrEmpty(txtNewDosyaNo.Text) ? 0 : Convert.ToInt32(txtNewDosyaNo.Text);
+            st.SertifikaNo = txtNewSertifikaNo.Text;
+            st.FaturaNo = txtNewFaturaNo.Text;
+            st.FaturaTarihi = txtNewFaturaTarihi.Text;
+            
+            st.FirmaId = Convert.ToInt32(cmbNewFirmaAdi.SelectedValue);
+         
+            st.UrunId = Convert.ToInt32(cmbNewUrunAdi.SelectedValue);
+            st.Miktari = txtNewMiktari.Text;
+
+            st.BirimFiyati = txtNewBirimFiyati.Text;
+
 
             return st;
         }
 
-        private void btnTcAra_Click(object sender, EventArgs e)
-        {
-            Utilities.ErrorHandle._try(() =>
-            {
-                string tc = txtNewTcNo.Text;
-                var ciftci = _cksDal.Get(tc);
-                if (ciftci == null || ciftci.Id == 0)
-                    throw new Exception("Aradığınız tc Cks kayıt defteri içerisinde yoktur.");
-                else
-                    lblIsim.Text = $"{ciftci.IsimSoyisim}\nCks Dosya No:{ciftci.DosyaNo}";
-            });
 
-        }
 
         private void btnGuncelle_Click(object sender, EventArgs e)
         {
             Utilities.ErrorHandle._try(() =>
             {
                 st = _bll.GetById((int)dgwListe.Tag);
-                st.SertifikaliDosyaNo = Convert.ToInt32(txtSertifikaDosyaNo.Text);
-                st.MuracaatTarihi = txtMuracaatTarihi.Text;
-                st.SertifikaNo = txtSertifikaNo.Text;
-                st.FaturaNo = txtFaturaNo.Text;
-                st.FaturaTarihi = txtFaturaTarihi.Text;
-                st.FirmaAdi = txtFirmaAdi.Text;
-                st.Urun = txtUrun.Text;
-                st.UrunCesidi = txtUrunCesidi.Text;
-                st.Miktari = txtMiktari.Text;
-                st.BirimFiyati = txtBirimFiyati.Text;
-                st.ToplamMaliyet = txtToplamMaliyet.Text;
+                st.SertifikaliDosyaNo = Convert.ToInt32(txtUpdateDosyaNo.Text);
+                st.MuracaatTarihi = txtUpdateMuracaatTarihi.Text;
+                st.SertifikaNo = txtUpdateSertifikaNo.Text;
+                st.FaturaNo = txtUpdateFaturaNo.Text;
+                st.FaturaTarihi = txtUpdateFaturaTarihi.Text;
+                st.FirmaId = Convert.ToInt32(cmbUpdateFirmaAdi.SelectedValue);
+
+                st.UrunId = Convert.ToInt32(cmbUpdateUrun.SelectedValue);
+
+                st.Miktari = txtUpdateMiktarı.Text;
+                st.BirimFiyati = txtUpdateBirimFiyati.Text;
+                st.Not = txtUpdateNot.Text;
 
                 int result = _bll.Update(st);
                 if (result > 0)
@@ -165,6 +179,7 @@ namespace App.Forms
         {
             Utilities.ErrorHandle._try(() =>
             {
+                if ((int)dgwListe.Tag == 0) throw new Exception("Silinecek öğe seçiniz.");
                 st = _bll.GetById((int)dgwListe.Tag);
                 int result = _bll.Delete(st);
                 if (result > 0)
@@ -172,6 +187,7 @@ namespace App.Forms
                     TumListe();
                     Utilities.Mesaj.MessageBoxInformation("Kayıt Silindi.");
                     ClearFormAfterDelete();
+                    dgwListe.Tag = 0;
                 }
             });
 
@@ -179,30 +195,18 @@ namespace App.Forms
 
         private void ClearFormAfterDelete()
         {
-            txtSertifikaDosyaNo.Text = "";
-            txtMuracaatTarihi.Text = "";
-            txtSertifikaNo.Text = "";
-            txtFaturaNo.Text = "";
-            txtFaturaTarihi.Text = "";
-            txtFirmaAdi.Text = "";
-            txtUrun.Text = "";
-            txtUrunCesidi.Text = "";
-            txtMiktari.Text = "";
-            txtBirimFiyati.Text = "";
-            txtToplamMaliyet.Text = "";
+            txtUpdateDosyaNo.Text = "";
+            txtUpdateMuracaatTarihi.Text = "";
+            txtUpdateSertifikaNo.Text = "";
+            txtUpdateFaturaNo.Text = "";
+            txtUpdateFaturaTarihi.Text = "";
+            cmbUpdateFirmaAdi.Text = "";
+            cmbUpdateUrun.Text = "";
+            txtUpdateMiktarı.Text = "";
+            txtUpdateBirimFiyati.Text = "";
+            txtUpdateNot.Text = "";
         }
 
-        private void btnKayitGetir_Click(object sender, EventArgs e)
-        {
-            string tc = txtSearchTcNo.Text;
-            if (tc.Length==11)
-            {
-                dgwListe.DataSource= _bll.Get(tc);
-            }
-            else
-            {
-                Utilities.Mesaj.MessageBoxWarning("Tc Numarasını kontrol ediniz.");
-            }
-        }
+       
     }
 }

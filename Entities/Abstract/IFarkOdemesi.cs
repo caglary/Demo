@@ -4,9 +4,9 @@ namespace Entities.Abstract
 {
     public interface IFarkOdemesi : ICks, IInvoice
     {
-        int FarkOdemesiFileNumber { get; set; }
+        int FarkOdemesiDosyaNo { get; set; }
 
-        int PaymentGroup { get; set; }
+        int OdemeGrup { get; set; }
         string Note { get; set; }
 
 

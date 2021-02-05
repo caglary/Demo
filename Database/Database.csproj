@@ -75,11 +75,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Abstract\IBase.cs" />
+    <Compile Include="Abstract\IDatabase.cs" />
+    <Compile Include="Concrete\Sqlite\BaseSqlite.cs" />
     <Compile Include="Concrete\Sqlite\CiftciDal.cs" />
     <Compile Include="Concrete\Sqlite\CksDal.cs" />
     <Compile Include="Concrete\Sqlite\DatabaseDb.cs" />
+    <Compile Include="Concrete\Sqlite\FirmaDal.cs" />
+    <Compile Include="Concrete\Sqlite\HububatFarkOdemesiDal.cs" />
     <Compile Include="Concrete\Sqlite\SertifikaliTohumDal.cs" />
+    <Compile Include="Concrete\Sqlite\UrunDal.cs" />
+    <Compile Include="Concrete\Sqlite\YemBitkileriDal.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

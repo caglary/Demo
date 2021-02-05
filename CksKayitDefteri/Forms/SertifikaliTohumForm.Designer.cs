@@ -30,47 +30,38 @@ namespace App.Forms
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.btnTumListe = new System.Windows.Forms.Button();
-            this.btnKayitGetir = new System.Windows.Forms.Button();
-            this.label23 = new System.Windows.Forms.Label();
-            this.txtSearchTcNo = new System.Windows.Forms.TextBox();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.gbGuncelleme = new System.Windows.Forms.GroupBox();
+            this.cmbUpdateUrun = new System.Windows.Forms.ComboBox();
             this.btnSil = new System.Windows.Forms.Button();
+            this.cmbUpdateFirmaAdi = new System.Windows.Forms.ComboBox();
             this.btnGuncelle = new System.Windows.Forms.Button();
+            this.label22 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
-            this.txtToplamMaliyet = new System.Windows.Forms.TextBox();
-            this.txtSertifikaDosyaNo = new System.Windows.Forms.TextBox();
+            this.txtUpdateNot = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
+            this.txtUpdateFaturaTarihi = new System.Windows.Forms.TextBox();
+            this.label21 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
-            this.txtBirimFiyati = new System.Windows.Forms.TextBox();
-            this.txtMuracaatTarihi = new System.Windows.Forms.TextBox();
-            this.textBox17 = new System.Windows.Forms.TextBox();
+            this.txtUpdateDosyaNo = new System.Windows.Forms.TextBox();
+            this.txtUpdateFaturaNo = new System.Windows.Forms.TextBox();
             this.label15 = new System.Windows.Forms.Label();
+            this.label19 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
-            this.txtSertifikaNo = new System.Windows.Forms.TextBox();
-            this.txtMiktari = new System.Windows.Forms.TextBox();
+            this.txtUpdateBirimFiyati = new System.Windows.Forms.TextBox();
+            this.txtUpdateMiktarı = new System.Windows.Forms.TextBox();
+            this.txtUpdateMuracaatTarihi = new System.Windows.Forms.TextBox();
+            this.txtUpdateSertifikaNo = new System.Windows.Forms.TextBox();
+            this.textBox6 = new System.Windows.Forms.TextBox();
             this.label17 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
-            this.txtFaturaNo = new System.Windows.Forms.TextBox();
-            this.txtUrunCesidi = new System.Windows.Forms.TextBox();
-            this.label19 = new System.Windows.Forms.Label();
-            this.label20 = new System.Windows.Forms.Label();
-            this.txtFaturaTarihi = new System.Windows.Forms.TextBox();
-            this.txtUrun = new System.Windows.Forms.TextBox();
-            this.label21 = new System.Windows.Forms.Label();
-            this.label22 = new System.Windows.Forms.Label();
-            this.txtFirmaAdi = new System.Windows.Forms.TextBox();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.btnTcAra = new System.Windows.Forms.Button();
+            this.gbYeniKayit = new System.Windows.Forms.GroupBox();
+            this.cmbNewUrunAdi = new System.Windows.Forms.ComboBox();
+            this.cmbNewFirmaAdi = new System.Windows.Forms.ComboBox();
             this.btnYeniKayit = new System.Windows.Forms.Button();
-            this.lblIsim = new System.Windows.Forms.Label();
-            this.label24 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.txtNewToplamMaliyet = new System.Windows.Forms.TextBox();
-            this.txtNewTcNo = new System.Windows.Forms.TextBox();
-            this.txtNewSertifikaliDosyaNo = new System.Windows.Forms.TextBox();
-            this.label11 = new System.Windows.Forms.Label();
+            this.txtNewNot = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.txtNewDosyaNo = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.txtNewBirimFiyati = new System.Windows.Forms.TextBox();
             this.txtNewMuracaatTarihi = new System.Windows.Forms.TextBox();
@@ -82,120 +73,74 @@ namespace App.Forms
             this.label4 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.txtNewFaturaNo = new System.Windows.Forms.TextBox();
-            this.txtNewUrunCesidi = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
             this.txtNewFaturaTarihi = new System.Windows.Forms.TextBox();
-            this.txtNewUrun = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.txtNewFirmaAdi = new System.Windows.Forms.TextBox();
+            this.lblCiftciBilgi = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.dgwListe = new System.Windows.Forms.DataGridView();
             this.panel1.SuspendLayout();
-            this.groupBox3.SuspendLayout();
-            this.groupBox2.SuspendLayout();
-            this.groupBox1.SuspendLayout();
+            this.gbGuncelleme.SuspendLayout();
+            this.gbYeniKayit.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgwListe)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.groupBox3);
-            this.panel1.Controls.Add(this.groupBox2);
-            this.panel1.Controls.Add(this.groupBox1);
+            this.panel1.Controls.Add(this.gbGuncelleme);
+            this.panel1.Controls.Add(this.gbYeniKayit);
+            this.panel1.Controls.Add(this.lblCiftciBilgi);
             this.panel1.Location = new System.Drawing.Point(12, 12);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(886, 477);
+            this.panel1.Size = new System.Drawing.Size(886, 490);
             this.panel1.TabIndex = 0;
             // 
-            // groupBox3
+            // gbGuncelleme
             // 
-            this.groupBox3.Controls.Add(this.btnTumListe);
-            this.groupBox3.Controls.Add(this.btnKayitGetir);
-            this.groupBox3.Controls.Add(this.label23);
-            this.groupBox3.Controls.Add(this.txtSearchTcNo);
-            this.groupBox3.Location = new System.Drawing.Point(6, 405);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(660, 69);
-            this.groupBox3.TabIndex = 4;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Arama";
+            this.gbGuncelleme.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.gbGuncelleme.Controls.Add(this.cmbUpdateUrun);
+            this.gbGuncelleme.Controls.Add(this.btnSil);
+            this.gbGuncelleme.Controls.Add(this.cmbUpdateFirmaAdi);
+            this.gbGuncelleme.Controls.Add(this.btnGuncelle);
+            this.gbGuncelleme.Controls.Add(this.label22);
+            this.gbGuncelleme.Controls.Add(this.label12);
+            this.gbGuncelleme.Controls.Add(this.txtUpdateNot);
+            this.gbGuncelleme.Controls.Add(this.label13);
+            this.gbGuncelleme.Controls.Add(this.txtUpdateFaturaTarihi);
+            this.gbGuncelleme.Controls.Add(this.label21);
+            this.gbGuncelleme.Controls.Add(this.label14);
+            this.gbGuncelleme.Controls.Add(this.txtUpdateDosyaNo);
+            this.gbGuncelleme.Controls.Add(this.txtUpdateFaturaNo);
+            this.gbGuncelleme.Controls.Add(this.label15);
+            this.gbGuncelleme.Controls.Add(this.label19);
+            this.gbGuncelleme.Controls.Add(this.label16);
+            this.gbGuncelleme.Controls.Add(this.txtUpdateBirimFiyati);
+            this.gbGuncelleme.Controls.Add(this.txtUpdateMiktarı);
+            this.gbGuncelleme.Controls.Add(this.txtUpdateMuracaatTarihi);
+            this.gbGuncelleme.Controls.Add(this.txtUpdateSertifikaNo);
+            this.gbGuncelleme.Controls.Add(this.textBox6);
+            this.gbGuncelleme.Controls.Add(this.label17);
+            this.gbGuncelleme.Controls.Add(this.label18);
+            this.gbGuncelleme.Location = new System.Drawing.Point(408, 3);
+            this.gbGuncelleme.Name = "gbGuncelleme";
+            this.gbGuncelleme.Size = new System.Drawing.Size(466, 458);
+            this.gbGuncelleme.TabIndex = 3;
+            this.gbGuncelleme.TabStop = false;
+            this.gbGuncelleme.Text = "Güncelleme İşlemleri";
             // 
-            // btnTumListe
+            // cmbUpdateUrun
             // 
-            this.btnTumListe.Location = new System.Drawing.Point(474, 30);
-            this.btnTumListe.Name = "btnTumListe";
-            this.btnTumListe.Size = new System.Drawing.Size(137, 30);
-            this.btnTumListe.TabIndex = 2;
-            this.btnTumListe.Text = "TümListe";
-            this.btnTumListe.UseVisualStyleBackColor = true;
-            this.btnTumListe.Click += new System.EventHandler(this.btnTumListe_Click);
-            // 
-            // btnKayitGetir
-            // 
-            this.btnKayitGetir.Location = new System.Drawing.Point(331, 30);
-            this.btnKayitGetir.Name = "btnKayitGetir";
-            this.btnKayitGetir.Size = new System.Drawing.Size(137, 30);
-            this.btnKayitGetir.TabIndex = 1;
-            this.btnKayitGetir.Text = "Kayıt Getir";
-            this.btnKayitGetir.UseVisualStyleBackColor = true;
-            this.btnKayitGetir.Click += new System.EventHandler(this.btnKayitGetir_Click);
-            // 
-            // label23
-            // 
-            this.label23.AutoSize = true;
-            this.label23.Location = new System.Drawing.Point(18, 37);
-            this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(92, 17);
-            this.label23.TabIndex = 1;
-            this.label23.Text = "Tc Numarası:";
-            // 
-            // txtSearchTcNo
-            // 
-            this.txtSearchTcNo.Location = new System.Drawing.Point(116, 34);
-            this.txtSearchTcNo.Name = "txtSearchTcNo";
-            this.txtSearchTcNo.Size = new System.Drawing.Size(209, 22);
-            this.txtSearchTcNo.TabIndex = 0;
-            // 
-            // groupBox2
-            // 
-            this.groupBox2.Controls.Add(this.btnSil);
-            this.groupBox2.Controls.Add(this.btnGuncelle);
-            this.groupBox2.Controls.Add(this.label12);
-            this.groupBox2.Controls.Add(this.txtToplamMaliyet);
-            this.groupBox2.Controls.Add(this.txtSertifikaDosyaNo);
-            this.groupBox2.Controls.Add(this.label13);
-            this.groupBox2.Controls.Add(this.label14);
-            this.groupBox2.Controls.Add(this.txtBirimFiyati);
-            this.groupBox2.Controls.Add(this.txtMuracaatTarihi);
-            this.groupBox2.Controls.Add(this.textBox17);
-            this.groupBox2.Controls.Add(this.label15);
-            this.groupBox2.Controls.Add(this.label16);
-            this.groupBox2.Controls.Add(this.txtSertifikaNo);
-            this.groupBox2.Controls.Add(this.txtMiktari);
-            this.groupBox2.Controls.Add(this.label17);
-            this.groupBox2.Controls.Add(this.label18);
-            this.groupBox2.Controls.Add(this.txtFaturaNo);
-            this.groupBox2.Controls.Add(this.txtUrunCesidi);
-            this.groupBox2.Controls.Add(this.label19);
-            this.groupBox2.Controls.Add(this.label20);
-            this.groupBox2.Controls.Add(this.txtFaturaTarihi);
-            this.groupBox2.Controls.Add(this.txtUrun);
-            this.groupBox2.Controls.Add(this.label21);
-            this.groupBox2.Controls.Add(this.label22);
-            this.groupBox2.Controls.Add(this.txtFirmaAdi);
-            this.groupBox2.Location = new System.Drawing.Point(537, 3);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(337, 396);
-            this.groupBox2.TabIndex = 3;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Güncelleme İşlemleri";
+            this.cmbUpdateUrun.FormattingEnabled = true;
+            this.cmbUpdateUrun.Location = new System.Drawing.Point(179, 221);
+            this.cmbUpdateUrun.Name = "cmbUpdateUrun";
+            this.cmbUpdateUrun.Size = new System.Drawing.Size(157, 24);
+            this.cmbUpdateUrun.TabIndex = 14;
             // 
             // btnSil
             // 
-            this.btnSil.Location = new System.Drawing.Point(240, 360);
+            this.btnSil.Location = new System.Drawing.Point(265, 417);
             this.btnSil.Name = "btnSil";
             this.btnSil.Size = new System.Drawing.Size(80, 30);
             this.btnSil.TabIndex = 12;
@@ -203,9 +148,17 @@ namespace App.Forms
             this.btnSil.UseVisualStyleBackColor = true;
             this.btnSil.Click += new System.EventHandler(this.btnSil_Click);
             // 
+            // cmbUpdateFirmaAdi
+            // 
+            this.cmbUpdateFirmaAdi.FormattingEnabled = true;
+            this.cmbUpdateFirmaAdi.Location = new System.Drawing.Point(179, 191);
+            this.cmbUpdateFirmaAdi.Name = "cmbUpdateFirmaAdi";
+            this.cmbUpdateFirmaAdi.Size = new System.Drawing.Size(281, 24);
+            this.cmbUpdateFirmaAdi.TabIndex = 14;
+            // 
             // btnGuncelle
             // 
-            this.btnGuncelle.Location = new System.Drawing.Point(154, 359);
+            this.btnGuncelle.Location = new System.Drawing.Point(179, 416);
             this.btnGuncelle.Name = "btnGuncelle";
             this.btnGuncelle.Size = new System.Drawing.Size(80, 30);
             this.btnGuncelle.TabIndex = 11;
@@ -213,239 +166,211 @@ namespace App.Forms
             this.btnGuncelle.UseVisualStyleBackColor = true;
             this.btnGuncelle.Click += new System.EventHandler(this.btnGuncelle_Click);
             // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Location = new System.Drawing.Point(43, 51);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(74, 17);
+            this.label22.TabIndex = 1;
+            this.label22.Text = "Dosya No:";
+            // 
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(18, 51);
+            this.label12.Location = new System.Drawing.Point(43, 219);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(135, 17);
+            this.label12.Size = new System.Drawing.Size(43, 17);
             this.label12.TabIndex = 1;
-            this.label12.Text = "Sertifikalı Dosya No:";
+            this.label12.Text = "Ürün:";
             // 
-            // txtToplamMaliyet
+            // txtUpdateNot
             // 
-            this.txtToplamMaliyet.Location = new System.Drawing.Point(154, 331);
-            this.txtToplamMaliyet.Name = "txtToplamMaliyet";
-            this.txtToplamMaliyet.Size = new System.Drawing.Size(166, 22);
-            this.txtToplamMaliyet.TabIndex = 10;
-            // 
-            // txtSertifikaDosyaNo
-            // 
-            this.txtSertifikaDosyaNo.Location = new System.Drawing.Point(154, 51);
-            this.txtSertifikaDosyaNo.Name = "txtSertifikaDosyaNo";
-            this.txtSertifikaDosyaNo.Size = new System.Drawing.Size(166, 22);
-            this.txtSertifikaDosyaNo.TabIndex = 0;
+            this.txtUpdateNot.Location = new System.Drawing.Point(179, 335);
+            this.txtUpdateNot.Multiline = true;
+            this.txtUpdateNot.Name = "txtUpdateNot";
+            this.txtUpdateNot.Size = new System.Drawing.Size(157, 75);
+            this.txtUpdateNot.TabIndex = 12;
             // 
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(18, 331);
+            this.label13.Location = new System.Drawing.Point(43, 191);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(107, 17);
+            this.label13.Size = new System.Drawing.Size(71, 17);
             this.label13.TabIndex = 1;
-            this.label13.Text = "Toplam Maliyet:";
+            this.label13.Text = "Firma Adı:";
             // 
-            // label14
+            // txtUpdateFaturaTarihi
             // 
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(18, 79);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(111, 17);
-            this.label14.TabIndex = 1;
-            this.label14.Text = "Müracaat Tarihi:";
-            // 
-            // txtBirimFiyati
-            // 
-            this.txtBirimFiyati.Location = new System.Drawing.Point(154, 303);
-            this.txtBirimFiyati.Name = "txtBirimFiyati";
-            this.txtBirimFiyati.Size = new System.Drawing.Size(166, 22);
-            this.txtBirimFiyati.TabIndex = 9;
-            // 
-            // txtMuracaatTarihi
-            // 
-            this.txtMuracaatTarihi.Location = new System.Drawing.Point(154, 79);
-            this.txtMuracaatTarihi.Name = "txtMuracaatTarihi";
-            this.txtMuracaatTarihi.Size = new System.Drawing.Size(166, 22);
-            this.txtMuracaatTarihi.TabIndex = 1;
-            // 
-            // textBox17
-            // 
-            this.textBox17.Location = new System.Drawing.Point(154, 303);
-            this.textBox17.Name = "textBox17";
-            this.textBox17.Size = new System.Drawing.Size(166, 22);
-            this.textBox17.TabIndex = 2;
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(18, 107);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(85, 17);
-            this.label15.TabIndex = 1;
-            this.label15.Text = "Sertifika No:";
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(18, 303);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(80, 17);
-            this.label16.TabIndex = 1;
-            this.label16.Text = "Birim Fiyatı:";
-            // 
-            // txtSertifikaNo
-            // 
-            this.txtSertifikaNo.Location = new System.Drawing.Point(154, 107);
-            this.txtSertifikaNo.Name = "txtSertifikaNo";
-            this.txtSertifikaNo.Size = new System.Drawing.Size(166, 22);
-            this.txtSertifikaNo.TabIndex = 2;
-            // 
-            // txtMiktari
-            // 
-            this.txtMiktari.Location = new System.Drawing.Point(154, 275);
-            this.txtMiktari.Name = "txtMiktari";
-            this.txtMiktari.Size = new System.Drawing.Size(166, 22);
-            this.txtMiktari.TabIndex = 8;
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(18, 135);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(75, 17);
-            this.label17.TabIndex = 1;
-            this.label17.Text = "Fatura No:";
-            // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(18, 275);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(53, 17);
-            this.label18.TabIndex = 1;
-            this.label18.Text = "Miktarı:";
-            // 
-            // txtFaturaNo
-            // 
-            this.txtFaturaNo.Location = new System.Drawing.Point(154, 135);
-            this.txtFaturaNo.Name = "txtFaturaNo";
-            this.txtFaturaNo.Size = new System.Drawing.Size(166, 22);
-            this.txtFaturaNo.TabIndex = 3;
-            // 
-            // txtUrunCesidi
-            // 
-            this.txtUrunCesidi.Location = new System.Drawing.Point(154, 247);
-            this.txtUrunCesidi.Name = "txtUrunCesidi";
-            this.txtUrunCesidi.Size = new System.Drawing.Size(166, 22);
-            this.txtUrunCesidi.TabIndex = 7;
-            // 
-            // label19
-            // 
-            this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(18, 163);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(93, 17);
-            this.label19.TabIndex = 1;
-            this.label19.Text = "Fatura Tarihi:";
-            // 
-            // label20
-            // 
-            this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(18, 247);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(85, 17);
-            this.label20.TabIndex = 1;
-            this.label20.Text = "Ürün Çeşidi:";
-            // 
-            // txtFaturaTarihi
-            // 
-            this.txtFaturaTarihi.Location = new System.Drawing.Point(154, 163);
-            this.txtFaturaTarihi.Name = "txtFaturaTarihi";
-            this.txtFaturaTarihi.Size = new System.Drawing.Size(166, 22);
-            this.txtFaturaTarihi.TabIndex = 4;
-            // 
-            // txtUrun
-            // 
-            this.txtUrun.Location = new System.Drawing.Point(154, 219);
-            this.txtUrun.Name = "txtUrun";
-            this.txtUrun.Size = new System.Drawing.Size(166, 22);
-            this.txtUrun.TabIndex = 6;
+            this.txtUpdateFaturaTarihi.Location = new System.Drawing.Point(179, 163);
+            this.txtUpdateFaturaTarihi.Name = "txtUpdateFaturaTarihi";
+            this.txtUpdateFaturaTarihi.Size = new System.Drawing.Size(157, 22);
+            this.txtUpdateFaturaTarihi.TabIndex = 6;
             // 
             // label21
             // 
             this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(18, 191);
+            this.label21.Location = new System.Drawing.Point(43, 335);
             this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(71, 17);
+            this.label21.Size = new System.Drawing.Size(34, 17);
             this.label21.TabIndex = 1;
-            this.label21.Text = "Firma Adı:";
+            this.label21.Text = "Not:";
             // 
-            // label22
+            // label14
             // 
-            this.label22.AutoSize = true;
-            this.label22.Location = new System.Drawing.Point(18, 219);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(43, 17);
-            this.label22.TabIndex = 1;
-            this.label22.Text = "Ürün:";
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(43, 163);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(93, 17);
+            this.label14.TabIndex = 1;
+            this.label14.Text = "Fatura Tarihi:";
             // 
-            // txtFirmaAdi
+            // txtUpdateDosyaNo
             // 
-            this.txtFirmaAdi.Location = new System.Drawing.Point(154, 191);
-            this.txtFirmaAdi.Name = "txtFirmaAdi";
-            this.txtFirmaAdi.Size = new System.Drawing.Size(166, 22);
-            this.txtFirmaAdi.TabIndex = 5;
+            this.txtUpdateDosyaNo.Location = new System.Drawing.Point(179, 51);
+            this.txtUpdateDosyaNo.Name = "txtUpdateDosyaNo";
+            this.txtUpdateDosyaNo.Size = new System.Drawing.Size(157, 22);
+            this.txtUpdateDosyaNo.TabIndex = 2;
             // 
-            // groupBox1
+            // txtUpdateFaturaNo
             // 
-            this.groupBox1.Controls.Add(this.btnTcAra);
-            this.groupBox1.Controls.Add(this.btnYeniKayit);
-            this.groupBox1.Controls.Add(this.lblIsim);
-            this.groupBox1.Controls.Add(this.label24);
-            this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Controls.Add(this.txtNewToplamMaliyet);
-            this.groupBox1.Controls.Add(this.txtNewTcNo);
-            this.groupBox1.Controls.Add(this.txtNewSertifikaliDosyaNo);
-            this.groupBox1.Controls.Add(this.label11);
-            this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.txtNewBirimFiyati);
-            this.groupBox1.Controls.Add(this.txtNewMuracaatTarihi);
-            this.groupBox1.Controls.Add(this.textBox11);
-            this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Controls.Add(this.label10);
-            this.groupBox1.Controls.Add(this.txtNewSertifikaNo);
-            this.groupBox1.Controls.Add(this.txtNewMiktari);
-            this.groupBox1.Controls.Add(this.label4);
-            this.groupBox1.Controls.Add(this.label9);
-            this.groupBox1.Controls.Add(this.txtNewFaturaNo);
-            this.groupBox1.Controls.Add(this.txtNewUrunCesidi);
-            this.groupBox1.Controls.Add(this.label5);
-            this.groupBox1.Controls.Add(this.label8);
-            this.groupBox1.Controls.Add(this.txtNewFaturaTarihi);
-            this.groupBox1.Controls.Add(this.txtNewUrun);
-            this.groupBox1.Controls.Add(this.label6);
-            this.groupBox1.Controls.Add(this.label7);
-            this.groupBox1.Controls.Add(this.txtNewFirmaAdi);
-            this.groupBox1.Location = new System.Drawing.Point(6, 3);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(511, 396);
-            this.groupBox1.TabIndex = 3;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Yeni Kayıt İşlemleri";
+            this.txtUpdateFaturaNo.Location = new System.Drawing.Point(179, 135);
+            this.txtUpdateFaturaNo.Name = "txtUpdateFaturaNo";
+            this.txtUpdateFaturaNo.Size = new System.Drawing.Size(157, 22);
+            this.txtUpdateFaturaNo.TabIndex = 5;
             // 
-            // btnTcAra
+            // label15
             // 
-            this.btnTcAra.Location = new System.Drawing.Point(260, 17);
-            this.btnTcAra.Name = "btnTcAra";
-            this.btnTcAra.Size = new System.Drawing.Size(51, 30);
-            this.btnTcAra.TabIndex = 1;
-            this.btnTcAra.Text = "Ara";
-            this.btnTcAra.UseVisualStyleBackColor = true;
-            this.btnTcAra.Click += new System.EventHandler(this.btnTcAra_Click);
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(43, 251);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(53, 17);
+            this.label15.TabIndex = 1;
+            this.label15.Text = "Miktarı:";
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(43, 79);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(111, 17);
+            this.label19.TabIndex = 1;
+            this.label19.Text = "Müracaat Tarihi:";
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(43, 135);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(75, 17);
+            this.label16.TabIndex = 1;
+            this.label16.Text = "Fatura No:";
+            // 
+            // txtUpdateBirimFiyati
+            // 
+            this.txtUpdateBirimFiyati.Location = new System.Drawing.Point(179, 279);
+            this.txtUpdateBirimFiyati.Name = "txtUpdateBirimFiyati";
+            this.txtUpdateBirimFiyati.Size = new System.Drawing.Size(157, 22);
+            this.txtUpdateBirimFiyati.TabIndex = 11;
+            // 
+            // txtUpdateMiktarı
+            // 
+            this.txtUpdateMiktarı.Location = new System.Drawing.Point(179, 251);
+            this.txtUpdateMiktarı.Name = "txtUpdateMiktarı";
+            this.txtUpdateMiktarı.Size = new System.Drawing.Size(157, 22);
+            this.txtUpdateMiktarı.TabIndex = 10;
+            // 
+            // txtUpdateMuracaatTarihi
+            // 
+            this.txtUpdateMuracaatTarihi.Location = new System.Drawing.Point(179, 79);
+            this.txtUpdateMuracaatTarihi.Name = "txtUpdateMuracaatTarihi";
+            this.txtUpdateMuracaatTarihi.Size = new System.Drawing.Size(157, 22);
+            this.txtUpdateMuracaatTarihi.TabIndex = 3;
+            // 
+            // txtUpdateSertifikaNo
+            // 
+            this.txtUpdateSertifikaNo.Location = new System.Drawing.Point(179, 107);
+            this.txtUpdateSertifikaNo.Name = "txtUpdateSertifikaNo";
+            this.txtUpdateSertifikaNo.Size = new System.Drawing.Size(157, 22);
+            this.txtUpdateSertifikaNo.TabIndex = 4;
+            // 
+            // textBox6
+            // 
+            this.textBox6.Location = new System.Drawing.Point(179, 279);
+            this.textBox6.Name = "textBox6";
+            this.textBox6.Size = new System.Drawing.Size(157, 22);
+            this.textBox6.TabIndex = 2;
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(43, 279);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(80, 17);
+            this.label17.TabIndex = 1;
+            this.label17.Text = "Birim Fiyatı:";
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(43, 107);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(85, 17);
+            this.label18.TabIndex = 1;
+            this.label18.Text = "Sertifika No:";
+            // 
+            // gbYeniKayit
+            // 
+            this.gbYeniKayit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.gbYeniKayit.Controls.Add(this.cmbNewUrunAdi);
+            this.gbYeniKayit.Controls.Add(this.cmbNewFirmaAdi);
+            this.gbYeniKayit.Controls.Add(this.btnYeniKayit);
+            this.gbYeniKayit.Controls.Add(this.label1);
+            this.gbYeniKayit.Controls.Add(this.txtNewNot);
+            this.gbYeniKayit.Controls.Add(this.label8);
+            this.gbYeniKayit.Controls.Add(this.txtNewDosyaNo);
+            this.gbYeniKayit.Controls.Add(this.label2);
+            this.gbYeniKayit.Controls.Add(this.txtNewBirimFiyati);
+            this.gbYeniKayit.Controls.Add(this.txtNewMuracaatTarihi);
+            this.gbYeniKayit.Controls.Add(this.textBox11);
+            this.gbYeniKayit.Controls.Add(this.label3);
+            this.gbYeniKayit.Controls.Add(this.label10);
+            this.gbYeniKayit.Controls.Add(this.txtNewSertifikaNo);
+            this.gbYeniKayit.Controls.Add(this.txtNewMiktari);
+            this.gbYeniKayit.Controls.Add(this.label4);
+            this.gbYeniKayit.Controls.Add(this.label9);
+            this.gbYeniKayit.Controls.Add(this.txtNewFaturaNo);
+            this.gbYeniKayit.Controls.Add(this.label5);
+            this.gbYeniKayit.Controls.Add(this.txtNewFaturaTarihi);
+            this.gbYeniKayit.Controls.Add(this.label6);
+            this.gbYeniKayit.Controls.Add(this.label7);
+            this.gbYeniKayit.Location = new System.Drawing.Point(6, 3);
+            this.gbYeniKayit.Name = "gbYeniKayit";
+            this.gbYeniKayit.Size = new System.Drawing.Size(396, 458);
+            this.gbYeniKayit.TabIndex = 3;
+            this.gbYeniKayit.TabStop = false;
+            this.gbYeniKayit.Text = "Yeni Kayıt İşlemleri";
+            // 
+            // cmbNewUrunAdi
+            // 
+            this.cmbNewUrunAdi.FormattingEnabled = true;
+            this.cmbNewUrunAdi.Location = new System.Drawing.Point(154, 221);
+            this.cmbNewUrunAdi.Name = "cmbNewUrunAdi";
+            this.cmbNewUrunAdi.Size = new System.Drawing.Size(157, 24);
+            this.cmbNewUrunAdi.TabIndex = 14;
+            // 
+            // cmbNewFirmaAdi
+            // 
+            this.cmbNewFirmaAdi.FormattingEnabled = true;
+            this.cmbNewFirmaAdi.Location = new System.Drawing.Point(154, 191);
+            this.cmbNewFirmaAdi.Name = "cmbNewFirmaAdi";
+            this.cmbNewFirmaAdi.Size = new System.Drawing.Size(236, 24);
+            this.cmbNewFirmaAdi.TabIndex = 14;
             // 
             // btnYeniKayit
             // 
-            this.btnYeniKayit.Location = new System.Drawing.Point(154, 359);
+            this.btnYeniKayit.Location = new System.Drawing.Point(154, 416);
             this.btnYeniKayit.Name = "btnYeniKayit";
             this.btnYeniKayit.Size = new System.Drawing.Size(98, 30);
             this.btnYeniKayit.TabIndex = 13;
@@ -453,62 +378,38 @@ namespace App.Forms
             this.btnYeniKayit.UseVisualStyleBackColor = true;
             this.btnYeniKayit.Click += new System.EventHandler(this.btnYeniKayit_Click);
             // 
-            // lblIsim
-            // 
-            this.lblIsim.AutoSize = true;
-            this.lblIsim.Location = new System.Drawing.Point(328, 24);
-            this.lblIsim.Name = "lblIsim";
-            this.lblIsim.Size = new System.Drawing.Size(23, 17);
-            this.lblIsim.TabIndex = 1;
-            this.lblIsim.Text = "---";
-            // 
-            // label24
-            // 
-            this.label24.AutoSize = true;
-            this.label24.Location = new System.Drawing.Point(18, 23);
-            this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(50, 17);
-            this.label24.TabIndex = 1;
-            this.label24.Text = "Tc No:";
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(18, 51);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(135, 17);
+            this.label1.Size = new System.Drawing.Size(74, 17);
             this.label1.TabIndex = 1;
-            this.label1.Text = "Sertifikalı Dosya No:";
+            this.label1.Text = "Dosya No:";
             // 
-            // txtNewToplamMaliyet
+            // txtNewNot
             // 
-            this.txtNewToplamMaliyet.Location = new System.Drawing.Point(154, 331);
-            this.txtNewToplamMaliyet.Name = "txtNewToplamMaliyet";
-            this.txtNewToplamMaliyet.Size = new System.Drawing.Size(157, 22);
-            this.txtNewToplamMaliyet.TabIndex = 12;
+            this.txtNewNot.Location = new System.Drawing.Point(154, 335);
+            this.txtNewNot.Multiline = true;
+            this.txtNewNot.Name = "txtNewNot";
+            this.txtNewNot.Size = new System.Drawing.Size(157, 75);
+            this.txtNewNot.TabIndex = 12;
             // 
-            // txtNewTcNo
+            // label8
             // 
-            this.txtNewTcNo.Location = new System.Drawing.Point(74, 21);
-            this.txtNewTcNo.Name = "txtNewTcNo";
-            this.txtNewTcNo.Size = new System.Drawing.Size(180, 22);
-            this.txtNewTcNo.TabIndex = 0;
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(18, 335);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(34, 17);
+            this.label8.TabIndex = 1;
+            this.label8.Text = "Not:";
             // 
-            // txtNewSertifikaliDosyaNo
+            // txtNewDosyaNo
             // 
-            this.txtNewSertifikaliDosyaNo.Location = new System.Drawing.Point(154, 51);
-            this.txtNewSertifikaliDosyaNo.Name = "txtNewSertifikaliDosyaNo";
-            this.txtNewSertifikaliDosyaNo.Size = new System.Drawing.Size(157, 22);
-            this.txtNewSertifikaliDosyaNo.TabIndex = 2;
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(18, 331);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(107, 17);
-            this.label11.TabIndex = 1;
-            this.label11.Text = "Toplam Maliyet:";
+            this.txtNewDosyaNo.Location = new System.Drawing.Point(154, 51);
+            this.txtNewDosyaNo.Name = "txtNewDosyaNo";
+            this.txtNewDosyaNo.Size = new System.Drawing.Size(157, 22);
+            this.txtNewDosyaNo.TabIndex = 2;
             // 
             // label2
             // 
@@ -521,7 +422,7 @@ namespace App.Forms
             // 
             // txtNewBirimFiyati
             // 
-            this.txtNewBirimFiyati.Location = new System.Drawing.Point(154, 303);
+            this.txtNewBirimFiyati.Location = new System.Drawing.Point(154, 279);
             this.txtNewBirimFiyati.Name = "txtNewBirimFiyati";
             this.txtNewBirimFiyati.Size = new System.Drawing.Size(157, 22);
             this.txtNewBirimFiyati.TabIndex = 11;
@@ -535,7 +436,7 @@ namespace App.Forms
             // 
             // textBox11
             // 
-            this.textBox11.Location = new System.Drawing.Point(154, 303);
+            this.textBox11.Location = new System.Drawing.Point(154, 279);
             this.textBox11.Name = "textBox11";
             this.textBox11.Size = new System.Drawing.Size(157, 22);
             this.textBox11.TabIndex = 2;
@@ -552,7 +453,7 @@ namespace App.Forms
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(18, 303);
+            this.label10.Location = new System.Drawing.Point(18, 279);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(80, 17);
             this.label10.TabIndex = 1;
@@ -567,7 +468,7 @@ namespace App.Forms
             // 
             // txtNewMiktari
             // 
-            this.txtNewMiktari.Location = new System.Drawing.Point(154, 275);
+            this.txtNewMiktari.Location = new System.Drawing.Point(154, 251);
             this.txtNewMiktari.Name = "txtNewMiktari";
             this.txtNewMiktari.Size = new System.Drawing.Size(157, 22);
             this.txtNewMiktari.TabIndex = 10;
@@ -584,7 +485,7 @@ namespace App.Forms
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(18, 275);
+            this.label9.Location = new System.Drawing.Point(18, 251);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(53, 17);
             this.label9.TabIndex = 1;
@@ -597,13 +498,6 @@ namespace App.Forms
             this.txtNewFaturaNo.Size = new System.Drawing.Size(157, 22);
             this.txtNewFaturaNo.TabIndex = 5;
             // 
-            // txtNewUrunCesidi
-            // 
-            this.txtNewUrunCesidi.Location = new System.Drawing.Point(154, 247);
-            this.txtNewUrunCesidi.Name = "txtNewUrunCesidi";
-            this.txtNewUrunCesidi.Size = new System.Drawing.Size(157, 22);
-            this.txtNewUrunCesidi.TabIndex = 9;
-            // 
             // label5
             // 
             this.label5.AutoSize = true;
@@ -613,28 +507,12 @@ namespace App.Forms
             this.label5.TabIndex = 1;
             this.label5.Text = "Fatura Tarihi:";
             // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(18, 247);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(85, 17);
-            this.label8.TabIndex = 1;
-            this.label8.Text = "Ürün Çeşidi:";
-            // 
             // txtNewFaturaTarihi
             // 
             this.txtNewFaturaTarihi.Location = new System.Drawing.Point(154, 163);
             this.txtNewFaturaTarihi.Name = "txtNewFaturaTarihi";
             this.txtNewFaturaTarihi.Size = new System.Drawing.Size(157, 22);
             this.txtNewFaturaTarihi.TabIndex = 6;
-            // 
-            // txtNewUrun
-            // 
-            this.txtNewUrun.Location = new System.Drawing.Point(154, 219);
-            this.txtNewUrun.Name = "txtNewUrun";
-            this.txtNewUrun.Size = new System.Drawing.Size(157, 22);
-            this.txtNewUrun.TabIndex = 8;
             // 
             // label6
             // 
@@ -654,19 +532,21 @@ namespace App.Forms
             this.label7.TabIndex = 1;
             this.label7.Text = "Ürün:";
             // 
-            // txtNewFirmaAdi
+            // lblCiftciBilgi
             // 
-            this.txtNewFirmaAdi.Location = new System.Drawing.Point(154, 191);
-            this.txtNewFirmaAdi.Name = "txtNewFirmaAdi";
-            this.txtNewFirmaAdi.Size = new System.Drawing.Size(157, 22);
-            this.txtNewFirmaAdi.TabIndex = 7;
+            this.lblCiftciBilgi.AutoSize = true;
+            this.lblCiftciBilgi.Location = new System.Drawing.Point(13, 464);
+            this.lblCiftciBilgi.Name = "lblCiftciBilgi";
+            this.lblCiftciBilgi.Size = new System.Drawing.Size(23, 17);
+            this.lblCiftciBilgi.TabIndex = 1;
+            this.lblCiftciBilgi.Text = "---";
             // 
             // panel2
             // 
             this.panel2.Controls.Add(this.dgwListe);
-            this.panel2.Location = new System.Drawing.Point(12, 495);
+            this.panel2.Location = new System.Drawing.Point(12, 508);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(886, 242);
+            this.panel2.Size = new System.Drawing.Size(886, 229);
             this.panel2.TabIndex = 1;
             // 
             // dgwListe
@@ -680,7 +560,7 @@ namespace App.Forms
             this.dgwListe.ReadOnly = true;
             this.dgwListe.RowHeadersWidth = 51;
             this.dgwListe.RowTemplate.Height = 24;
-            this.dgwListe.Size = new System.Drawing.Size(886, 242);
+            this.dgwListe.Size = new System.Drawing.Size(886, 229);
             this.dgwListe.TabIndex = 0;
             this.dgwListe.DataSourceChanged += new System.EventHandler(this.dgwListe_DataSourceChanged);
             this.dgwListe.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgwListe_CellClick);
@@ -698,12 +578,11 @@ namespace App.Forms
             this.Text = "Sertifikalı Tohum Kayıt Formu";
             this.Load += new System.EventHandler(this.SertifikaliTohumForm_Load);
             this.panel1.ResumeLayout(false);
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
+            this.panel1.PerformLayout();
+            this.gbGuncelleme.ResumeLayout(false);
+            this.gbGuncelleme.PerformLayout();
+            this.gbYeniKayit.ResumeLayout(false);
+            this.gbYeniKayit.PerformLayout();
             this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgwListe)).EndInit();
             this.ResumeLayout(false);
@@ -713,48 +592,15 @@ namespace App.Forms
         #endregion
 
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Button btnYeniKayit;
-        private System.Windows.Forms.Button btnGuncelle;
-        private System.Windows.Forms.Button btnSil;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.DataGridView dgwListe;
-        private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.Button btnTumListe;
-        private System.Windows.Forms.Button btnKayitGetir;
-        private System.Windows.Forms.Label label23;
-        private System.Windows.Forms.TextBox txtSearchTcNo;
-        private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.TextBox txtToplamMaliyet;
-        private System.Windows.Forms.TextBox txtSertifikaDosyaNo;
-        private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.TextBox txtBirimFiyati;
-        private System.Windows.Forms.TextBox txtMuracaatTarihi;
-        private System.Windows.Forms.TextBox textBox17;
-        private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.TextBox txtSertifikaNo;
-        private System.Windows.Forms.TextBox txtMiktari;
-        private System.Windows.Forms.Label label17;
-        private System.Windows.Forms.Label label18;
-        private System.Windows.Forms.TextBox txtFaturaNo;
-        private System.Windows.Forms.TextBox txtUrunCesidi;
-        private System.Windows.Forms.Label label19;
-        private System.Windows.Forms.Label label20;
-        private System.Windows.Forms.TextBox txtFaturaTarihi;
-        private System.Windows.Forms.TextBox txtUrun;
-        private System.Windows.Forms.Label label21;
-        private System.Windows.Forms.Label label22;
-        private System.Windows.Forms.TextBox txtFirmaAdi;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Button btnTcAra;
-        private System.Windows.Forms.Label label24;
+        private System.Windows.Forms.GroupBox gbGuncelleme;
+        private System.Windows.Forms.Button btnSil;
+        private System.Windows.Forms.Button btnGuncelle;
+        private System.Windows.Forms.GroupBox gbYeniKayit;
+        private System.Windows.Forms.Button btnYeniKayit;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox txtNewToplamMaliyet;
-        private System.Windows.Forms.TextBox txtNewTcNo;
-        private System.Windows.Forms.TextBox txtNewSertifikaliDosyaNo;
-        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.TextBox txtNewDosyaNo;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtNewBirimFiyati;
         private System.Windows.Forms.TextBox txtNewMuracaatTarihi;
@@ -766,14 +612,35 @@ namespace App.Forms
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox txtNewFaturaNo;
-        private System.Windows.Forms.TextBox txtNewUrunCesidi;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox txtNewFaturaTarihi;
-        private System.Windows.Forms.TextBox txtNewUrun;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox txtNewFirmaAdi;
-        private System.Windows.Forms.Label lblIsim;
+        private System.Windows.Forms.ComboBox cmbUpdateUrun;
+        private System.Windows.Forms.ComboBox cmbUpdateFirmaAdi;
+        private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.TextBox txtUpdateNot;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.TextBox txtUpdateFaturaTarihi;
+        private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.TextBox txtUpdateDosyaNo;
+        private System.Windows.Forms.TextBox txtUpdateFaturaNo;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.TextBox txtUpdateBirimFiyati;
+        private System.Windows.Forms.TextBox txtUpdateMiktarı;
+        private System.Windows.Forms.TextBox txtUpdateMuracaatTarihi;
+        private System.Windows.Forms.TextBox txtUpdateSertifikaNo;
+        private System.Windows.Forms.TextBox textBox6;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.ComboBox cmbNewUrunAdi;
+        private System.Windows.Forms.ComboBox cmbNewFirmaAdi;
+        private System.Windows.Forms.TextBox txtNewNot;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label lblCiftciBilgi;
     }
 }

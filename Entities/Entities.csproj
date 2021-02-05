@@ -51,10 +51,12 @@
     <Compile Include="Abstract\IProduct.cs" />
     <Compile Include="Concrete\Ciftci.cs" />
     <Compile Include="Concrete\Cks.cs" />
-    <Compile Include="Concrete\Company.cs" />
+    <Compile Include="Concrete\Firma.cs" />
     <Compile Include="Concrete\Dilekce.cs" />
-    <Compile Include="Concrete\Product.cs" />
+    <Compile Include="Concrete\HububatFarkOdemesi.cs" />
+    <Compile Include="Concrete\Urun.cs" />
     <Compile Include="Concrete\SertifikaliTohum.cs" />
+    <Compile Include="Concrete\YemBitkileri.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />

@@ -14,7 +14,7 @@ namespace App
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new SertifikaliTohumForm());
+            Application.Run(new CksForm());
         }
     }
 }

@@ -7,8 +7,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{A0682326-BB4F-4E5E-A46D-30A7555569CF}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>CksKayitDefteri</RootNamespace>
-    <AssemblyName>CksKayitDefteri</AssemblyName>
+    <RootNamespace>App</RootNamespace>
+    <AssemblyName>App</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -69,9 +69,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Business\Abstract\IService.cs" />
+    <Compile Include="Business\BaseService.cs" />
+    <Compile Include="Business\FirmaManager.cs" />
+    <Compile Include="Business\HububatFarkOdemesiManager.cs" />
     <Compile Include="Business\SertifikaliTohumManager.cs" />
-    <Compile Include="Business\ServiceCiftciler.cs" />
+    <Compile Include="Business\CiftcilerManager.cs" />
     <Compile Include="Business\CksManager.cs" />
+    <Compile Include="Business\UrunManager.cs" />
+    <Compile Include="Business\YemBitkileriManager.cs" />
     <Compile Include="Forms\CiftciForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -90,6 +95,12 @@
     <Compile Include="Forms\SertifikaliTohumForm.Designer.cs">
       <DependentUpon>SertifikaliTohumForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\YemBitkileriForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\YemBitkileriForm.Designer.cs">
+      <DependentUpon>YemBitkileriForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Forms\CiftciForm.resx">
@@ -100,6 +111,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\SertifikaliTohumForm.resx">
       <DependentUpon>SertifikaliTohumForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\YemBitkileriForm.resx">
+      <DependentUpon>YemBitkileriForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

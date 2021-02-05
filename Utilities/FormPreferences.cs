@@ -1,4 +1,6 @@
-﻿using System.Windows.Forms;
+﻿using Entities.Concrete;
+using System.Collections.Generic;
+using System.Windows.Forms;
 
 namespace Utilities
 {
@@ -53,6 +55,19 @@ namespace Utilities
             {
                 f.Focus();
             }
+        }
+
+        public static void ComboxSetUrun(ComboBox combobox,List<Urun> listOfUruns)
+        {
+            combobox.DataSource = listOfUruns;
+            combobox.DisplayMember = "UrunAdi";
+            combobox.ValueMember = "Id";
+        }
+        public static void ComboxSetFirma(ComboBox combobox, List<Firma> listOfFirmas)
+        {
+            combobox.DataSource = listOfFirmas;
+            combobox.DisplayMember = "FirmaAdi";
+            combobox.ValueMember = "Id";
         }
 
     }

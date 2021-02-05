@@ -4,7 +4,7 @@ namespace Entities.Abstract
 {
     public interface ICompany:IEntity
     {
-        string CompanyName { get; set; }
-        string CompanyTaxNumber { get; set; }
+        string FirmaAdi { get; set; }
+        string VergiNo { get; set; }
     }
 }

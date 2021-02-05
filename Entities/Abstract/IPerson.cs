@@ -19,7 +19,7 @@ namespace Entities.Abstract
         string City { get; set; }
         string Town { get; set; }
         string Village { get; set; }
-        string Note { get; set; }
+        string Not { get; set; }
 
     }
 }

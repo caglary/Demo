@@ -9,22 +9,22 @@ namespace App.Forms
 {
     public partial class CksForm : Form
     {
-        CksManager cksManager;
-        ServiceCiftciler serviceCiftciler;
-        
+        CksManager _cksManager;
+        CiftcilerManager _ciftcilerManager;
+
         static Cks ciftci = new Cks() { Id = -1 };
         public CksForm()
         {
             InitializeComponent();
-            cksManager = new CksManager();
-            serviceCiftciler = new ServiceCiftciler();
+            _cksManager = new CksManager();
+            _ciftcilerManager = new CiftcilerManager();
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            dgwListe.DataSource = cksManager.GetAll();
+            dgwListe.DataSource = _cksManager.GetAll();
             Utilities.FormPreferences.DataGridSettings(dgwListe, new string[] { "Id" });
-           
+
             formDoldur();
             cmboxMahalleKoy.DataSource = Utilities.RequiredLists.VillageNameList();
         }
@@ -35,11 +35,11 @@ namespace App.Forms
             {
                 int index = dgwListe.CurrentCell.RowIndex;
                 string Tc = dgwListe.Rows[index].Cells["Tc"].Value.ToString();
-                ciftci = cksManager.GetByTc(Tc);
+                ciftci = _cksManager.GetByTc(Tc);
                 formDoldur();
             });
 
-
+           
         }
         void formDoldur()
         {
@@ -59,7 +59,7 @@ namespace App.Forms
             Utilities.ErrorHandle._try(() =>
             {
                 string tc = txtTcSearch.Text;
-                var ciftci = serviceCiftciler.GetByTc(tc);
+                var ciftci = _ciftcilerManager.GetByTc(tc);
                 if (ciftci.TcKimlikNo == null)
                 {
                     CiftciForm form = new CiftciForm(tc);
@@ -67,8 +67,8 @@ namespace App.Forms
                 }
                 else
                 {
-                    int dosyano = cksManager.DosyaNoFactory();
-                    returnValue = cksManager.Add(new Cks
+                    int dosyano = _cksManager.DosyaNoFactory();
+                    returnValue = _cksManager.Add(new Cks
                     {
                         DosyaNo = dosyano,
                         BabaAdi = ciftci.FatherName,
@@ -87,8 +87,8 @@ namespace App.Forms
 
         private void ShowList()
         {
-            dgwListe.DataSource = cksManager.GetAll();
-                    
+            dgwListe.DataSource = _cksManager.GetAll();
+
             formDoldur();
         }
 
@@ -97,7 +97,7 @@ namespace App.Forms
             Utilities.ErrorHandle._try(() =>
             {
                 if (ciftci.Id == -1) throw new Exception("Listeden silmek istediğiniz kaydı seçiniz.");
-                int result = cksManager.Delete(ciftci);
+                int result = _cksManager.Delete(ciftci);
                 if (result > 0)
                 {
                     Utilities.Mesaj.MessageBoxInformation("Silme işlemi başarılı");
@@ -136,7 +136,7 @@ namespace App.Forms
                 ciftci.EvTelefonu = txtEvTelefon.Text;
                 ciftci.KayitTarihi = txtKayitTarihi.Text;
 
-                int result = cksManager.Update(ciftci);
+                int result = _cksManager.Update(ciftci);
                 if (result > 0)
                 {
                     Utilities.Mesaj.MessageBoxInformation("Güncelleme işlemi başarılı");
@@ -152,7 +152,7 @@ namespace App.Forms
             {
                 Utilities.ErrorHandle._try(() =>
             {
-                var liste = cksManager.GetAll().OrderBy(I => I.DosyaNo).ToList();
+                var liste = _cksManager.GetAll().OrderBy(I => I.DosyaNo).ToList();
                 var dataTable = Utilities.ExcelExport.ConvertToDataTable(liste);
 
                 var location = Utilities.FolderBrowser.Path();
@@ -173,11 +173,11 @@ namespace App.Forms
 
                 Utilities.ErrorHandle._try(() =>
                 {
-                    var path = Utilities.FolderBrowser.Path();          
+                    var path = Utilities.FolderBrowser.Path();
                     Task t = Task.Run(() =>
                     {
-                        var list2020 = cksManager.GetAll().OrderBy(I => I.DosyaNo).ToList();
-                        Utilities.Json.Backup(list2020, "Cks2020",path);
+                        var list2020 = _cksManager.GetAll().OrderBy(I => I.DosyaNo).ToList();
+                        Utilities.Json.Backup(list2020, "Cks2020", path);
 
                         Utilities.Mesaj.MessageBoxInformation("Backup işlemi başarılı.");
                     });
@@ -192,11 +192,11 @@ namespace App.Forms
         {
             if (!string.IsNullOrEmpty(txtSearch.Text))
             {
-                dgwListe.DataSource= cksManager.Search(txtSearch.Text);
+                dgwListe.DataSource = _cksManager.Search(txtSearch.Text);
             }
             else
             {
-                dgwListe.DataSource = cksManager.GetAll();
+                dgwListe.DataSource = _cksManager.GetAll();
             }
         }
 
@@ -209,6 +209,29 @@ namespace App.Forms
         {
             CiftciForm form = new CiftciForm();
             form.ShowDialog();
+        }
+
+        private void btnSertifikaliTohum_Click(object sender, EventArgs e)
+        {
+            Utilities.ErrorHandle._try(() =>
+            {
+                if (ciftci.Id == -1) throw new Exception("Listeden çiftçi seçiniz.");
+
+                Form _form = new SertifikaliTohumForm(ciftci.Tc); 
+                _form.ShowDialog();
+            });
+
+        }
+
+        private void btnYemBitkileri_Click(object sender, EventArgs e)
+        {
+            Utilities.ErrorHandle._try(() =>
+            {
+                if (ciftci.Id == -1) throw new Exception("Listeden çiftçi seçiniz.");
+
+                Form _form = new YemBitkileriForm(ciftci.Tc);
+                _form.ShowDialog();
+            });
         }
     }
 }

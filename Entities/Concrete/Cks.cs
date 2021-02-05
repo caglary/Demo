@@ -14,5 +14,7 @@ namespace Entities.Concrete
         public string CepTelefonu { set; get; }
         public string EvTelefonu { set; get; }
         public string KayitTarihi { set; get; }
+        public string Not { get; set; }
+
     }
 }

@@ -20,7 +20,7 @@ namespace Entities.Concrete
         public string City { get; set; }
         public string Town { get; set; }
         public string Village { get; set; }
-        public string Note { get; set; }
+        public string Not { get; set; }
      
     }
 }

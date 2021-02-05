@@ -6,24 +6,13 @@ using System.Data.SQLite;
 
 namespace Database.Concrete.Sqlite
 {
-    public class CksDal : IBase<Cks>
+    public class CksDal : BaseSqlite, IDatabase<Cks>
     {
-        SQLiteConnection connection;
-        SQLiteDataReader dataReader;
-        SQLiteCommand command;
-        DatabaseDb database;
-        public CksDal()
-        {
-            database = new DatabaseDb();
 
-        }
         public int Add(Cks Entity)
         {
-            try
+            _try(() =>
             {
-                connection = new SQLiteConnection(database.ConnectionString);
-                connection.Open();
-                command = new SQLiteCommand(connection);
                 command.CommandText = "INSERT INTO Cks(DosyaNo, Tc,IsimSoyisim,BabaAdi,KoyMahalle,CepTelefonu,EvTelefonu,KayitTarihi) VALUES(@DosyaNo, @Tc,@IsimSoyisim,@BabaAdi,@KoyMahalle,@CepTelefonu,@EvTelefonu,@KayitTarihi)";
                 command.Parameters.AddWithValue("@DosyaNo", Entity.DosyaNo);
                 command.Parameters.AddWithValue("@Tc", Entity.Tc);
@@ -34,73 +23,38 @@ namespace Database.Concrete.Sqlite
                 command.Parameters.AddWithValue("@EvTelefonu", Entity.EvTelefonu);
                 command.Parameters.AddWithValue("@KayitTarihi", Entity.KayitTarihi);
                 command.Prepare();
-                int result = command.ExecuteNonQuery();
+                result = command.ExecuteNonQuery();
 
-                return result;
-            }
-            catch (Exception exception)
-            {
-               
-                if (exception.Message== "constraint failed\r\nUNIQUE constraint failed: Cks2020.Tc")
-                {
-                    throw new Exception("Kaydetmek istediğiniz tc listede mevcut.");
-                }
-                else if (exception.Message == "constraint failed\r\nUNIQUE constraint failed: Cks2020.DosyaNo")
-                {
-                    throw new Exception("Kaydetmek istediğiniz dosya no listede başka bir kayda ait.\nDosya numarasını kontrol ediniz.");
-                }
-                else
-                {
-                    throw exception;
-                }
-                
-            }
-            finally
-            {
-                connection.Close();
-            }
-
+            });
+            return result;
         }
 
         public int Delete(Cks Entity)
         {
-            try
+            _try(() =>
             {
-                connection = new SQLiteConnection(database.ConnectionString);
-                connection.Open();
-                command = new SQLiteCommand(connection);
-
                 command.CommandText = "DELETE FROM Cks WHERE Tc=@Tc";
                 command.Parameters.AddWithValue("@Tc", Entity.Tc);
                 command.Prepare();
                 int result = command.ExecuteNonQuery();
+            });
 
-                return result;
-            }
-            catch (Exception exception)
-            {
+            return result;
 
-                throw exception;
-            }
-            finally
-            {
-                connection.Close();
-            }
         }
 
         public Cks Get(string Tc)
         {
-            try
+            Cks cks = new Cks();
+
+            _try(() =>
             {
-                connection = new SQLiteConnection(database.ConnectionString);
-                command = new SQLiteCommand(connection);
                 command.CommandText = "SELECT * FROM Cks Where Tc=@Tc";
                 command.Parameters.AddWithValue("@Tc", Tc);
-                connection.Open();
+
                 dataReader = command.ExecuteReader();
                 if (dataReader.HasRows)
                 {
-                    Cks cks = new Cks();
 
                     while (dataReader.Read())
                     {
@@ -115,35 +69,20 @@ namespace Database.Concrete.Sqlite
                         cks.KayitTarihi = dataReader.GetString(8);
 
                     }
-                    return cks;
                 }
-                else
-                {
-                    return new Cks() { Tc="-1"};
-                }
+            });
+            return cks;
 
-            }
-            catch (Exception exception)
-            {
-
-                throw exception;
-            }
-            finally
-            {
-                connection.Close();
-            }
         }
 
         public List<Cks> GetAll()
         {
-            try
+            List<Cks> liste = new List<Cks>();
+            _try(() =>
             {
-                connection = new SQLiteConnection(database.ConnectionString);
-                command = new SQLiteCommand(connection);
                 command.CommandText = "SELECT * FROM Cks ORDER BY DosyaNo DESC";
-                connection.Open();
+
                 dataReader = command.ExecuteReader();
-                List<Cks> liste = new List<Cks>();
                 while (dataReader.Read())
                 {
                     Cks cks = new Cks();
@@ -166,32 +105,17 @@ namespace Database.Concrete.Sqlite
                     cks.KayitTarihi = dataReader.GetString(8);
                     liste.Add(cks);
                 }
-                return liste;
-            }
-            catch (Exception exception)
-            {
-
-                throw exception;
-            }
-            finally
-            {
-                connection.Close();
-            }
-
+            });
+            return liste;
         }
-
         public int Update(Cks Entity)
         {
-            try
+            _try(() =>
             {
-                connection = new SQLiteConnection(database.ConnectionString);
-                connection.Open();
-                command = new SQLiteCommand(connection);
-
                 command.CommandText = "UPDATE Cks SET " +
-                    "DosyaNo=@DosyaNo, Tc=@Tc, IsimSoyisim = @IsimSoyisim ," +
-                    "BabaAdi=@BabaAdi ,KoyMahalle=@KoyMahalle ,CepTelefonu=@CepTelefonu ," +
-                    "EvTelefonu=@EvTelefonu ,KayitTarihi=@KayitTarihi WHERE Id=@Id";
+           "DosyaNo=@DosyaNo, Tc=@Tc, IsimSoyisim = @IsimSoyisim ," +
+           "BabaAdi=@BabaAdi ,KoyMahalle=@KoyMahalle ,CepTelefonu=@CepTelefonu ," +
+           "EvTelefonu=@EvTelefonu ,KayitTarihi=@KayitTarihi WHERE Id=@Id";
                 command.Parameters.AddWithValue("@DosyaNo", Entity.DosyaNo);
                 command.Parameters.AddWithValue("@Tc", Entity.Tc);
                 command.Parameters.AddWithValue("@IsimSoyisim", Entity.IsimSoyisim);
@@ -203,19 +127,11 @@ namespace Database.Concrete.Sqlite
                 command.Parameters.AddWithValue("@Id", Entity.Id);
 
                 command.Prepare();
-                int result = command.ExecuteNonQuery();
-
-                return result;
-            }
-            catch (Exception exception)
-            {
-
-                throw exception;
-            }
-            finally
-            {
-                connection.Close();
-            }
+                result = command.ExecuteNonQuery();
+            });
+            return result;
         }
+
     }
 }
+

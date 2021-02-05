@@ -11,7 +11,7 @@ namespace App.Forms
 {
     public partial class CiftciForm : Form
     {
-        ServiceCiftciler serviceCiftciler;
+        CiftcilerManager _ciftcilerManager;
         string _tc;
         static Operation Islem = Operation.EklemeIslemi;
         private FormNerdenGeldi _formNerdenGeldi;
@@ -21,14 +21,14 @@ namespace App.Forms
         public CiftciForm(string tc)
         {
             InitializeComponent();
-            serviceCiftciler = new ServiceCiftciler();
+            _ciftcilerManager = new CiftcilerManager();
             _tc = tc;
             _formNerdenGeldi = FormNerdenGeldi.CksKayitDefteri;
         }
         public CiftciForm()
         {
             InitializeComponent();
-            serviceCiftciler = new ServiceCiftciler();
+            _ciftcilerManager = new CiftcilerManager();
             _formNerdenGeldi = FormNerdenGeldi.KendiGeldi;
         }
 
@@ -39,13 +39,13 @@ namespace App.Forms
                 if (Islem == Operation.EklemeIslemi)
                 {
                     var ciftci = FormToEntity();
-                    int result = serviceCiftciler.Add(ciftci);
+                    int result = _ciftcilerManager.Add(ciftci);
                     if (result > 0)
                     {
                         Utilities.Mesaj.MessageBoxInformation("Kayıt Başarılı");
                         if (_formNerdenGeldi == FormNerdenGeldi.CksKayitDefteri)
                         {
-                            Form f = Application.OpenForms["CksKayitDefteriForm"];
+                            Form f = Application.OpenForms["CksForm"];
                             foreach (var item in f.Controls)
                             {
                                 if (item is DataGridView)
@@ -66,11 +66,11 @@ namespace App.Forms
                     //guncelleme işlemi yap.
                     var ciftci = FormToEntity();
                     ciftci.Id =(int) txtTc.Tag;
-                    int result = serviceCiftciler.Update(ciftci);
+                    int result = _ciftcilerManager.Update(ciftci);
                     //formu temizle
                     FormuTemizle();
                     //Listeyi güncelle
-                    dgwList.DataSource = serviceCiftciler.GetAll().OrderByDescending(I => I.Id).ToList();
+                    dgwList.DataSource = _ciftcilerManager.GetAll().OrderByDescending(I => I.Id).ToList();
 
                     btnAdd.Text = "Yeni Kayıt Ekle";
                     Islem = Operation.EklemeIslemi;
@@ -127,7 +127,7 @@ namespace App.Forms
                 City = string.IsNullOrEmpty(txtCity.Text) ? "" : txtCity.Text,
                 Town = string.IsNullOrEmpty(txtTown.Text) ? "" : txtTown.Text,
                 Village = string.IsNullOrEmpty(comboBoxVillage.Text) ? "" : comboBoxVillage.Text,
-                Note = string.IsNullOrEmpty(txtNote.Text) ? "" : txtNote.Text
+                Not = string.IsNullOrEmpty(txtNote.Text) ? "" : txtNote.Text
 
             };
             return ciftci;
@@ -139,7 +139,7 @@ namespace App.Forms
             comboBoxGender.DataSource = Utilities.RequiredLists.GenderList();
             comboBoxMaritalStatus.DataSource = Utilities.RequiredLists.MaritalStatusList();
             comboBoxVillage.DataSource = Utilities.RequiredLists.VillageNameList();
-            dgwList.DataSource = serviceCiftciler.GetAll();
+            dgwList.DataSource = _ciftcilerManager.GetAll();
             Utilities.FormPreferences.DataGridSettings(dgwList, new string[] { "Id","TcKimlikNo","MotherName","Birthday","DateOfDeath","Gender"
             ,"MaritalStatus","MobilePhone","HomePhone","Email","City","Town","Note"
             });
@@ -154,28 +154,9 @@ namespace App.Forms
                 string path = Directory.GetCurrentDirectory() + "\\TbsInfo.txt";
                 if (!File.Exists(path))
                 {
-                    //OpenFileDialog openFileDialog = new OpenFileDialog();
-                    //openFileDialog.ShowDialog();
-                    //string fileName = openFileDialog.FileName;
-
-                    //var result = File.ReadLines(fileName);
-                    //ArrayList userInfo = new ArrayList();
-                    //foreach (var line in result)
-                    //{
-                    //    userInfo.Add(line);
-                    //}
-
-                    //userName = (string)userInfo[0];
-                    //password = (string)userInfo[1];
-
-
-                    FileStream fs = File.Create(path);
+                                        FileStream fs = File.Create(path);
                     fs.Close();
-                    //StreamWriter sw = new StreamWriter(path);
-                    //sw.WriteLine(userName);
-                    //sw.WriteLine(password);
-
-                    //sw.Close();
+                 
 
                 }
                 else
@@ -226,7 +207,7 @@ namespace App.Forms
             txtCity.Text = person.City;
             txtTown.Text = person.Town;
             comboBoxVillage.Text = person.Village;
-            //txtNote.Text = person.Note;
+            txtNote.Text = person.Not;
 
         }
 
@@ -236,7 +217,7 @@ namespace App.Forms
             {
                 int index = dgwList.CurrentCell.RowIndex;
                 string Tc = dgwList.Rows[index].Cells["TcKimlikNo"].Value.ToString();
-                _activeCiftci = serviceCiftciler.GetByTc(Tc);
+                _activeCiftci = _ciftcilerManager.GetByTc(Tc);
 
             });
         }
@@ -248,9 +229,9 @@ namespace App.Forms
                 DialogResult dr = Utilities.Mesaj.MessageBoxQuestion($"{_activeCiftci.TcKimlikNo} tc nolu {_activeCiftci.NameSurname} isimli kaydı silmek istiyor musunuz?");
                 if (dr == DialogResult.Yes)
                 {
-                    int result = serviceCiftciler.Delete(_activeCiftci);
+                    int result = _ciftcilerManager.Delete(_activeCiftci);
                     _activeCiftci = null;
-                    dgwList.DataSource = serviceCiftciler.GetAll();
+                    dgwList.DataSource = _ciftcilerManager.GetAll();
                     Utilities.Mesaj.MessageBoxInformation("Silme işlemi başarılı");
                 }
             }
@@ -272,7 +253,7 @@ namespace App.Forms
                 int index = dgwList.CurrentCell.RowIndex;
                 string Tc = dgwList.Rows[index].Cells["TcKimlikNo"].Value.ToString();
 
-                _activeCiftci = serviceCiftciler.GetByTc(Tc);
+                _activeCiftci = _ciftcilerManager.GetByTc(Tc);
                 //gelen çiftçinin Id sini txttc tag içerisinde saklıyoruz....
                 txtTc.Tag = (object)_activeCiftci.Id;
                 txtTc.Text = _activeCiftci.TcKimlikNo;
@@ -289,7 +270,7 @@ namespace App.Forms
                 txtCity.Text = _activeCiftci.City;
                 txtTown.Text = _activeCiftci.Town;
                 comboBoxVillage.Text = _activeCiftci.Village;
-                txtNote.Text = _activeCiftci.Note;
+                txtNote.Text = _activeCiftci.Not;
 
 
 
@@ -303,7 +284,7 @@ namespace App.Forms
         private void excelToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
-            var datatable = Utilities.ExcelExport.ConvertToDataTable<Ciftci>(serviceCiftciler.GetAll());
+            var datatable = Utilities.ExcelExport.ConvertToDataTable<Ciftci>(_ciftcilerManager.GetAll());
             var path = Utilities.FolderBrowser.Path();
             path = path + @"\Ciftciler.xlsx";
             Task.Run(() => { Utilities.ExcelExport.GenerateExcel(datatable, path); });
@@ -316,7 +297,7 @@ namespace App.Forms
         {
             var path = Utilities.FolderBrowser.Path();
 
-            Utilities.Json.Backup<Ciftci>(serviceCiftciler.GetAll(), "Ciftciler", path);
+            Utilities.Json.Backup<Ciftci>(_ciftcilerManager.GetAll(), "Ciftciler", path);
         }
     }
     enum Operation

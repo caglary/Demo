@@ -6,43 +6,31 @@ using System.Linq;
 
 namespace App.Business
 {
-    public class CksManager : IService
+    public class CksManager : BaseService<Cks>
     {
-        CksDal dal;
+       
         public CksManager()
         {
-            dal = new CksDal();
+            _dal = new CksDal();
         }
-        public List<Cks> GetAll()
-        {
-            return dal.GetAll();
-        }
+     
         public Cks GetByTc(string tc)
         {
-            return dal.Get(tc);
+            return _dal.GetAll().Where(I => I.Tc == tc).FirstOrDefault(); ;
         }
-        public int Add(Cks entity)
-        {
-            return dal.Add(entity);
-        }
-        public int Delete(Cks entity)
-        {
-            return dal.Delete(entity);
-        }
+      
+       
 
-        internal int DosyaNoFactory()
+        public int DosyaNoFactory()
         {
             var liste = GetAll();
                       
             return liste.Count + 1;
         }
 
-        internal int Update(Cks ciftci)
-        {
-           return dal.Update(ciftci);
-        }
+      
 
-        internal List<Cks> Search(string text)
+        public List<Cks> Search(string text)
         {
             var liste = GetAll();
             List<Cks> filteredList = new List<Cks>();

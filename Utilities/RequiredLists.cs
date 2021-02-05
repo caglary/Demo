@@ -80,9 +80,9 @@ namespace Utilities
 
             
         }
-        public static List<Company> CompanyList()
+        public static List<Firma> CompanyList()
         {
-            return new List<Company>();
+            return new List<Firma>();
             //string currentDirectory = Directory.GetCurrentDirectory();
             //string path = currentDirectory + @"\Company.json";
             //if (!File.Exists(path))

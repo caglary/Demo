@@ -2,16 +2,16 @@
 {
     public interface IInvoice:ICompany
     {
-         string InvoiceNumber { get; set; }
+         string FaturaNo { get; set; }
 
-         string InvoiceDate { get; set; }
-         string ProductName { get; set; }
+         string FaturaTarihi { get; set; }
+         string UrunAdi { get; set; }
 
-         decimal AmountOfProduct { get; set; }
+         decimal Miktar { get; set; }
         
-         decimal Price { get; set; }
+         decimal BirimFiyat { get; set; }
 
-         decimal Total { get; set; }
+         decimal ToplamMaliyet { get; set; }
 
 
 
