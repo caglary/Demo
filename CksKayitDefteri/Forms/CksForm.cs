@@ -233,5 +233,16 @@ namespace App.Forms
                 _form.ShowDialog();
             });
         }
+
+        private void btnHububatFarkOdemesi_Click(object sender, EventArgs e)
+        {
+            Utilities.ErrorHandle._try(() =>
+            {
+                if (ciftci.Id == -1) throw new Exception("Listeden çiftçi seçiniz.");
+
+                Form _form = new HububatFarkOdemesiForm(ciftci);
+                _form.ShowDialog();
+            });
+        }
     }
 }

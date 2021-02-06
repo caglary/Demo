@@ -2,6 +2,7 @@
 using Entities.Concrete;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -64,6 +65,11 @@ namespace Database.Concrete.Sqlite
 
             });
             return productList;
+        }
+
+        public DataTable GetAllDataTable(int id)
+        {
+            throw new NotImplementedException();
         }
 
         public int Update(Urun Entity)

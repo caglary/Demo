@@ -1,12 +1,13 @@
 ﻿using Database.Abstract;
 using Entities.Concrete;
 using System.Collections.Generic;
+using System.Data;
 
 namespace Database.Concrete.Sqlite
 {
-    public class SertifikaliTohumDal :BaseSqlite, IDatabase<SertifikaliTohum>
+    public class SertifikaliTohumDal : BaseSqlite, IDatabase<SertifikaliTohum>
     {
-      
+
         public int Add(SertifikaliTohum Entity)
         {
 
@@ -25,7 +26,7 @@ namespace Database.Concrete.Sqlite
                 command.Parameters.AddWithValue("@Miktari", Entity.Miktari);
                 command.Parameters.AddWithValue("@BirimFiyati", Entity.BirimFiyati);
                 command.Parameters.AddWithValue("@ToplamMaliyet", Entity.ToplamMaliyet);
-               
+
 
                 command.Prepare();
                 int result = command.ExecuteNonQuery();
@@ -49,7 +50,7 @@ namespace Database.Concrete.Sqlite
 
         }
 
-       
+
 
         public List<SertifikaliTohum> GetAll()
         {
@@ -87,6 +88,23 @@ namespace Database.Concrete.Sqlite
 
             });
             return stList;
+        }
+
+        public DataTable GetAllDataTable(int CksId)
+        {
+            DataTable dt = new DataTable();
+
+            _try(() =>
+            {
+
+                command.CommandText = "SELECT SertifikaliTohum.Id,SertifikaliTohum.SertifikaliDosyaNo, firmalar.FirmaAdi, Urunler.UrunAdi, SertifikaliTohum.Miktari, SertifikaliTohum.Note, SertifikaliTohum.MuracaatTarihi from   SertifikaliTohum inner join Cks on SertifikaliTohum.CksId = Cks.Id inner join Firmalar on SertifikaliTohum.FirmaId = Firmalar.Id inner join Urunler on SertifikaliTohum.UrunId = Urunler.Id where SertifikaliTohum.CksId = @CksId";
+                command.Parameters.AddWithValue("@CksId", CksId);
+                dataReader = command.ExecuteReader();
+
+                dt.Load(dataReader);
+
+            });
+            return dt;
         }
 
         public int Update(SertifikaliTohum Entity)

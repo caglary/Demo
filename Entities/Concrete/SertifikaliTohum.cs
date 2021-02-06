@@ -17,14 +17,19 @@ namespace Entities.Concrete
         public string SertifikaNo { get; set; }
         public string FaturaNo { get; set; }
         public string FaturaTarihi { get; set; }
-       
+
         public string Miktari { get; set; }
         public string BirimFiyati { get; set; }
         public string ToplamMaliyet { get { return Toplam(); } }
         public string Not { get; set; }
         private string Toplam()
         {
-            return (Convert.ToInt32(Miktari) * Convert.ToInt32(BirimFiyati)).ToString();
+
+            if (Miktari.Contains(",")) Miktari = Miktari.Replace(",", ".");
+            if (BirimFiyati.Contains(",")) BirimFiyati = BirimFiyati.Replace(",", ".");
+
+            var sonuc = (Convert.ToDecimal(Miktari) * Convert.ToDecimal(BirimFiyati)).ToString();
+            return sonuc;
         }
 
 

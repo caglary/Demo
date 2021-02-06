@@ -3,6 +3,7 @@ using Database.Concrete.Sqlite;
 using Entities.Concrete;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,6 +24,10 @@ namespace CksKayitDefteri.Business
         {
             return GetAll().Where(I => I.CksId == cksId).ToList();
         }
-     
+
+        internal DataTable GetAllDataTable(int id)
+        {
+            return _dal.GetAllDataTable(id);
+        }
     }
 }

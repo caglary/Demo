@@ -32,22 +32,20 @@ namespace App.Forms
         private void YemBitkileriForm_Load(object sender, EventArgs e)
         {
             this.Text = $"Yem Bitkileri Destekleme Başvuru Formu - ({_cksKayit.IsimSoyisim})";
+            Utilities.FormPreferences.ComboxSetUrun(cmbAddUrun, _urunManager.GetAll());
+            Utilities.FormPreferences.ComboxSetUrun(cmbUpdateUrun, _urunManager.GetAll());
 
-            cmbAddUrun.DataSource = _urunManager.GetAll();
-            cmbAddUrun.DisplayMember = "UrunAdi";
-            cmbAddUrun.ValueMember = "Id";
-
-            cmbUpdateUrun.DataSource = _urunManager.GetAll();
-            cmbUpdateUrun.DisplayMember = "UrunAdi";
-            cmbUpdateUrun.ValueMember = "Id";
             cmbAddMahalle.DataSource = Utilities.RequiredLists.VillageNameList();
             cmbUpdateMahalle.DataSource = Utilities.RequiredLists.VillageNameList();
 
             AllList();
+            Utilities.FormPreferences.DataGridSettings(dgwListe, new string[] { "Id" });
         }
         private void AllList()
         {
-            dgwListe.DataSource = _yemManager.GetByCiftci(_cksKayit.Id);
+            dgwListe.DataSource = _yemManager.GetAllDataTable(_cksKayit.Id);
+
+            //dgwListe.DataSource = _yemManager.GetByCiftci(_cksKayit.Id);
         }
         private void btnYeniKayit_Click(object sender, EventArgs e)
         {
@@ -55,8 +53,8 @@ namespace App.Forms
             {
                 YemBitkileri yemBitkisiKayit = new Entities.Concrete.YemBitkileri();
                 yemBitkisiKayit.CksId = _cksKayit.Id;
-                yemBitkisiKayit.UrunId =Convert.ToInt32( cmbAddUrun.SelectedValue);
-                yemBitkisiKayit.YemDosyaNo =Convert.ToInt32( txtAddDosyaNo.Text);
+                yemBitkisiKayit.UrunId = Convert.ToInt32(cmbAddUrun.SelectedValue);
+                yemBitkisiKayit.YemDosyaNo = Convert.ToInt32(txtAddDosyaNo.Text);
                 yemBitkisiKayit.MuracaatTarihi = txtAddMuracaatTarihi.Text;
                 yemBitkisiKayit.EkilisYili = txtAddEkilisYili.Text;
                 yemBitkisiKayit.AraziMahalle = cmbAddMahalle.Text;
@@ -80,8 +78,8 @@ namespace App.Forms
             Utilities.ErrorHandle._try(() =>
             {
                 int rowIndex = dgwListe.CurrentCell.RowIndex;
-                int id = (int)dgwListe.Rows[rowIndex].Cells["Id"].Value;
-                var yemkayit = _yemManager.GetAll().Where(I => I.Id == id).FirstOrDefault();
+                var id = dgwListe.Rows[rowIndex].Cells[0].Value;
+                var yemkayit = _yemManager.GetAll().Where(I => I.Id == Convert.ToInt32(id)).FirstOrDefault();
                 _yemKayit = yemkayit;
                 txtUpdateDosyaNo.Text = yemkayit.YemDosyaNo.ToString();
                 txtUpdateMuracaatTarihi.Text = yemkayit.MuracaatTarihi;
@@ -107,7 +105,7 @@ namespace App.Forms
                 {
                     _yemKayit.YemDosyaNo = Convert.ToInt32(txtUpdateDosyaNo.Text);
                     _yemKayit.MuracaatTarihi = txtUpdateMuracaatTarihi.Text;
-                    _yemKayit.UrunId =(int)cmbUpdateUrun.SelectedValue;
+                    _yemKayit.UrunId = (int)cmbUpdateUrun.SelectedValue;
                     _yemKayit.EkilisYili = txtUpdateEkilisYili.Text;
                     _yemKayit.AraziMahalle = cmbUpdateMahalle.Text;
                     _yemKayit.Ada = txtUpdateAda.Text;
@@ -134,28 +132,33 @@ namespace App.Forms
             {
                 if (_yemKayit != null)
                 {
-                    int result = _yemManager.Delete(_yemKayit);
-                    if (result > 0)
+                    Utilities.Question.IfYes(() =>
                     {
+                        int result = _yemManager.Delete(_yemKayit);
+                        if (result > 0)
+                        {
 
-                        txtUpdateDosyaNo.Text = "";
-                        txtUpdateMuracaatTarihi.Text = "";
-                        cmbUpdateUrun.Text = "";
-                        txtUpdateEkilisYili.Text = "";
-                        cmbUpdateMahalle.Text = "";
-                        txtUpdateAda.Text = "";
-                        txtUpdateParsel.Text = "";
-                        txtUpdateMuracaatAlani.Text = "";
-                        txtUpdateTespitEdilenAlan.Text = "";
-                        txtUpdateKontrolTarihi.Text = "";
-                        txtUpdateKontrolEdenler.Text = "";
-                        txtUpdateNot.Text = "";
-                        AllList();
+                            txtUpdateDosyaNo.Text = "";
+                            txtUpdateMuracaatTarihi.Text = "";
+                            cmbUpdateUrun.Text = "";
+                            txtUpdateEkilisYili.Text = "";
+                            cmbUpdateMahalle.Text = "";
+                            txtUpdateAda.Text = "";
+                            txtUpdateParsel.Text = "";
+                            txtUpdateMuracaatAlani.Text = "";
+                            txtUpdateTespitEdilenAlan.Text = "";
+                            txtUpdateKontrolTarihi.Text = "";
+                            txtUpdateKontrolEdenler.Text = "";
+                            txtUpdateNot.Text = "";
+                            AllList();
 
-                        Utilities.Mesaj.MessageBoxInformation("Silme işlemi başarılı");
-                        _yemKayit = null;
+                            Utilities.Mesaj.MessageBoxInformation("Silme işlemi başarılı");
+                            _yemKayit = null;
 
-                    }
+                        }
+                    },"Kaydı silmek istiyor musunuz?");
+
+
                 }
                 else throw new Exception("Listeden kayıt seçiniz.");
             });

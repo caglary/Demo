@@ -22,16 +22,17 @@ namespace Entities.Concrete
        
         public string Miktar { get; set; }
         public string Fiyat { get; set; }
-        public string Tutar { get; set; }
-        public string Group { get; set; }
+        public string Tutar { get { return TutarHesapla(); } }
+        
         public string Not { get; set; }
 
         public string TutarHesapla()
         {
-            var miktar=Convert.ToInt32(this.Miktar);
-            var fiyat = Convert.ToInt32(this.Fiyat);
-            return (miktar * fiyat).ToString();
+            if (Miktar.Contains(",")) Miktar = Miktar.Replace(",", ".");
+            if (Fiyat.Contains(",")) Fiyat = Fiyat.Replace(",", ".");
 
+            var sonuc = (Convert.ToDecimal(Miktar) * Convert.ToDecimal(Fiyat)).ToString();
+            return sonuc;
         }
 
     }

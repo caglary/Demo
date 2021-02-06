@@ -1,6 +1,7 @@
 ﻿using Database.Abstract;
 using Entities.Concrete;
 using System.Collections.Generic;
+using System.Data;
 
 namespace Database.Concrete.Sqlite
 {
@@ -65,6 +66,11 @@ namespace Database.Concrete.Sqlite
 
             });
             return firmaList;
+        }
+
+        public DataTable GetAllDataTable(int id)
+        {
+            throw new System.NotImplementedException();
         }
 
         public int Update(Firma Entity)

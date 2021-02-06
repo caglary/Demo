@@ -21,7 +21,13 @@ namespace Utilities
             }
             catch (Exception exception)
             {
-                mesajVer(mesaj, exception);
+                if (exception.Message== "Input string was not in a correct format.")
+                {
+                    mesajVer("Uygun olmayan bir veri girişi yapmayak istediniz.\nGirdiğiniz verileri kontrol ediniz.", exception);
+
+                }
+                else mesajVer(mesaj, exception);
+             
 
             }
 

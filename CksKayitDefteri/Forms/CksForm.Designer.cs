@@ -47,6 +47,7 @@ namespace App.Forms
             this.label9 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.cmboxMahalleKoy = new System.Windows.Forms.ComboBox();
+            this.btnYemBitkileri = new System.Windows.Forms.Button();
             this.btnSertifikaliTohum = new System.Windows.Forms.Button();
             this.txtKayitTarihi = new System.Windows.Forms.TextBox();
             this.txtBabaAdi = new System.Windows.Forms.TextBox();
@@ -68,7 +69,7 @@ namespace App.Forms
             this.btnSil = new System.Windows.Forms.Button();
             this.btnGuncelle = new System.Windows.Forms.Button();
             this.lblKayitSayisi = new System.Windows.Forms.Label();
-            this.btnYemBitkileri = new System.Windows.Forms.Button();
+            this.btnHububatFarkOdemesi = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgwListe)).BeginInit();
             this.statusStrip2.SuspendLayout();
@@ -245,6 +246,7 @@ namespace App.Forms
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.cmboxMahalleKoy);
+            this.groupBox1.Controls.Add(this.btnHububatFarkOdemesi);
             this.groupBox1.Controls.Add(this.btnYemBitkileri);
             this.groupBox1.Controls.Add(this.btnSertifikaliTohum);
             this.groupBox1.Controls.Add(this.txtKayitTarihi);
@@ -277,6 +279,19 @@ namespace App.Forms
             this.cmboxMahalleKoy.Name = "cmboxMahalleKoy";
             this.cmboxMahalleKoy.Size = new System.Drawing.Size(180, 26);
             this.cmboxMahalleKoy.TabIndex = 4;
+            // 
+            // btnYemBitkileri
+            // 
+            this.btnYemBitkileri.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.btnYemBitkileri.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnYemBitkileri.Location = new System.Drawing.Point(410, 214);
+            this.btnYemBitkileri.Margin = new System.Windows.Forms.Padding(4);
+            this.btnYemBitkileri.Name = "btnYemBitkileri";
+            this.btnYemBitkileri.Size = new System.Drawing.Size(122, 35);
+            this.btnYemBitkileri.TabIndex = 1;
+            this.btnYemBitkileri.Text = "Yem Bitkileri";
+            this.btnYemBitkileri.UseVisualStyleBackColor = false;
+            this.btnYemBitkileri.Click += new System.EventHandler(this.btnYemBitkileri_Click);
             // 
             // btnSertifikaliTohum
             // 
@@ -484,18 +499,18 @@ namespace App.Forms
             this.lblKayitSayisi.TabIndex = 12;
             this.lblKayitSayisi.Text = "---";
             // 
-            // btnYemBitkileri
+            // btnHububatFarkOdemesi
             // 
-            this.btnYemBitkileri.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            this.btnYemBitkileri.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnYemBitkileri.Location = new System.Drawing.Point(410, 214);
-            this.btnYemBitkileri.Margin = new System.Windows.Forms.Padding(4);
-            this.btnYemBitkileri.Name = "btnYemBitkileri";
-            this.btnYemBitkileri.Size = new System.Drawing.Size(122, 35);
-            this.btnYemBitkileri.TabIndex = 1;
-            this.btnYemBitkileri.Text = "Yem Bitkileri";
-            this.btnYemBitkileri.UseVisualStyleBackColor = false;
-            this.btnYemBitkileri.Click += new System.EventHandler(this.btnYemBitkileri_Click);
+            this.btnHububatFarkOdemesi.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.btnHububatFarkOdemesi.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnHububatFarkOdemesi.Location = new System.Drawing.Point(280, 214);
+            this.btnHububatFarkOdemesi.Margin = new System.Windows.Forms.Padding(4);
+            this.btnHububatFarkOdemesi.Name = "btnHububatFarkOdemesi";
+            this.btnHububatFarkOdemesi.Size = new System.Drawing.Size(122, 35);
+            this.btnHububatFarkOdemesi.TabIndex = 1;
+            this.btnHububatFarkOdemesi.Text = "Fark Odemesi";
+            this.btnHububatFarkOdemesi.UseVisualStyleBackColor = false;
+            this.btnHububatFarkOdemesi.Click += new System.EventHandler(this.btnHububatFarkOdemesi_Click);
             // 
             // CksForm
             // 
@@ -572,6 +587,7 @@ namespace App.Forms
         private System.Windows.Forms.Button btnCiftciler;
         private System.Windows.Forms.Button btnSertifikaliTohum;
         private System.Windows.Forms.Button btnYemBitkileri;
+        private System.Windows.Forms.Button btnHububatFarkOdemesi;
     }
 }
 

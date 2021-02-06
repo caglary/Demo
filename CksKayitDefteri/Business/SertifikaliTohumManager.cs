@@ -4,6 +4,7 @@ using Database.Concrete.Sqlite;
 using Entities.Concrete;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -41,6 +42,12 @@ namespace CksKayitDefteri.Business
             CksManager cksManager = new CksManager();
             var ciftciKayit = cksManager.GetByTc(Tc);
             return _dal.GetAll().Where(I => I.CksId == ciftciKayit.Id).ToList();
+        }
+        public DataTable GetAllDataTable(string Tc)
+        {
+            CksManager cksManager = new CksManager();
+            var ciftciKayit = cksManager.GetByTc(Tc);
+            return _dal.GetAllDataTable(ciftciKayit.Id);
         }
         public SertifikaliTohum GetById(int Id)
         {

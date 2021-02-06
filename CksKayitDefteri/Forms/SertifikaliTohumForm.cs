@@ -40,6 +40,7 @@ namespace App.Forms
             {
                 lblCiftciBilgi.Text = $"{_cksKayit.Tc} ---> {_cksKayit.IsimSoyisim} ";
                 TumListe();
+                Utilities.FormPreferences.DataGridSettings(dgwListe, new string[] { "Id" });
                 dgwListe.Tag = 0;
 
                 //comboBox ayarları
@@ -68,8 +69,9 @@ namespace App.Forms
             {
                 int rowIndex = dgwListe.CurrentRow.Index;
                 //datagrid tag içerisinde ıd tutuyoruz.
-                dgwListe.Tag = dgwListe.Rows[rowIndex].Cells["Id"].Value;
-                st = _bll.GetById((int)dgwListe.Tag);
+                var id = dgwListe.Rows[rowIndex].Cells[0].Value;
+                dgwListe.Tag = Convert.ToInt32(id);
+                st = _bll.GetAll().Where(I => I.Id == Convert.ToInt32(id)).FirstOrDefault();
                 InsertToFormForUpdateEntity(st);
             });
 
@@ -106,7 +108,7 @@ namespace App.Forms
 
         private void TumListe()
         {
-            Utilities.ErrorHandle._try(() => { dgwListe.DataSource = _bll.Get(_cksKayit.Tc); });
+            Utilities.ErrorHandle._try(() => { dgwListe.DataSource = _bll.GetAllDataTable(_cksKayit.Tc); });
 
         }
 
@@ -131,9 +133,9 @@ namespace App.Forms
             st.SertifikaNo = txtNewSertifikaNo.Text;
             st.FaturaNo = txtNewFaturaNo.Text;
             st.FaturaTarihi = txtNewFaturaTarihi.Text;
-            
+
             st.FirmaId = Convert.ToInt32(cmbNewFirmaAdi.SelectedValue);
-         
+
             st.UrunId = Convert.ToInt32(cmbNewUrunAdi.SelectedValue);
             st.Miktari = txtNewMiktari.Text;
 
@@ -149,7 +151,9 @@ namespace App.Forms
         {
             Utilities.ErrorHandle._try(() =>
             {
-                st = _bll.GetById((int)dgwListe.Tag);
+               
+                st = _bll.GetAll().Where(I => I.Id == Convert.ToInt32((int)dgwListe.Tag)).FirstOrDefault();
+
                 st.SertifikaliDosyaNo = Convert.ToInt32(txtUpdateDosyaNo.Text);
                 st.MuracaatTarihi = txtUpdateMuracaatTarihi.Text;
                 st.SertifikaNo = txtUpdateSertifikaNo.Text;
@@ -180,15 +184,20 @@ namespace App.Forms
             Utilities.ErrorHandle._try(() =>
             {
                 if ((int)dgwListe.Tag == 0) throw new Exception("Silinecek öğe seçiniz.");
-                st = _bll.GetById((int)dgwListe.Tag);
-                int result = _bll.Delete(st);
-                if (result > 0)
+
+                Utilities.Question.IfYes(() =>
                 {
-                    TumListe();
-                    Utilities.Mesaj.MessageBoxInformation("Kayıt Silindi.");
-                    ClearFormAfterDelete();
-                    dgwListe.Tag = 0;
-                }
+                    st = _bll.GetById((int)dgwListe.Tag);
+                    int result = _bll.Delete(st);
+                    if (result > 0)
+                    {
+                        TumListe();
+                        Utilities.Mesaj.MessageBoxInformation("Kayıt Silindi.");
+                        ClearFormAfterDelete();
+                        dgwListe.Tag = 0;
+                    }
+                }, "Kaydı silmek istiyor munuz?");
+
             });
 
         }
@@ -207,6 +216,6 @@ namespace App.Forms
             txtUpdateNot.Text = "";
         }
 
-       
+
     }
 }

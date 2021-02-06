@@ -33,6 +33,7 @@ namespace App.Forms
             this.groupBoxCiftciIslemleri = new System.Windows.Forms.GroupBox();
             this.btnTbs = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
+            this.lblId = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.comboBoxVillage = new System.Windows.Forms.ComboBox();
@@ -73,7 +74,6 @@ namespace App.Forms
             this.dgwList = new System.Windows.Forms.DataGridView();
             this.btnDelete = new System.Windows.Forms.Button();
             this.lblKayitSayisi = new System.Windows.Forms.Label();
-            this.lblId = new System.Windows.Forms.Label();
             this.groupBoxCiftciIslemleri.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -142,6 +142,14 @@ namespace App.Forms
             this.btnAdd.Text = "Yeni Ekle";
             this.btnAdd.UseVisualStyleBackColor = true;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
+            // 
+            // lblId
+            // 
+            this.lblId.AutoSize = true;
+            this.lblId.Location = new System.Drawing.Point(175, 18);
+            this.lblId.Name = "lblId";
+            this.lblId.Size = new System.Drawing.Size(0, 17);
+            this.lblId.TabIndex = 2;
             // 
             // label17
             // 
@@ -398,6 +406,7 @@ namespace App.Forms
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.statusStrip2);
             this.groupBox1.Controls.Add(this.panel1);
             this.groupBox1.Controls.Add(this.btnDelete);
             this.groupBox1.Controls.Add(this.lblKayitSayisi);
@@ -410,7 +419,6 @@ namespace App.Forms
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.statusStrip2);
             this.panel1.Controls.Add(this.dgwList);
             this.panel1.Location = new System.Drawing.Point(6, 21);
             this.panel1.Name = "panel1";
@@ -422,10 +430,10 @@ namespace App.Forms
             this.statusStrip2.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.statusStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripStatusExcel});
-            this.statusStrip2.Location = new System.Drawing.Point(0, 378);
+            this.statusStrip2.Location = new System.Drawing.Point(3, 560);
             this.statusStrip2.Name = "statusStrip2";
             this.statusStrip2.Padding = new System.Windows.Forms.Padding(1, 0, 16, 0);
-            this.statusStrip2.Size = new System.Drawing.Size(561, 26);
+            this.statusStrip2.Size = new System.Drawing.Size(567, 26);
             this.statusStrip2.TabIndex = 1;
             this.statusStrip2.Text = "statusStrip2";
             // 
@@ -489,14 +497,6 @@ namespace App.Forms
             this.lblKayitSayisi.TabIndex = 2;
             this.lblKayitSayisi.Text = "---";
             // 
-            // lblId
-            // 
-            this.lblId.AutoSize = true;
-            this.lblId.Location = new System.Drawing.Point(175, 18);
-            this.lblId.Name = "lblId";
-            this.lblId.Size = new System.Drawing.Size(0, 17);
-            this.lblId.TabIndex = 2;
-            // 
             // CiftciForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -513,7 +513,6 @@ namespace App.Forms
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
             this.statusStrip2.ResumeLayout(false);
             this.statusStrip2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgwList)).EndInit();

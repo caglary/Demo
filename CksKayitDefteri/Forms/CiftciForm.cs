@@ -31,7 +31,16 @@ namespace App.Forms
             _ciftcilerManager = new CiftcilerManager();
             _formNerdenGeldi = FormNerdenGeldi.KendiGeldi;
         }
-
+        private void CiftciForm_Load(object sender, EventArgs e)
+        {
+            txtTc.Text = _tc;
+            comboBoxGender.DataSource = Utilities.RequiredLists.GenderList();
+            comboBoxMaritalStatus.DataSource = Utilities.RequiredLists.MaritalStatusList();
+            comboBoxVillage.DataSource = Utilities.RequiredLists.VillageNameList();
+            dgwList.DataSource = _ciftcilerManager.GetAll();
+            Utilities.FormPreferences.DataGridSettings(dgwList, new string[] { "Id","TcKimlikNo","MotherName","Birthday","DateOfDeath","Gender"
+            ,"MaritalStatus","MobilePhone","HomePhone","Email","City","Town","Not" });
+        }
         private void btnAdd_Click(object sender, EventArgs e)
         {
             Utilities.ErrorHandle._try(() =>
@@ -133,17 +142,7 @@ namespace App.Forms
             return ciftci;
         }
 
-        private void CiftciForm_Load(object sender, EventArgs e)
-        {
-            txtTc.Text = _tc;
-            comboBoxGender.DataSource = Utilities.RequiredLists.GenderList();
-            comboBoxMaritalStatus.DataSource = Utilities.RequiredLists.MaritalStatusList();
-            comboBoxVillage.DataSource = Utilities.RequiredLists.VillageNameList();
-            dgwList.DataSource = _ciftcilerManager.GetAll();
-            Utilities.FormPreferences.DataGridSettings(dgwList, new string[] { "Id","TcKimlikNo","MotherName","Birthday","DateOfDeath","Gender"
-            ,"MaritalStatus","MobilePhone","HomePhone","Email","City","Town","Note"
-            });
-        }
+       
 
         private void btnTbs_Click(object sender, EventArgs e)
         {

@@ -3,6 +3,7 @@ using Database.Concrete.Sqlite;
 using Entities.Concrete;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,6 +16,10 @@ namespace App.Business
         public HububatFarkOdemesiManager()
         {
             _dal = new HububatFarkOdemesiDal();
+        }
+        public DataTable GetDataTable(int cksid)
+        {
+           return _dal.GetAllDataTable(cksid);
         }
       
     }

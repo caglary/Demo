@@ -1,6 +1,7 @@
 ﻿using Database.Abstract;
 using Entities.Concrete;
 using System.Collections.Generic;
+using System.Data;
 
 namespace Database.Concrete.Sqlite
 {
@@ -12,7 +13,7 @@ namespace Database.Concrete.Sqlite
             _try(() =>
             {
 
-                command.CommandText = "INSERT INTO HububatFarkOdemesi (CksId, FirmaId, UrunId, HububatDosyaNo, MuracaatTarihi, FaturaTarih, FaturaNo, Miktar, Fiyat, Tutar, Group, Note) VALUES (@CksId, @FirmaId, @UrunId, @HububatDosyaNo, @MuracaatTarihi, @FaturaTarih, @FaturaNo, @Miktar, @Fiyat, @Tutar, @Group, @Note)";
+                command.CommandText = "INSERT INTO HububatFarkOdemesi (CksId, FirmaId, UrunId, HububatDosyaNo, MuracaatTarihi, FaturaTarih, FaturaNo, Miktar, Fiyat, Tutar, Note) VALUES (@CksId, @FirmaId, @UrunId, @HububatDosyaNo, @MuracaatTarihi, @FaturaTarih, @FaturaNo, @Miktar, @Fiyat, @Tutar, @Note)";
                 command.Parameters.AddWithValue("@CksId", Entity.CksId);
                 command.Parameters.AddWithValue("@FirmaId", Entity.FirmaId);
                 command.Parameters.AddWithValue("@UrunId", Entity.UrunId);
@@ -22,7 +23,9 @@ namespace Database.Concrete.Sqlite
                 command.Parameters.AddWithValue("@FaturaNo", Entity.FaturaNo);
                 command.Parameters.AddWithValue("@Miktar", Entity.Miktar);
                 command.Parameters.AddWithValue("@Tutar", Entity.Tutar);
-                command.Parameters.AddWithValue("@Group", Entity.Group);
+                command.Parameters.AddWithValue("@Fiyat", Entity.Fiyat);
+
+
                 command.Parameters.AddWithValue("@Note", Entity.Not);
 
                 command.Prepare();
@@ -75,9 +78,9 @@ namespace Database.Concrete.Sqlite
                         hububat.FaturaNo = dataReader.IsDBNull(7) ? "" : dataReader.GetString(7);
                         hububat.Miktar = dataReader.IsDBNull(8) ? "" : dataReader.GetString(8);
                         hububat.Fiyat = dataReader.IsDBNull(9) ? "" : dataReader.GetString(9);
-                        hububat.Tutar = dataReader.IsDBNull(10) ? "" : dataReader.GetString(10);
-                        hububat.Group = dataReader.IsDBNull(11) ? "" : dataReader.GetString(11);
-                        hububat.Not = dataReader.IsDBNull(12) ? "" : dataReader.GetString(12);
+                        //hububat.Tutar = dataReader.IsDBNull(10) ? "" : dataReader.GetString(10);
+                        
+                        hububat.Not = dataReader.IsDBNull(11) ? "" : dataReader.GetString(11);
        
                         hububatList.Add(hububat);
 
@@ -89,12 +92,30 @@ namespace Database.Concrete.Sqlite
             return hububatList;
         }
 
+        public DataTable GetAllDataTable(int id)
+        {
+          
+            DataTable dt = new DataTable();
+
+            _try(() =>
+            {
+                string query = "SELECT HububatFarkOdemesi.Id, HububatFarkOdemesi.HububatDosyaNo, HububatFarkOdemesi.FaturaTarih, HububatFarkOdemesi.FaturaNo, Urunler.UrunAdi, HububatFarkOdemesi.Miktar, HububatFarkOdemesi.Fiyat, HububatFarkOdemesi.Tutar, HububatFarkOdemesi.MuracaatTarihi from HububatFarkOdemesi inner join Urunler on HububatFarkOdemesi.UrunId=Urunler.Id where CksId=@CksId";
+                command.CommandText = query;
+                command.Parameters.AddWithValue("@CksId", id);
+                dataReader = command.ExecuteReader();
+
+                dt.Load(dataReader);
+
+            });
+            return dt;
+        }
+
         public int Update(HububatFarkOdemesi Entity)
         {
             _try(() =>
             {
 
-                command.CommandText = "update HububatFarkOdemesi set CksId=@CksId, FirmaId=@FirmaId, UrunId=@UrunId, HububatDosyaNo=@HububatDosyaNo, MuracaatTarihi=@MuracaatTarihi, FaturaTarih=@FaturaTarih, FaturaNo=@FaturaNo, Miktar=@Miktar, Fiyat=@Fiyat, Tutar=@Tutar, Group=@Group, Note=@Note where Id=@Id ";
+                command.CommandText = "update HububatFarkOdemesi set CksId=@CksId, FirmaId=@FirmaId, UrunId=@UrunId, HububatDosyaNo=@HububatDosyaNo, MuracaatTarihi=@MuracaatTarihi, FaturaTarih=@FaturaTarih, FaturaNo=@FaturaNo, Miktar=@Miktar, Fiyat=@Fiyat, Tutar=@Tutar, Note=@Note where Id=@Id ";
 
                 command.Parameters.AddWithValue("@Id", Entity.Id);
                 command.Parameters.AddWithValue("@CksId", Entity.CksId);
@@ -107,7 +128,7 @@ namespace Database.Concrete.Sqlite
                 command.Parameters.AddWithValue("@Miktar", Entity.Miktar);
                 command.Parameters.AddWithValue("@Fiyat", Entity.Fiyat);
                 command.Parameters.AddWithValue("@Tutar", Entity.Tutar);
-                command.Parameters.AddWithValue("@Group", Entity.Group);
+         
                 command.Parameters.AddWithValue("@Note", Entity.Not);
                
 

@@ -2,6 +2,7 @@
 using Entities.Concrete;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SQLite;
 using System.Linq;
 using System.Text;
@@ -125,6 +126,11 @@ namespace Database.Concrete.Sqlite
                 }
             });
             return liste;
+        }
+
+        public DataTable GetAllDataTable(int id)
+        {
+            throw new NotImplementedException();
         }
 
         public int Update(Ciftci Entity)

@@ -2,6 +2,7 @@
 using Entities.Concrete;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SQLite;
 
 namespace Database.Concrete.Sqlite
@@ -108,6 +109,12 @@ namespace Database.Concrete.Sqlite
             });
             return liste;
         }
+
+        public DataTable GetAllDataTable(int id)
+        {
+            throw new NotImplementedException();
+        }
+
         public int Update(Cks Entity)
         {
             _try(() =>

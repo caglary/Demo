@@ -89,6 +89,12 @@
     <Compile Include="Forms\CksForm.Designer.cs">
       <DependentUpon>CksForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\HububatFarkOdemesiForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\HububatFarkOdemesiForm.Designer.cs">
+      <DependentUpon>HububatFarkOdemesiForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\SertifikaliTohumForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -108,6 +114,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\CksForm.resx">
       <DependentUpon>CksForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\HububatFarkOdemesiForm.resx">
+      <DependentUpon>HububatFarkOdemesiForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\SertifikaliTohumForm.resx">
       <DependentUpon>SertifikaliTohumForm.cs</DependentUpon>
