@@ -33,6 +33,8 @@ namespace App.Forms
         }
         private void CiftciForm_Load(object sender, EventArgs e)
         {
+            Utilities.FormPreferences.FromSettings(this);
+
             txtTc.Text = _tc;
             comboBoxGender.DataSource = Utilities.RequiredLists.GenderList();
             comboBoxMaritalStatus.DataSource = Utilities.RequiredLists.MaritalStatusList();

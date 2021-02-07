@@ -66,23 +66,24 @@ namespace App.Forms
             this.label11 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.panel1 = new System.Windows.Forms.Panel();
             this.statusStrip2 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusExcel = new System.Windows.Forms.ToolStripSplitButton();
             this.excelToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.jsonToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.dgwList = new System.Windows.Forms.DataGridView();
             this.btnDelete = new System.Windows.Forms.Button();
             this.lblKayitSayisi = new System.Windows.Forms.Label();
             this.groupBoxCiftciIslemleri.SuspendLayout();
             this.groupBox1.SuspendLayout();
-            this.panel1.SuspendLayout();
             this.statusStrip2.SuspendLayout();
+            this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgwList)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBoxCiftciIslemleri
             // 
+            this.groupBoxCiftciIslemleri.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.groupBoxCiftciIslemleri.Controls.Add(this.btnTbs);
             this.groupBoxCiftciIslemleri.Controls.Add(this.btnAdd);
             this.groupBoxCiftciIslemleri.Controls.Add(this.lblId);
@@ -406,6 +407,7 @@ namespace App.Forms
             // 
             // groupBox1
             // 
+            this.groupBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
             this.groupBox1.Controls.Add(this.statusStrip2);
             this.groupBox1.Controls.Add(this.panel1);
             this.groupBox1.Controls.Add(this.btnDelete);
@@ -416,14 +418,6 @@ namespace App.Forms
             this.groupBox1.TabIndex = 10;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Çiftçi Listesi";
-            // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.dgwList);
-            this.panel1.Location = new System.Drawing.Point(6, 21);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(561, 404);
-            this.panel1.TabIndex = 0;
             // 
             // statusStrip2
             // 
@@ -460,6 +454,14 @@ namespace App.Forms
             this.jsonToolStripMenuItem.Size = new System.Drawing.Size(146, 26);
             this.jsonToolStripMenuItem.Text = "To Json";
             this.jsonToolStripMenuItem.Click += new System.EventHandler(this.jsonToolStripMenuItem_Click);
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.dgwList);
+            this.panel1.Location = new System.Drawing.Point(6, 21);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(561, 404);
+            this.panel1.TabIndex = 0;
             // 
             // dgwList
             // 
@@ -501,6 +503,7 @@ namespace App.Forms
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.ClientSize = new System.Drawing.Size(1123, 640);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.groupBoxCiftciIslemleri);
@@ -512,9 +515,9 @@ namespace App.Forms
             this.groupBoxCiftciIslemleri.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            this.panel1.ResumeLayout(false);
             this.statusStrip2.ResumeLayout(false);
             this.statusStrip2.PerformLayout();
+            this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgwList)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

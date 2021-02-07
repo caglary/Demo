@@ -22,6 +22,7 @@ namespace App.Forms
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            Utilities.FormPreferences.FromSettings(this);
             dgwListe.DataSource = _cksManager.GetAll();
             Utilities.FormPreferences.DataGridSettings(dgwListe, new string[] { "Id" });
 

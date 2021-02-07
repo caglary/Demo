@@ -31,6 +31,8 @@ namespace App.Forms
 
         private void HububatFarkOdemesiForm_Load(object sender, EventArgs e)
         {
+            Utilities.FormPreferences.FromSettings(this);
+
             int id = _ciftci.Id;
             GetAllList();
             Utilities.FormPreferences.DataGridSettings(dgwListe, new string[] { "Id" });
@@ -188,5 +190,19 @@ namespace App.Forms
             }
 
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Utilities.FormPreferences.FormOpen("FirmaForm",new FirmaForm(), true);
+        }
+
+      
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Utilities.FormPreferences.FormOpen("UrunForm", new UrunForm(), true);
+
+        }
+
     }
 }

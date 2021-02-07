@@ -7,22 +7,18 @@ namespace Utilities
     public static class FormPreferences
     {
         //Form control lerinin ortak ayarları
-        public static void FromSettings(Form form, int whichYear = 2020)
+        public static void FromSettings(Form form)
         {
-            form.MaximizeBox = false;
-            form.MinimizeBox = false;
-            form.FormBorderStyle = FormBorderStyle.FixedToolWindow;
-            form.Font = new System.Drawing.Font("Microsoft Sans Serif", 10);
-            form.WindowState = FormWindowState.Normal;
+            //form.Size = new System.Drawing.Size(1000, 800);
+
             form.StartPosition = FormStartPosition.CenterScreen;
-            if (whichYear == 2021)
-            {
-                form.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            }
-            else if (whichYear == 2020)
-            {
-                form.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            }
+
+            
+            form.FormBorderStyle = FormBorderStyle.FixedToolWindow;
+            form.Font = new System.Drawing.Font("Tahoma", 9);
+            form.WindowState = FormWindowState.Normal;
+
+           
 
         }
         public static void DataGridSettings(DataGridView dgw, string[] notAppearColumnsName)
@@ -37,6 +33,12 @@ namespace Utilities
             dgw.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgw.MultiSelect = false;
             dgw.ReadOnly = true;
+
+            // Automatically resize the visible rows.
+            //dgw.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.DisplayedCellsExceptHeaders;
+
+            // Set the DataGridView control's border.
+            dgw.BorderStyle = BorderStyle.Fixed3D;
 
         }
         public static void FormOpen(string formName, Form form, bool withShowDialog = false)

@@ -196,7 +196,7 @@ namespace App.Forms
             this.dgwListe.ReadOnly = true;
             this.dgwListe.RowHeadersWidth = 51;
             this.dgwListe.RowTemplate.Height = 24;
-            this.dgwListe.Size = new System.Drawing.Size(886, 270);
+            this.dgwListe.Size = new System.Drawing.Size(1393, 268);
             this.dgwListe.TabIndex = 0;
             this.dgwListe.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgwListe_CellClick);
             // 
@@ -293,9 +293,9 @@ namespace App.Forms
             this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Controls.Add(this.label7);
             this.groupBox1.Controls.Add(this.txtAddParsel);
-            this.groupBox1.Location = new System.Drawing.Point(6, 3);
+            this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(443, 443);
+            this.groupBox1.Size = new System.Drawing.Size(500, 467);
             this.groupBox1.TabIndex = 3;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Yeni Kayıt İşlemleri";
@@ -379,11 +379,12 @@ namespace App.Forms
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.groupBox2);
             this.panel1.Controls.Add(this.groupBox1);
-            this.panel1.Location = new System.Drawing.Point(3, 5);
+            this.panel1.Controls.Add(this.groupBox2);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(886, 449);
+            this.panel1.Size = new System.Drawing.Size(1393, 486);
             this.panel1.TabIndex = 2;
             // 
             // groupBox2
@@ -416,9 +417,9 @@ namespace App.Forms
             this.groupBox2.Controls.Add(this.label17);
             this.groupBox2.Controls.Add(this.txtUpdateEkilisYili);
             this.groupBox2.Controls.Add(this.txtUpdateKontrolTarihi);
-            this.groupBox2.Location = new System.Drawing.Point(455, 7);
+            this.groupBox2.Location = new System.Drawing.Point(518, 12);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(411, 439);
+            this.groupBox2.Size = new System.Drawing.Size(500, 467);
             this.groupBox2.TabIndex = 3;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Güncelleme İşlemleri";
@@ -476,6 +477,7 @@ namespace App.Forms
             // 
             this.txtUpdateDosyaNo.Location = new System.Drawing.Point(151, 57);
             this.txtUpdateDosyaNo.Name = "txtUpdateDosyaNo";
+            this.txtUpdateDosyaNo.ReadOnly = true;
             this.txtUpdateDosyaNo.Size = new System.Drawing.Size(70, 22);
             this.txtUpdateDosyaNo.TabIndex = 2;
             // 
@@ -628,9 +630,10 @@ namespace App.Forms
             // panel2
             // 
             this.panel2.Controls.Add(this.dgwListe);
-            this.panel2.Location = new System.Drawing.Point(3, 460);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel2.Location = new System.Drawing.Point(0, 485);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(886, 270);
+            this.panel2.Size = new System.Drawing.Size(1393, 268);
             this.panel2.TabIndex = 3;
             // 
             // YemBitkileriForm
@@ -638,7 +641,7 @@ namespace App.Forms
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
-            this.ClientSize = new System.Drawing.Size(894, 735);
+            this.ClientSize = new System.Drawing.Size(1393, 753);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel2);
             this.Name = "YemBitkileriForm";

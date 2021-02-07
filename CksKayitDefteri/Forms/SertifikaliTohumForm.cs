@@ -34,6 +34,7 @@ namespace App.Forms
         }
         private void SertifikaliTohumForm_Load(object sender, EventArgs e)
         {
+            Utilities.FormPreferences.FromSettings(this);
 
 
             Utilities.ErrorHandle._try(() =>
@@ -216,6 +217,15 @@ namespace App.Forms
             txtUpdateNot.Text = "";
         }
 
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Utilities.FormPreferences.FormOpen("UrunForm", new UrunForm(), true);
+        }
 
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Utilities.FormPreferences.FormOpen("FirmaForm", new FirmaForm(), true);
+        }
     }
 }

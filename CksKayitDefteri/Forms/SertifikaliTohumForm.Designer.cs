@@ -80,6 +80,8 @@ namespace App.Forms
             this.lblCiftciBilgi = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.dgwListe = new System.Windows.Forms.DataGridView();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.gbGuncelleme.SuspendLayout();
             this.gbYeniKayit.SuspendLayout();
@@ -92,9 +94,10 @@ namespace App.Forms
             this.panel1.Controls.Add(this.gbGuncelleme);
             this.panel1.Controls.Add(this.gbYeniKayit);
             this.panel1.Controls.Add(this.lblCiftciBilgi);
-            this.panel1.Location = new System.Drawing.Point(12, 12);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(886, 490);
+            this.panel1.Size = new System.Drawing.Size(1026, 496);
             this.panel1.TabIndex = 0;
             // 
             // gbGuncelleme
@@ -123,9 +126,9 @@ namespace App.Forms
             this.gbGuncelleme.Controls.Add(this.textBox6);
             this.gbGuncelleme.Controls.Add(this.label17);
             this.gbGuncelleme.Controls.Add(this.label18);
-            this.gbGuncelleme.Location = new System.Drawing.Point(408, 3);
+            this.gbGuncelleme.Location = new System.Drawing.Point(512, 3);
             this.gbGuncelleme.Name = "gbGuncelleme";
-            this.gbGuncelleme.Size = new System.Drawing.Size(466, 458);
+            this.gbGuncelleme.Size = new System.Drawing.Size(500, 458);
             this.gbGuncelleme.TabIndex = 3;
             this.gbGuncelleme.TabStop = false;
             this.gbGuncelleme.Text = "Güncelleme İşlemleri";
@@ -153,7 +156,7 @@ namespace App.Forms
             this.cmbUpdateFirmaAdi.FormattingEnabled = true;
             this.cmbUpdateFirmaAdi.Location = new System.Drawing.Point(179, 191);
             this.cmbUpdateFirmaAdi.Name = "cmbUpdateFirmaAdi";
-            this.cmbUpdateFirmaAdi.Size = new System.Drawing.Size(281, 24);
+            this.cmbUpdateFirmaAdi.Size = new System.Drawing.Size(245, 24);
             this.cmbUpdateFirmaAdi.TabIndex = 14;
             // 
             // btnGuncelle
@@ -230,6 +233,7 @@ namespace App.Forms
             // 
             this.txtUpdateDosyaNo.Location = new System.Drawing.Point(179, 51);
             this.txtUpdateDosyaNo.Name = "txtUpdateDosyaNo";
+            this.txtUpdateDosyaNo.ReadOnly = true;
             this.txtUpdateDosyaNo.Size = new System.Drawing.Size(157, 22);
             this.txtUpdateDosyaNo.TabIndex = 2;
             // 
@@ -323,6 +327,8 @@ namespace App.Forms
             // gbYeniKayit
             // 
             this.gbYeniKayit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.gbYeniKayit.Controls.Add(this.button2);
+            this.gbYeniKayit.Controls.Add(this.button1);
             this.gbYeniKayit.Controls.Add(this.cmbNewUrunAdi);
             this.gbYeniKayit.Controls.Add(this.cmbNewFirmaAdi);
             this.gbYeniKayit.Controls.Add(this.btnYeniKayit);
@@ -347,7 +353,7 @@ namespace App.Forms
             this.gbYeniKayit.Controls.Add(this.label7);
             this.gbYeniKayit.Location = new System.Drawing.Point(6, 3);
             this.gbYeniKayit.Name = "gbYeniKayit";
-            this.gbYeniKayit.Size = new System.Drawing.Size(396, 458);
+            this.gbYeniKayit.Size = new System.Drawing.Size(500, 458);
             this.gbYeniKayit.TabIndex = 3;
             this.gbYeniKayit.TabStop = false;
             this.gbYeniKayit.Text = "Yeni Kayıt İşlemleri";
@@ -544,9 +550,10 @@ namespace App.Forms
             // panel2
             // 
             this.panel2.Controls.Add(this.dgwListe);
-            this.panel2.Location = new System.Drawing.Point(12, 508);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel2.Location = new System.Drawing.Point(0, 496);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(886, 229);
+            this.panel2.Size = new System.Drawing.Size(1026, 251);
             this.panel2.TabIndex = 1;
             // 
             // dgwListe
@@ -560,17 +567,45 @@ namespace App.Forms
             this.dgwListe.ReadOnly = true;
             this.dgwListe.RowHeadersWidth = 51;
             this.dgwListe.RowTemplate.Height = 24;
-            this.dgwListe.Size = new System.Drawing.Size(886, 229);
+            this.dgwListe.Size = new System.Drawing.Size(1026, 251);
             this.dgwListe.TabIndex = 0;
             this.dgwListe.DataSourceChanged += new System.EventHandler(this.dgwListe_DataSourceChanged);
             this.dgwListe.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgwListe_CellClick);
+            // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
+            this.button1.Font = new System.Drawing.Font("Elephant", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.ForeColor = System.Drawing.Color.Red;
+            this.button1.Location = new System.Drawing.Point(396, 185);
+            this.button1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(30, 30);
+            this.button1.TabIndex = 15;
+            this.button1.Text = "+";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // button2
+            // 
+            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
+            this.button2.Font = new System.Drawing.Font("Elephant", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.ForeColor = System.Drawing.Color.Red;
+            this.button2.Location = new System.Drawing.Point(317, 219);
+            this.button2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(30, 30);
+            this.button2.TabIndex = 15;
+            this.button2.Text = "+";
+            this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // SertifikaliTohumForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.ClientSize = new System.Drawing.Size(910, 747);
+            this.ClientSize = new System.Drawing.Size(1026, 747);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
@@ -642,5 +677,7 @@ namespace App.Forms
         private System.Windows.Forms.TextBox txtNewNot;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label lblCiftciBilgi;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button1;
     }
 }

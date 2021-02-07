@@ -31,6 +31,8 @@ namespace App.Forms
         }
         private void YemBitkileriForm_Load(object sender, EventArgs e)
         {
+            Utilities.FormPreferences.FromSettings(this);
+
             this.Text = $"Yem Bitkileri Destekleme Başvuru Formu - ({_cksKayit.IsimSoyisim})";
             Utilities.FormPreferences.ComboxSetUrun(cmbAddUrun, _urunManager.GetAll());
             Utilities.FormPreferences.ComboxSetUrun(cmbUpdateUrun, _urunManager.GetAll());
