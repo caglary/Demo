@@ -171,7 +171,7 @@ namespace App.Forms
                 var dataTable = Utilities.ExcelExport.ConvertToDataTable(liste);
 
                 var location = Utilities.FolderBrowser.Path();
-                var path = location + @"\CksListesi2020.xlsx";
+                var path = location + @"\CksListesi.xlsx";
                 Task t = Task.Run(() =>
                 {
                     Utilities.ExcelExport.GenerateExcel(dataTable, path);
@@ -191,8 +191,8 @@ namespace App.Forms
                     var path = Utilities.FolderBrowser.Path();
                     Task t = Task.Run(() =>
                     {
-                        var list2020 = _cksManager.GetAll().OrderBy(I => I.DosyaNo).ToList();
-                        Utilities.Json.Backup(list2020, "Cks2020", path);
+                        var listCks = _cksManager.GetAll().OrderBy(I => I.DosyaNo).ToList();
+                        Utilities.Json.Backup(listCks, "Cks", path);
 
                         Utilities.Mesaj.MessageBoxInformation("Backup işlemi başarılı.");
                     });
@@ -258,6 +258,23 @@ namespace App.Forms
                 Form _form = new HububatFarkOdemesiForm(ciftci);
                 _form.ShowDialog();
             });
+        }
+
+        private void btnListeler_Click(object sender, EventArgs e)
+        {
+            Utilities.ErrorHandle._try(() =>
+            {
+               
+                Form _form = new DestekListesiForm();
+                _form.ShowDialog();
+            });
+        }
+
+        private void toolStripStatusLabel1_Click(object sender, EventArgs e)
+        {
+
+            Database.Concrete.Sqlite.DatabaseDb db = new Database.Concrete.Sqlite.DatabaseDb();
+            Utilities.Mesaj.MessageBoxInformation( $"Database Info: {db._connectionString}");
         }
     }
 }

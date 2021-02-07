@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Data.SQLite;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -25,7 +26,8 @@ namespace Database.Concrete.Sqlite
         {
             try
             {
-                connection = new SQLiteConnection(database.ConnectionString);
+                
+                connection = new SQLiteConnection(database._connectionString);
                 command = new SQLiteCommand(connection);
 
                 connection.Open();
@@ -34,8 +36,12 @@ namespace Database.Concrete.Sqlite
             }
             catch (Exception exception)
             {
-
-                throw exception;
+                //connectionstring dosyasını sil ve database tekrar göster
+                
+                string _path = @".\connectionstring.txt";
+                File.Delete(_path);
+                System.Windows.Forms.MessageBox.Show("Programı şimdi kapanacak. Uygun bir database seçin.");
+                Environment.Exit(0);
 
             }
             finally

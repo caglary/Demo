@@ -104,7 +104,7 @@ namespace xxx
                 ciftci.City = item.City;
                 ciftci.Town = item.Town;
                 ciftci.Village = item.Village;
-                ciftci.Note = item.Note;
+                //ciftci.Note = item.Note;
                 ciftciler.Add(ciftci);
 
             }

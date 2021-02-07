@@ -38,6 +38,7 @@ namespace App.Forms
             this.jsonToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel2 = new System.Windows.Forms.Panel();
             this.txtSearch = new System.Windows.Forms.TextBox();
+            this.btnListeler = new System.Windows.Forms.Button();
             this.btnCiftciler = new System.Windows.Forms.Button();
             this.btnSearch = new System.Windows.Forms.Button();
             this.label10 = new System.Windows.Forms.Label();
@@ -70,6 +71,7 @@ namespace App.Forms
             this.btnSil = new System.Windows.Forms.Button();
             this.btnGuncelle = new System.Windows.Forms.Button();
             this.lblKayitSayisi = new System.Windows.Forms.Label();
+            this.databaseInfo = new System.Windows.Forms.ToolStripStatusLabel();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgwListe)).BeginInit();
             this.statusStrip2.SuspendLayout();
@@ -88,7 +90,7 @@ namespace App.Forms
             this.panel1.Location = new System.Drawing.Point(0, 284);
             this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1082, 369);
+            this.panel1.Size = new System.Drawing.Size(1209, 369);
             this.panel1.TabIndex = 2;
             // 
             // dgwListe
@@ -100,7 +102,7 @@ namespace App.Forms
             this.dgwListe.Name = "dgwListe";
             this.dgwListe.RowHeadersWidth = 51;
             this.dgwListe.RowTemplate.Height = 24;
-            this.dgwListe.Size = new System.Drawing.Size(1082, 343);
+            this.dgwListe.Size = new System.Drawing.Size(1209, 343);
             this.dgwListe.TabIndex = 1;
             this.dgwListe.DataSourceChanged += new System.EventHandler(this.dgwListe_DataSourceChanged);
             this.dgwListe.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgwListe_CellClick);
@@ -109,11 +111,12 @@ namespace App.Forms
             // 
             this.statusStrip2.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.statusStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripStatusExcel});
+            this.toolStripStatusExcel,
+            this.databaseInfo});
             this.statusStrip2.Location = new System.Drawing.Point(0, 343);
             this.statusStrip2.Name = "statusStrip2";
             this.statusStrip2.Padding = new System.Windows.Forms.Padding(1, 0, 16, 0);
-            this.statusStrip2.Size = new System.Drawing.Size(1082, 26);
+            this.statusStrip2.Size = new System.Drawing.Size(1209, 26);
             this.statusStrip2.TabIndex = 0;
             this.statusStrip2.Text = "statusStrip2";
             // 
@@ -145,6 +148,7 @@ namespace App.Forms
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.panel2.Controls.Add(this.txtSearch);
+            this.panel2.Controls.Add(this.btnListeler);
             this.panel2.Controls.Add(this.btnCiftciler);
             this.panel2.Controls.Add(this.btnSearch);
             this.panel2.Controls.Add(this.label10);
@@ -155,7 +159,7 @@ namespace App.Forms
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Margin = new System.Windows.Forms.Padding(4);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1082, 284);
+            this.panel2.Size = new System.Drawing.Size(1209, 284);
             this.panel2.TabIndex = 3;
             // 
             // txtSearch
@@ -165,11 +169,25 @@ namespace App.Forms
             this.txtSearch.Size = new System.Drawing.Size(252, 24);
             this.txtSearch.TabIndex = 13;
             // 
+            // btnListeler
+            // 
+            this.btnListeler.BackColor = System.Drawing.Color.Green;
+            this.btnListeler.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnListeler.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnListeler.Location = new System.Drawing.Point(944, 239);
+            this.btnListeler.Margin = new System.Windows.Forms.Padding(4);
+            this.btnListeler.Name = "btnListeler";
+            this.btnListeler.Size = new System.Drawing.Size(122, 35);
+            this.btnListeler.TabIndex = 1;
+            this.btnListeler.Text = "Listeler";
+            this.btnListeler.UseVisualStyleBackColor = false;
+            this.btnListeler.Click += new System.EventHandler(this.btnListeler_Click);
+            // 
             // btnCiftciler
             // 
             this.btnCiftciler.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.btnCiftciler.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCiftciler.Location = new System.Drawing.Point(955, 222);
+            this.btnCiftciler.Location = new System.Drawing.Point(1074, 239);
             this.btnCiftciler.Margin = new System.Windows.Forms.Padding(4);
             this.btnCiftciler.Name = "btnCiftciler";
             this.btnCiftciler.Size = new System.Drawing.Size(122, 35);
@@ -512,12 +530,20 @@ namespace App.Forms
             this.lblKayitSayisi.TabIndex = 12;
             this.lblKayitSayisi.Text = "---";
             // 
+            // databaseInfo
+            // 
+            this.databaseInfo.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.databaseInfo.Name = "databaseInfo";
+            this.databaseInfo.Size = new System.Drawing.Size(117, 20);
+            this.databaseInfo.Text = "Which Database";
+            this.databaseInfo.Click += new System.EventHandler(this.toolStripStatusLabel1_Click);
+            // 
             // CksForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ClientSize = new System.Drawing.Size(1082, 653);
+            this.ClientSize = new System.Drawing.Size(1209, 653);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -588,6 +614,8 @@ namespace App.Forms
         private System.Windows.Forms.Button btnSertifikaliTohum;
         private System.Windows.Forms.Button btnYemBitkileri;
         private System.Windows.Forms.Button btnHububatFarkOdemesi;
+        private System.Windows.Forms.Button btnListeler;
+        private System.Windows.Forms.ToolStripStatusLabel databaseInfo;
     }
 }
 

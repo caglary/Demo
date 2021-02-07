@@ -2,6 +2,7 @@
 using Database.Abstract;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -28,6 +29,7 @@ namespace App.Business.Abstract
             return _dal.GetAll();
 
         }
+       
 
         public virtual int Update(T Entity)
         {

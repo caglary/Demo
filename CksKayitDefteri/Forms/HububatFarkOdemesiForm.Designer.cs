@@ -186,7 +186,7 @@ namespace App.Forms
             this.dgwListe.Name = "dgwListe";
             this.dgwListe.RowHeadersWidth = 51;
             this.dgwListe.RowTemplate.Height = 24;
-            this.dgwListe.Size = new System.Drawing.Size(1082, 201);
+            this.dgwListe.Size = new System.Drawing.Size(1032, 201);
             this.dgwListe.TabIndex = 0;
             this.dgwListe.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgwListe_CellClick);
             // 
@@ -291,7 +291,7 @@ namespace App.Forms
             this.panel2.Location = new System.Drawing.Point(0, 452);
             this.panel2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1082, 201);
+            this.panel2.Size = new System.Drawing.Size(1032, 201);
             this.panel2.TabIndex = 33;
             // 
             // panel1
@@ -302,7 +302,7 @@ namespace App.Forms
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1082, 444);
+            this.panel1.Size = new System.Drawing.Size(1032, 444);
             this.panel1.TabIndex = 34;
             // 
             // groupBox2
@@ -562,7 +562,7 @@ namespace App.Forms
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.ClientSize = new System.Drawing.Size(1082, 653);
+            this.ClientSize = new System.Drawing.Size(1032, 653);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Font = new System.Drawing.Font("Tahoma", 9F);

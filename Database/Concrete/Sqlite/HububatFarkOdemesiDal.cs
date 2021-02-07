@@ -92,6 +92,22 @@ namespace Database.Concrete.Sqlite
             return hububatList;
         }
 
+        public DataTable GetAllByQuery(string query)
+        {
+            DataTable dt = new DataTable();
+
+            _try(() =>
+            {
+
+                command.CommandText = query;
+                dataReader = command.ExecuteReader();
+
+                dt.Load(dataReader);
+
+            });
+            return dt;
+        }
+
         public DataTable GetAllDataTable(int id)
         {
           

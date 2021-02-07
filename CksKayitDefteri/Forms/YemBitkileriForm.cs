@@ -151,9 +151,9 @@ namespace App.Forms
 
                             txtUpdateDosyaNo.Text = "";
                             txtUpdateMuracaatTarihi.Text = "";
-                            cmbUpdateUrun.Text = "";
+                            //cmbUpdateUrun.Text = "";
                             txtUpdateEkilisYili.Text = "";
-                            cmbUpdateMahalle.Text = "";
+                            //cmbUpdateMahalle.Text = "";
                             txtUpdateAda.Text = "";
                             txtUpdateParsel.Text = "";
                             txtUpdateMuracaatAlani.Text = "";
@@ -175,6 +175,12 @@ namespace App.Forms
             });
         }
 
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Utilities.FormPreferences.FormOpen("UrunForm", new UrunForm(), true);
+            Utilities.FormPreferences.ComboxSetUrun(cmbAddUrun, _urunManager.GetAll());
+            Utilities.FormPreferences.ComboxSetUrun(cmbUpdateUrun, _urunManager.GetAll());
 
+        }
     }
 }

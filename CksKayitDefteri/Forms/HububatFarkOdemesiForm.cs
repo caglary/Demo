@@ -201,6 +201,8 @@ namespace App.Forms
         private void button2_Click(object sender, EventArgs e)
         {
             Utilities.FormPreferences.FormOpen("FirmaForm",new FirmaForm(), true);
+            Utilities.FormPreferences.ComboxSetFirma(cmbFirmaAdi, _firmaManager.GetAll());
+            Utilities.FormPreferences.ComboxSetFirma(cmbUpdateFirmaAdi, _firmaManager.GetAll());
         }
 
       
@@ -208,6 +210,10 @@ namespace App.Forms
         private void button1_Click(object sender, EventArgs e)
         {
             Utilities.FormPreferences.FormOpen("UrunForm", new UrunForm(), true);
+            Utilities.FormPreferences.ComboxSetUrun(cmbUrunAdi, _urunManager.GetAll());
+            Utilities.FormPreferences.ComboxSetUrun(cmbUpdateUrunAdi, _urunManager.GetAll());
+
+
 
         }
 

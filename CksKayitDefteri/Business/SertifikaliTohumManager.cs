@@ -54,12 +54,11 @@ namespace CksKayitDefteri.Business
             return _dal.GetAll().Where(I => I.Id == Id).FirstOrDefault();
         }
 
-        //private static void EntityControl(SertifikaliTohum Entity)
-        //{
-        //    if (Entity.CksId == 0 || Entity.SertifikaliDosyaNo == 0 || string.IsNullOrEmpty(Entity.FaturaNo) || string.IsNullOrEmpty(Entity.FaturaTarihi) || string.IsNullOrEmpty(Entity.FirmaAdi) || string.IsNullOrEmpty(Entity.SertifikaNo) || string.IsNullOrEmpty(Entity.MuracaatTarihi) || string.IsNullOrEmpty(Entity.Miktari) || string.IsNullOrEmpty(Entity.Urun))
-        //    {
-        //        throw new Exception("Form alanlarını eksiksiz doldurunuz.");
-        //    }
-        //}
+        internal DataTable GetAllByQuery(string query)
+        {
+            return _dal.GetAllByQuery(query);
+        }
+
+      
     }
 }

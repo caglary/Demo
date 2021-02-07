@@ -20,14 +20,14 @@ namespace CksKayitDefteri.Business
 
         
 
-        public List<YemBitkileri> GetByCiftci(int cksId)
-        {
-            return GetAll().Where(I => I.CksId == cksId).ToList();
-        }
 
         internal DataTable GetAllDataTable(int id)
         {
             return _dal.GetAllDataTable(id);
+        }
+        public DataTable GetAllByQuery(string query)
+        {
+            return _dal.GetAllByQuery(query);
         }
     }
 }

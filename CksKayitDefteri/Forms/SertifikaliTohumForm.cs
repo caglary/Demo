@@ -221,8 +221,8 @@ namespace App.Forms
             txtUpdateSertifikaNo.Text = "";
             txtUpdateFaturaNo.Text = "";
             txtUpdateFaturaTarihi.Text = "";
-            cmbUpdateFirmaAdi.Text = "";
-            cmbUpdateUrun.Text = "";
+            
+            
             txtUpdateMiktarı.Text = "";
             txtUpdateBirimFiyati.Text = "";
             txtUpdateNot.Text = "";
@@ -231,12 +231,16 @@ namespace App.Forms
         private void button2_Click(object sender, EventArgs e)
         {
             Utilities.FormPreferences.FormOpen("UrunForm", new UrunForm(), true);
+            Utilities.FormPreferences.ComboxSetUrun(cmbNewUrunAdi, _urunManager.GetAll());
+            Utilities.FormPreferences.ComboxSetUrun(cmbUpdateUrun, _urunManager.GetAll());
         }
 
 
         private void button1_Click(object sender, EventArgs e)
         {
             Utilities.FormPreferences.FormOpen("FirmaForm", new FirmaForm(), true);
+            Utilities.FormPreferences.ComboxSetFirma(cmbNewFirmaAdi, _firmaManager.GetAll());
+            Utilities.FormPreferences.ComboxSetFirma(cmbUpdateFirmaAdi, _firmaManager.GetAll());
         }
     }
 }

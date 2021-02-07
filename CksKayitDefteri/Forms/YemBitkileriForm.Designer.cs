@@ -87,6 +87,7 @@ namespace App.Forms
             this.txtUpdateEkilisYili = new System.Windows.Forms.TextBox();
             this.txtUpdateKontrolTarihi = new System.Windows.Forms.TextBox();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.button2 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgwListe)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -267,6 +268,7 @@ namespace App.Forms
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.groupBox1.Controls.Add(this.button2);
             this.groupBox1.Controls.Add(this.cmbAddUrun);
             this.groupBox1.Controls.Add(this.cmbAddMahalle);
             this.groupBox1.Controls.Add(this.btnYeniKayit);
@@ -636,6 +638,20 @@ namespace App.Forms
             this.panel2.Size = new System.Drawing.Size(1032, 268);
             this.panel2.TabIndex = 3;
             // 
+            // button2
+            // 
+            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
+            this.button2.Font = new System.Drawing.Font("Elephant", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.ForeColor = System.Drawing.Color.Red;
+            this.button2.Location = new System.Drawing.Point(317, 77);
+            this.button2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(30, 30);
+            this.button2.TabIndex = 16;
+            this.button2.Text = "+";
+            this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
             // YemBitkileriForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -717,5 +733,6 @@ namespace App.Forms
         private System.Windows.Forms.Label label23;
         private System.Windows.Forms.ComboBox cmbAddUrun;
         private System.Windows.Forms.Label label24;
+        private System.Windows.Forms.Button button2;
     }
 }

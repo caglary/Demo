@@ -509,7 +509,7 @@ namespace App.Forms
             this.Controls.Add(this.groupBoxCiftciIslemleri);
             this.Controls.Add(this.label1);
             this.Name = "CiftciForm";
-            this.Text = "CiftciForm";
+            this.Text = "Çiftçi Kayıt Formu";
             this.Load += new System.EventHandler(this.CiftciForm_Load);
             this.groupBoxCiftciIslemleri.ResumeLayout(false);
             this.groupBoxCiftciIslemleri.PerformLayout();

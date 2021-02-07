@@ -65,3 +65,4 @@ C:\Users\caglar\Documents\GitHub\Demo\CksKayitDefteri\obj\Debug\App.pdb
 C:\Users\caglar\Documents\GitHub\Demo\CksKayitDefteri\obj\Debug\App.Forms.HububatFarkOdemesiForm.resources
 C:\Users\caglar\Documents\GitHub\Demo\CksKayitDefteri\obj\Debug\App.Forms.FirmaForm.resources
 C:\Users\caglar\Documents\GitHub\Demo\CksKayitDefteri\obj\Debug\App.Forms.UrunForm.resources
+C:\Users\caglar\Documents\GitHub\Demo\CksKayitDefteri\obj\Debug\App.Forms.DestekListesiForm.resources

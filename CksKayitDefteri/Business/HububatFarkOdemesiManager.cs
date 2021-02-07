@@ -21,6 +21,10 @@ namespace App.Business
         {
            return _dal.GetAllDataTable(cksid);
         }
-      
+
+        internal DataTable GetAllByQuery(string query)
+        {
+            return _dal.GetAllByQuery(query);
+        }
     }
 }
