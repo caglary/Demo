@@ -23,6 +23,11 @@ namespace App.Forms
             GetAllList();
             Utilities.FormPreferences.DataGridSettings(dgwListe, new string[] { "Id" });
             dgwListe.Tag = 0;
+            dgwListe.Columns[1].HeaderText = "Firma/Kişi Adı";
+            dgwListe.Columns[2].HeaderText = "Vergi/TC No";
+            dgwListe.Columns[3].HeaderText = "Not";
+
+
         }
 
         private void GetAllList()

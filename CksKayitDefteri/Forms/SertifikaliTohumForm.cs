@@ -54,6 +54,17 @@ namespace App.Forms
                 ComboBoxFillData();
 
             });
+            dgwListe.Columns[1].HeaderText = "Dosya No";
+            dgwListe.Columns[2].HeaderText = "Firma/Kişi";
+            dgwListe.Columns[3].HeaderText = "Ürün Adı";
+            dgwListe.Columns[4].HeaderText = "Miktar";
+            dgwListe.Columns[5].HeaderText = "Not";
+            dgwListe.Columns[6].HeaderText = "Başvuru Tarihi";
+         
+
+
+
+
 
         }
         private void dgwListe_DataSourceChanged(object sender, EventArgs e)

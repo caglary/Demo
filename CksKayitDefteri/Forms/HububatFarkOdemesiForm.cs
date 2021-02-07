@@ -41,6 +41,13 @@ namespace App.Forms
             Utilities.FormPreferences.ComboxSetFirma(cmbFirmaAdi, _firmaManager.GetAll());
             Utilities.FormPreferences.ComboxSetFirma(cmbUpdateFirmaAdi, _firmaManager.GetAll());
             dgwListe.Tag = 0;
+            dgwListe.Columns[1].HeaderText = "Dosya No";
+            dgwListe.Columns[2].HeaderText = "Fatura Tarihi";
+            dgwListe.Columns[3].HeaderText = "Fatura No";
+            dgwListe.Columns[4].HeaderText = "Ürün Adı";
+            dgwListe.Columns[5].HeaderText = "Miktar";
+            dgwListe.Columns[6].HeaderText = "Birim Fiyatı";
+            dgwListe.Columns[7].HeaderText = "Toplam Tutar";
 
 
         }

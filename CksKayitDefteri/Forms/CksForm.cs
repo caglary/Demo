@@ -28,6 +28,20 @@ namespace App.Forms
 
             formDoldur();
             cmboxMahalleKoy.DataSource = Utilities.RequiredLists.VillageNameList();
+            dgwListe.Columns[1].HeaderText = "Dosya No";
+            dgwListe.Columns[2].HeaderText = "Tc Numarası";
+            dgwListe.Columns[3].HeaderText = "İsim";
+            dgwListe.Columns[4].HeaderText = "Baba Adı";
+            dgwListe.Columns[5].HeaderText = "Mahalle/Köy";
+            dgwListe.Columns[6].HeaderText = "Cep Telefonu";
+            dgwListe.Columns[7].HeaderText = "Ev Telefonu";
+            dgwListe.Columns[8].HeaderText = "Kayıt Tarihi";
+            dgwListe.Columns[9].HeaderText = "Not";
+
+
+
+
+
         }
 
         private void dgwListe_CellClick(object sender, DataGridViewCellEventArgs e)

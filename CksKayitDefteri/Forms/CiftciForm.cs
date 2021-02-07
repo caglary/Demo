@@ -42,6 +42,11 @@ namespace App.Forms
             dgwList.DataSource = _ciftcilerManager.GetAll();
             Utilities.FormPreferences.DataGridSettings(dgwList, new string[] { "Id","TcKimlikNo","MotherName","Birthday","DateOfDeath","Gender"
             ,"MaritalStatus","MobilePhone","HomePhone","Email","City","Town","Not" });
+            dgwList.Columns[2].HeaderText = "İsim Soyisim";
+            dgwList.Columns[3].HeaderText = "Baba Adı";
+            dgwList.Columns[14].HeaderText = "Mahalle/Köy";
+
+
         }
         private void btnAdd_Click(object sender, EventArgs e)
         {

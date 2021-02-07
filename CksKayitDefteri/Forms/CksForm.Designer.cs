@@ -85,10 +85,10 @@ namespace App.Forms
             this.panel1.Controls.Add(this.dgwListe);
             this.panel1.Controls.Add(this.statusStrip2);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 266);
+            this.panel1.Location = new System.Drawing.Point(0, 284);
             this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1081, 369);
+            this.panel1.Size = new System.Drawing.Size(1082, 369);
             this.panel1.TabIndex = 2;
             // 
             // dgwListe
@@ -100,7 +100,7 @@ namespace App.Forms
             this.dgwListe.Name = "dgwListe";
             this.dgwListe.RowHeadersWidth = 51;
             this.dgwListe.RowTemplate.Height = 24;
-            this.dgwListe.Size = new System.Drawing.Size(1081, 343);
+            this.dgwListe.Size = new System.Drawing.Size(1082, 343);
             this.dgwListe.TabIndex = 1;
             this.dgwListe.DataSourceChanged += new System.EventHandler(this.dgwListe_DataSourceChanged);
             this.dgwListe.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgwListe_CellClick);
@@ -113,7 +113,7 @@ namespace App.Forms
             this.statusStrip2.Location = new System.Drawing.Point(0, 343);
             this.statusStrip2.Name = "statusStrip2";
             this.statusStrip2.Padding = new System.Windows.Forms.Padding(1, 0, 16, 0);
-            this.statusStrip2.Size = new System.Drawing.Size(1081, 26);
+            this.statusStrip2.Size = new System.Drawing.Size(1082, 26);
             this.statusStrip2.TabIndex = 0;
             this.statusStrip2.Text = "statusStrip2";
             // 
@@ -155,7 +155,7 @@ namespace App.Forms
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Margin = new System.Windows.Forms.Padding(4);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1081, 266);
+            this.panel2.Size = new System.Drawing.Size(1082, 284);
             this.panel2.TabIndex = 3;
             // 
             // txtSearch
@@ -517,7 +517,7 @@ namespace App.Forms
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ClientSize = new System.Drawing.Size(1081, 635);
+            this.ClientSize = new System.Drawing.Size(1082, 653);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -527,7 +527,7 @@ namespace App.Forms
             this.MinimizeBox = false;
             this.Name = "CksForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Çks Kayıt Defteri";
+            this.Text = "Çks Kayıt Formu";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();

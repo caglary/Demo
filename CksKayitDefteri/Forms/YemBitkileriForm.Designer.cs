@@ -196,7 +196,7 @@ namespace App.Forms
             this.dgwListe.ReadOnly = true;
             this.dgwListe.RowHeadersWidth = 51;
             this.dgwListe.RowTemplate.Height = 24;
-            this.dgwListe.Size = new System.Drawing.Size(1393, 268);
+            this.dgwListe.Size = new System.Drawing.Size(1032, 268);
             this.dgwListe.TabIndex = 0;
             this.dgwListe.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgwListe_CellClick);
             // 
@@ -384,7 +384,7 @@ namespace App.Forms
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1393, 486);
+            this.panel1.Size = new System.Drawing.Size(1032, 486);
             this.panel1.TabIndex = 2;
             // 
             // groupBox2
@@ -633,7 +633,7 @@ namespace App.Forms
             this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel2.Location = new System.Drawing.Point(0, 485);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1393, 268);
+            this.panel2.Size = new System.Drawing.Size(1032, 268);
             this.panel2.TabIndex = 3;
             // 
             // YemBitkileriForm
@@ -641,7 +641,7 @@ namespace App.Forms
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
-            this.ClientSize = new System.Drawing.Size(1393, 753);
+            this.ClientSize = new System.Drawing.Size(1032, 753);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel2);
             this.Name = "YemBitkileriForm";

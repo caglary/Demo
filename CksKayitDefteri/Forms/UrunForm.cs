@@ -27,6 +27,9 @@ namespace App.Forms
             GetAllList();
             Utilities.FormPreferences.DataGridSettings(dgwListe, new string[] { "Id" });
             dgwListe.Tag = 0;
+            dgwListe.Columns[1].HeaderText = "Ürün Adı";
+
+
         }
 
         private void GetAllList()

@@ -42,6 +42,15 @@ namespace App.Forms
 
             AllList();
             Utilities.FormPreferences.DataGridSettings(dgwListe, new string[] { "Id" });
+            dgwListe.Columns[1].HeaderText = "Dosya No";
+            dgwListe.Columns[2].HeaderText = "Ürün Adı";
+            dgwListe.Columns[3].HeaderText = "Mahalle/Köy";
+            dgwListe.Columns[4].HeaderText = "Ada";
+            dgwListe.Columns[5].HeaderText = "Parsel";
+            dgwListe.Columns[6].HeaderText = "Müracaat Alanı";
+            dgwListe.Columns[7].HeaderText = "Başvuru Tarihi";
+
+
         }
         private void AllList()
         {
