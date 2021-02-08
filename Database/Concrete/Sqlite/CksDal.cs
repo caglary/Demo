@@ -12,6 +12,7 @@ namespace Database.Concrete.Sqlite
 
         public int Add(Cks Entity)
         {
+            result = 0;
             _try(() =>
             {
                 command.CommandText = "INSERT INTO Cks(DosyaNo, Tc,IsimSoyisim,BabaAdi,KoyMahalle,CepTelefonu,EvTelefonu,KayitTarihi) VALUES(@DosyaNo, @Tc,@IsimSoyisim,@BabaAdi,@KoyMahalle,@CepTelefonu,@EvTelefonu,@KayitTarihi)";
@@ -32,12 +33,13 @@ namespace Database.Concrete.Sqlite
 
         public int Delete(Cks Entity)
         {
+            result = 0;
             _try(() =>
             {
                 command.CommandText = "DELETE FROM Cks WHERE Tc=@Tc";
                 command.Parameters.AddWithValue("@Tc", Entity.Tc);
                 command.Prepare();
-                int result = command.ExecuteNonQuery();
+                result = command.ExecuteNonQuery();
             });
 
             return result;
@@ -133,6 +135,7 @@ namespace Database.Concrete.Sqlite
 
         public int Update(Cks Entity)
         {
+            result = 0;
             _try(() =>
             {
                 command.CommandText = "UPDATE Cks SET " +

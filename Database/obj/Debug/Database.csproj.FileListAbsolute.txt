@@ -78,3 +78,9 @@ C:\Users\caglar\Documents\GitHub\Demo\Database\obj\Debug\Database.csproj.CoreCom
 C:\Users\caglar\Documents\GitHub\Demo\Database\obj\Debug\Database.csproj.CopyComplete
 C:\Users\caglar\Documents\GitHub\Demo\Database\obj\Debug\Database.dll
 C:\Users\caglar\Documents\GitHub\Demo\Database\obj\Debug\Database.pdb
+C:\Users\caglar\Documents\GitHub\Demo\Database\bin\Debug\Utilities.dll
+C:\Users\caglar\Documents\GitHub\Demo\Database\bin\Debug\WebDriver.dll
+C:\Users\caglar\Documents\GitHub\Demo\Database\bin\Debug\Newtonsoft.Json.dll
+C:\Users\caglar\Documents\GitHub\Demo\Database\bin\Debug\Utilities.pdb
+C:\Users\caglar\Documents\GitHub\Demo\Database\bin\Debug\WebDriver.xml
+C:\Users\caglar\Documents\GitHub\Demo\Database\bin\Debug\Newtonsoft.Json.xml

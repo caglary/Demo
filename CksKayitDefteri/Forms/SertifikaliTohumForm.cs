@@ -60,8 +60,9 @@ namespace App.Forms
             dgwListe.Columns[4].HeaderText = "Miktar";
             dgwListe.Columns[5].HeaderText = "Not";
             dgwListe.Columns[6].HeaderText = "Başvuru Tarihi";
-         
 
+            dtpAddTarih.Value = DateTime.Now;
+            dtpUpdateTarih.Value = DateTime.Now;
 
 
 
@@ -94,7 +95,7 @@ namespace App.Forms
         {
 
             txtUpdateDosyaNo.Text = st.SertifikaliDosyaNo.ToString();
-            txtUpdateMuracaatTarihi.Text = st.MuracaatTarihi;
+            dtpUpdateTarih.Value =Convert.ToDateTime( st.MuracaatTarihi);
             txtUpdateSertifikaNo.Text = st.SertifikaNo;
             txtUpdateFaturaNo.Text = st.FaturaNo;
             txtUpdateFaturaTarihi.Text = st.FaturaTarihi;
@@ -140,7 +141,7 @@ namespace App.Forms
             st = new SertifikaliTohum();
 
             st.CksId = _cksKayit.Id;
-            st.MuracaatTarihi = txtNewMuracaatTarihi.Text;
+            st.MuracaatTarihi = dtpAddTarih.Value.ToShortDateString();
             st.SertifikaliDosyaNo = string.IsNullOrEmpty(txtNewDosyaNo.Text) ? 0 : Convert.ToInt32(txtNewDosyaNo.Text);
             st.SertifikaNo = txtNewSertifikaNo.Text;
             st.FaturaNo = txtNewFaturaNo.Text;
@@ -167,7 +168,7 @@ namespace App.Forms
                 st = _bll.GetAll().Where(I => I.Id == Convert.ToInt32((int)dgwListe.Tag)).FirstOrDefault();
 
                 st.SertifikaliDosyaNo = Convert.ToInt32(txtUpdateDosyaNo.Text);
-                st.MuracaatTarihi = txtUpdateMuracaatTarihi.Text;
+                st.MuracaatTarihi = dtpUpdateTarih.Value.ToShortDateString();
                 st.SertifikaNo = txtUpdateSertifikaNo.Text;
                 st.FaturaNo = txtUpdateFaturaNo.Text;
                 st.FaturaTarihi = txtUpdateFaturaTarihi.Text;
@@ -217,7 +218,7 @@ namespace App.Forms
         private void ClearFormAfterDelete()
         {
             txtUpdateDosyaNo.Text = "";
-            txtUpdateMuracaatTarihi.Text = "";
+            dtpUpdateTarih.Value = DateTime.Now;
             txtUpdateSertifikaNo.Text = "";
             txtUpdateFaturaNo.Text = "";
             txtUpdateFaturaTarihi.Text = "";

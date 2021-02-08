@@ -49,6 +49,8 @@ namespace App.Forms
             dgwListe.Columns[6].HeaderText = "Birim Fiyatı";
             dgwListe.Columns[7].HeaderText = "Toplam Tutar";
 
+            dtpAddTarih.Value = DateTime.Now;
+            dtpUpdateTarih.Value = DateTime.Now;
 
         }
 
@@ -61,7 +63,19 @@ namespace App.Forms
         {
             Utilities.ErrorHandle._try(() =>
             {
-                HububatFarkOdemesi h = FormToEntityForAdd();
+                HububatFarkOdemesi h = new HububatFarkOdemesi();
+
+                h.CksId = _ciftci.Id;
+                h.HububatDosyaNo = Convert.ToInt32(txtDosyaNo.Text);
+                h.FirmaId = (int)cmbFirmaAdi.SelectedValue;
+                h.UrunId = (int)cmbUrunAdi.SelectedValue;
+                h.FaturaNo = txtFaturaNo.Text;
+                h.FaturaTarihi = txtFaturaTarihi.Text;
+                h.MuracaatTarihi = dtpAddTarih.Value.ToShortDateString();
+                h.Fiyat = txtFiyat.Text;
+                h.Miktar = txtMiktar.Text;
+                h.Not = txtNote.Text;
+
                 if (h.CksId != 0)
                 {
                     _bll.Add(h);
@@ -75,33 +89,6 @@ namespace App.Forms
 
         }
 
-        private HububatFarkOdemesi FormToEntityForAdd()
-        {
-            HububatFarkOdemesi h = new HububatFarkOdemesi();
-
-            if (string.IsNullOrEmpty(txtDosyaNo.Text) || string.IsNullOrEmpty(txtFaturaNo.Text) || string.IsNullOrEmpty(txtFaturaTarihi.Text) || string.IsNullOrEmpty(txtDosyaTeslimTarihi.Text) || string.IsNullOrEmpty(txtFiyat.Text) || string.IsNullOrEmpty(txtMiktar.Text))
-            {
-                throw new Exception("Form üzerindeki alanları hatalı doldurunuz.");
-
-            }
-            else
-            {
-                h.CksId = _ciftci.Id;
-                h.HububatDosyaNo = Convert.ToInt32(txtDosyaNo.Text);
-                h.FirmaId = (int)cmbFirmaAdi.SelectedValue;
-                h.UrunId = (int)cmbUrunAdi.SelectedValue;
-                h.FaturaNo = txtFaturaNo.Text;
-                h.FaturaTarihi = txtFaturaTarihi.Text;
-                h.MuracaatTarihi = txtDosyaTeslimTarihi.Text;
-                h.Fiyat = txtFiyat.Text;
-                h.Miktar = txtMiktar.Text;
-                h.Not = txtNote.Text;
-
-
-            }
-
-            return h;
-        }
         private HububatFarkOdemesi FormToEntityForUpdate()
         {
             HububatFarkOdemesi h = _bll.GetAll().Where(I => I.Id == Convert.ToInt32(dgwListe.Tag)).FirstOrDefault();
@@ -112,7 +99,7 @@ namespace App.Forms
             h.UrunId = (int)cmbUpdateUrunAdi.SelectedValue;
             h.FaturaNo = txtUpdateFaturaNo.Text;
             h.FaturaTarihi = txtUpdateFaturaTarihi.Text;
-            h.MuracaatTarihi = txtUpdatedosyaTeslimTarihi.Text;
+            h.MuracaatTarihi = dtpUpdateTarih.Value.ToShortDateString();
             h.Fiyat = txtUpdateFiyat.Text;
             h.Miktar = txtUpdateMiktar.Text;
             h.Not = txtUpdateNote.Text;
@@ -124,11 +111,15 @@ namespace App.Forms
             if (h != null)
             {
                 txtUpdateDosyaNo.Text = h.HububatDosyaNo.ToString();
-                txtUpdatedosyaTeslimTarihi.Text = h.MuracaatTarihi;
+                dtpUpdateTarih.Value =Convert.ToDateTime( h.MuracaatTarihi);
                 txtUpdateFaturaTarihi.Text = h.FaturaTarihi;
                 txtUpdateFaturaNo.Text = h.FaturaNo;
+
+
+               
                 cmbUpdateFirmaAdi.SelectedValue = h.FirmaId;
-              
+               
+
                 cmbUpdateUrunAdi.SelectedValue = h.UrunId;
                 txtUpdateFiyat.Text = h.Fiyat;
                 txtUpdateMiktar.Text = h.Miktar;
@@ -145,6 +136,7 @@ namespace App.Forms
             var id = dgwListe.Rows[rowIndex].Cells[0].Value;
             dgwListe.Tag = Convert.ToInt32(id);
             EntityToFormForUpdate();
+           
 
         }
 
@@ -178,7 +170,7 @@ namespace App.Forms
                     _bll.Delete(deletedEntity);
 
                     txtUpdateDosyaNo.Text = "";
-                    txtUpdatedosyaTeslimTarihi.Text = "";
+                    dtpUpdateTarih.Value = DateTime.Now;
                     txtUpdateFaturaNo.Text = "";
                     txtUpdateFaturaTarihi.Text = "";
                     txtUpdateFiyat.Text = "";

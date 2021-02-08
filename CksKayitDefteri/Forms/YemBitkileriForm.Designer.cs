@@ -41,7 +41,6 @@ namespace App.Forms
             this.txtAddKontrolEdenler = new System.Windows.Forms.TextBox();
             this.txtAddKontroltarihi = new System.Windows.Forms.TextBox();
             this.dgwListe = new System.Windows.Forms.DataGridView();
-            this.txtAddMuracaatTarihi = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.txtAddAda = new System.Windows.Forms.TextBox();
@@ -50,6 +49,7 @@ namespace App.Forms
             this.label7 = new System.Windows.Forms.Label();
             this.txtAddParsel = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.button2 = new System.Windows.Forms.Button();
             this.cmbAddUrun = new System.Windows.Forms.ComboBox();
             this.cmbAddMahalle = new System.Windows.Forms.ComboBox();
             this.btnYeniKayit = new System.Windows.Forms.Button();
@@ -76,7 +76,6 @@ namespace App.Forms
             this.label23 = new System.Windows.Forms.Label();
             this.txtUpdateKontrolEdenler = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
-            this.txtUpdateMuracaatTarihi = new System.Windows.Forms.TextBox();
             this.label15 = new System.Windows.Forms.Label();
             this.textBox7 = new System.Windows.Forms.TextBox();
             this.txtUpdateTespitEdilenAlan = new System.Windows.Forms.TextBox();
@@ -87,7 +86,8 @@ namespace App.Forms
             this.txtUpdateEkilisYili = new System.Windows.Forms.TextBox();
             this.txtUpdateKontrolTarihi = new System.Windows.Forms.TextBox();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.button2 = new System.Windows.Forms.Button();
+            this.dtpAddTarih = new System.Windows.Forms.DateTimePicker();
+            this.dtpUpdateTarih = new System.Windows.Forms.DateTimePicker();
             ((System.ComponentModel.ISupportInitialize)(this.dgwListe)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -201,13 +201,6 @@ namespace App.Forms
             this.dgwListe.TabIndex = 0;
             this.dgwListe.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgwListe_CellClick);
             // 
-            // txtAddMuracaatTarihi
-            // 
-            this.txtAddMuracaatTarihi.Location = new System.Drawing.Point(154, 28);
-            this.txtAddMuracaatTarihi.Name = "txtAddMuracaatTarihi";
-            this.txtAddMuracaatTarihi.Size = new System.Drawing.Size(157, 22);
-            this.txtAddMuracaatTarihi.TabIndex = 3;
-            // 
             // label5
             // 
             this.label5.AutoSize = true;
@@ -268,6 +261,7 @@ namespace App.Forms
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.groupBox1.Controls.Add(this.dtpAddTarih);
             this.groupBox1.Controls.Add(this.button2);
             this.groupBox1.Controls.Add(this.cmbAddUrun);
             this.groupBox1.Controls.Add(this.cmbAddMahalle);
@@ -278,7 +272,6 @@ namespace App.Forms
             this.groupBox1.Controls.Add(this.label11);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.txtAddKontrolEdenler);
-            this.groupBox1.Controls.Add(this.txtAddMuracaatTarihi);
             this.groupBox1.Controls.Add(this.textBox11);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label10);
@@ -301,6 +294,20 @@ namespace App.Forms
             this.groupBox1.TabIndex = 3;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Yeni Kayıt İşlemleri";
+            // 
+            // button2
+            // 
+            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
+            this.button2.Font = new System.Drawing.Font("Elephant", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.ForeColor = System.Drawing.Color.Red;
+            this.button2.Location = new System.Drawing.Point(317, 77);
+            this.button2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(30, 30);
+            this.button2.TabIndex = 16;
+            this.button2.Text = "+";
+            this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // cmbAddUrun
             // 
@@ -392,6 +399,7 @@ namespace App.Forms
             // groupBox2
             // 
             this.groupBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            this.groupBox2.Controls.Add(this.dtpUpdateTarih);
             this.groupBox2.Controls.Add(this.cmbUpdateUrun);
             this.groupBox2.Controls.Add(this.cmbUpdateMahalle);
             this.groupBox2.Controls.Add(this.btnSil);
@@ -409,7 +417,6 @@ namespace App.Forms
             this.groupBox2.Controls.Add(this.label23);
             this.groupBox2.Controls.Add(this.txtUpdateKontrolEdenler);
             this.groupBox2.Controls.Add(this.label14);
-            this.groupBox2.Controls.Add(this.txtUpdateMuracaatTarihi);
             this.groupBox2.Controls.Add(this.label15);
             this.groupBox2.Controls.Add(this.textBox7);
             this.groupBox2.Controls.Add(this.txtUpdateTespitEdilenAlan);
@@ -549,13 +556,6 @@ namespace App.Forms
             this.label14.TabIndex = 1;
             this.label14.Text = "Tespit Edilen Alan:";
             // 
-            // txtUpdateMuracaatTarihi
-            // 
-            this.txtUpdateMuracaatTarihi.Location = new System.Drawing.Point(151, 29);
-            this.txtUpdateMuracaatTarihi.Name = "txtUpdateMuracaatTarihi";
-            this.txtUpdateMuracaatTarihi.Size = new System.Drawing.Size(157, 22);
-            this.txtUpdateMuracaatTarihi.TabIndex = 3;
-            // 
             // label15
             // 
             this.label15.AutoSize = true;
@@ -638,19 +638,25 @@ namespace App.Forms
             this.panel2.Size = new System.Drawing.Size(1032, 268);
             this.panel2.TabIndex = 3;
             // 
-            // button2
+            // dtpAddTarih
             // 
-            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
-            this.button2.Font = new System.Drawing.Font("Elephant", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.ForeColor = System.Drawing.Color.Red;
-            this.button2.Location = new System.Drawing.Point(317, 77);
-            this.button2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(30, 30);
-            this.button2.TabIndex = 16;
-            this.button2.Text = "+";
-            this.button2.UseVisualStyleBackColor = false;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.dtpAddTarih.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpAddTarih.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpAddTarih.Location = new System.Drawing.Point(154, 20);
+            this.dtpAddTarih.MinDate = new System.DateTime(2020, 1, 1, 0, 0, 0, 0);
+            this.dtpAddTarih.Name = "dtpAddTarih";
+            this.dtpAddTarih.Size = new System.Drawing.Size(165, 27);
+            this.dtpAddTarih.TabIndex = 37;
+            // 
+            // dtpUpdateTarih
+            // 
+            this.dtpUpdateTarih.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpUpdateTarih.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpUpdateTarih.Location = new System.Drawing.Point(152, 21);
+            this.dtpUpdateTarih.MinDate = new System.DateTime(2020, 1, 1, 0, 0, 0, 0);
+            this.dtpUpdateTarih.Name = "dtpUpdateTarih";
+            this.dtpUpdateTarih.Size = new System.Drawing.Size(165, 27);
+            this.dtpUpdateTarih.TabIndex = 37;
             // 
             // YemBitkileriForm
             // 
@@ -687,7 +693,6 @@ namespace App.Forms
         private System.Windows.Forms.TextBox txtAddKontrolEdenler;
         private System.Windows.Forms.TextBox txtAddKontroltarihi;
         private System.Windows.Forms.DataGridView dgwListe;
-        private System.Windows.Forms.TextBox txtAddMuracaatTarihi;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox txtAddAda;
@@ -719,7 +724,6 @@ namespace App.Forms
         private System.Windows.Forms.TextBox txtUpdateAda;
         private System.Windows.Forms.TextBox txtUpdateKontrolEdenler;
         private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.TextBox txtUpdateMuracaatTarihi;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.TextBox textBox7;
         private System.Windows.Forms.TextBox txtUpdateTespitEdilenAlan;
@@ -734,5 +738,7 @@ namespace App.Forms
         private System.Windows.Forms.ComboBox cmbAddUrun;
         private System.Windows.Forms.Label label24;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.DateTimePicker dtpAddTarih;
+        private System.Windows.Forms.DateTimePicker dtpUpdateTarih;
     }
 }

@@ -50,6 +50,8 @@ namespace App.Forms
             dgwListe.Columns[6].HeaderText = "Müracaat Alanı";
             dgwListe.Columns[7].HeaderText = "Başvuru Tarihi";
 
+            dtpAddTarih.Value = DateTime.Now;
+            dtpUpdateTarih.Value = DateTime.Now;
 
         }
         private void AllList()
@@ -66,7 +68,7 @@ namespace App.Forms
                 yemBitkisiKayit.CksId = _cksKayit.Id;
                 yemBitkisiKayit.UrunId = Convert.ToInt32(cmbAddUrun.SelectedValue);
                 yemBitkisiKayit.YemDosyaNo = Convert.ToInt32(txtAddDosyaNo.Text);
-                yemBitkisiKayit.MuracaatTarihi = txtAddMuracaatTarihi.Text;
+                yemBitkisiKayit.MuracaatTarihi = dtpAddTarih.Value.ToShortDateString();
                 yemBitkisiKayit.EkilisYili = txtAddEkilisYili.Text;
                 yemBitkisiKayit.AraziMahalle = cmbAddMahalle.Text;
                 yemBitkisiKayit.Ada = txtAddAda.Text;
@@ -93,7 +95,7 @@ namespace App.Forms
                 var yemkayit = _yemManager.GetAll().Where(I => I.Id == Convert.ToInt32(id)).FirstOrDefault();
                 _yemKayit = yemkayit;
                 txtUpdateDosyaNo.Text = yemkayit.YemDosyaNo.ToString();
-                txtUpdateMuracaatTarihi.Text = yemkayit.MuracaatTarihi;
+                dtpUpdateTarih.Value =Convert.ToDateTime( yemkayit.MuracaatTarihi);
                 cmbUpdateUrun.SelectedValue = yemkayit.UrunId;
                 txtUpdateEkilisYili.Text = yemkayit.EkilisYili;
                 cmbUpdateMahalle.Text = yemkayit.AraziMahalle;
@@ -115,7 +117,7 @@ namespace App.Forms
                 if (_yemKayit != null)
                 {
                     _yemKayit.YemDosyaNo = Convert.ToInt32(txtUpdateDosyaNo.Text);
-                    _yemKayit.MuracaatTarihi = txtUpdateMuracaatTarihi.Text;
+                    _yemKayit.MuracaatTarihi = dtpUpdateTarih.Value.ToShortDateString();
                     _yemKayit.UrunId = (int)cmbUpdateUrun.SelectedValue;
                     _yemKayit.EkilisYili = txtUpdateEkilisYili.Text;
                     _yemKayit.AraziMahalle = cmbUpdateMahalle.Text;
@@ -150,7 +152,7 @@ namespace App.Forms
                         {
 
                             txtUpdateDosyaNo.Text = "";
-                            txtUpdateMuracaatTarihi.Text = "";
+                            dtpUpdateTarih.Value=DateTime.Now;
                             //cmbUpdateUrun.Text = "";
                             txtUpdateEkilisYili.Text = "";
                             //cmbUpdateMahalle.Text = "";

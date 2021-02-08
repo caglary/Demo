@@ -33,7 +33,6 @@ namespace App.Forms
             this.txtFiyat = new System.Windows.Forms.TextBox();
             this.txtMiktar = new System.Windows.Forms.TextBox();
             this.txtFaturaTarihi = new System.Windows.Forms.TextBox();
-            this.txtDosyaTeslimTarihi = new System.Windows.Forms.TextBox();
             this.txtDosyaNo = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
             this.txtFaturaNo = new System.Windows.Forms.TextBox();
@@ -54,16 +53,15 @@ namespace App.Forms
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.dtpUpdateTarih = new System.Windows.Forms.DateTimePicker();
             this.label5 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.txtUpdateFiyat = new System.Windows.Forms.TextBox();
-            this.cmbUpdateFirmaAdi = new System.Windows.Forms.ComboBox();
             this.txtUpdateMiktar = new System.Windows.Forms.TextBox();
             this.txtUpdateNote = new System.Windows.Forms.TextBox();
             this.txtUpdateFaturaTarihi = new System.Windows.Forms.TextBox();
             this.cmbUpdateUrunAdi = new System.Windows.Forms.ComboBox();
-            this.txtUpdatedosyaTeslimTarihi = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
             this.txtUpdateDosyaNo = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
@@ -73,8 +71,10 @@ namespace App.Forms
             this.label17 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.dtpAddTarih = new System.Windows.Forms.DateTimePicker();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
+            this.cmbUpdateFirmaAdi = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgwListe)).BeginInit();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -114,14 +114,6 @@ namespace App.Forms
             this.txtFaturaTarihi.Name = "txtFaturaTarihi";
             this.txtFaturaTarihi.Size = new System.Drawing.Size(164, 26);
             this.txtFaturaTarihi.TabIndex = 3;
-            // 
-            // txtDosyaTeslimTarihi
-            // 
-            this.txtDosyaTeslimTarihi.Location = new System.Drawing.Point(171, 66);
-            this.txtDosyaTeslimTarihi.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.txtDosyaTeslimTarihi.Name = "txtDosyaTeslimTarihi";
-            this.txtDosyaTeslimTarihi.Size = new System.Drawing.Size(164, 26);
-            this.txtDosyaTeslimTarihi.TabIndex = 1;
             // 
             // txtDosyaNo
             // 
@@ -308,18 +300,18 @@ namespace App.Forms
             // groupBox2
             // 
             this.groupBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            this.groupBox2.Controls.Add(this.dtpUpdateTarih);
             this.groupBox2.Controls.Add(this.label5);
             this.groupBox2.Controls.Add(this.label7);
             this.groupBox2.Controls.Add(this.btnDelete);
             this.groupBox2.Controls.Add(this.label12);
             this.groupBox2.Controls.Add(this.btnUpdate);
             this.groupBox2.Controls.Add(this.txtUpdateFiyat);
-            this.groupBox2.Controls.Add(this.cmbUpdateFirmaAdi);
             this.groupBox2.Controls.Add(this.txtUpdateMiktar);
+            this.groupBox2.Controls.Add(this.cmbUpdateFirmaAdi);
             this.groupBox2.Controls.Add(this.txtUpdateNote);
             this.groupBox2.Controls.Add(this.txtUpdateFaturaTarihi);
             this.groupBox2.Controls.Add(this.cmbUpdateUrunAdi);
-            this.groupBox2.Controls.Add(this.txtUpdatedosyaTeslimTarihi);
             this.groupBox2.Controls.Add(this.label13);
             this.groupBox2.Controls.Add(this.txtUpdateDosyaNo);
             this.groupBox2.Controls.Add(this.label14);
@@ -337,6 +329,16 @@ namespace App.Forms
             this.groupBox2.TabIndex = 25;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Güncelleme İşlemleri";
+            // 
+            // dtpUpdateTarih
+            // 
+            this.dtpUpdateTarih.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpUpdateTarih.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpUpdateTarih.Location = new System.Drawing.Point(170, 66);
+            this.dtpUpdateTarih.MinDate = new System.DateTime(2020, 1, 1, 0, 0, 0, 0);
+            this.dtpUpdateTarih.Name = "dtpUpdateTarih";
+            this.dtpUpdateTarih.Size = new System.Drawing.Size(164, 27);
+            this.dtpUpdateTarih.TabIndex = 35;
             // 
             // label5
             // 
@@ -373,15 +375,6 @@ namespace App.Forms
             this.txtUpdateFiyat.Size = new System.Drawing.Size(85, 26);
             this.txtUpdateFiyat.TabIndex = 8;
             // 
-            // cmbUpdateFirmaAdi
-            // 
-            this.cmbUpdateFirmaAdi.FormattingEnabled = true;
-            this.cmbUpdateFirmaAdi.Location = new System.Drawing.Point(170, 149);
-            this.cmbUpdateFirmaAdi.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.cmbUpdateFirmaAdi.Name = "cmbUpdateFirmaAdi";
-            this.cmbUpdateFirmaAdi.Size = new System.Drawing.Size(164, 26);
-            this.cmbUpdateFirmaAdi.TabIndex = 4;
-            // 
             // txtUpdateMiktar
             // 
             this.txtUpdateMiktar.Location = new System.Drawing.Point(170, 207);
@@ -415,14 +408,6 @@ namespace App.Forms
             this.cmbUpdateUrunAdi.Name = "cmbUpdateUrunAdi";
             this.cmbUpdateUrunAdi.Size = new System.Drawing.Size(164, 26);
             this.cmbUpdateUrunAdi.TabIndex = 6;
-            // 
-            // txtUpdatedosyaTeslimTarihi
-            // 
-            this.txtUpdatedosyaTeslimTarihi.Location = new System.Drawing.Point(170, 66);
-            this.txtUpdatedosyaTeslimTarihi.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.txtUpdatedosyaTeslimTarihi.Name = "txtUpdatedosyaTeslimTarihi";
-            this.txtUpdatedosyaTeslimTarihi.Size = new System.Drawing.Size(164, 26);
-            this.txtUpdatedosyaTeslimTarihi.TabIndex = 1;
             // 
             // label13
             // 
@@ -498,6 +483,7 @@ namespace App.Forms
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.groupBox1.Controls.Add(this.dtpAddTarih);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label4);
@@ -510,7 +496,6 @@ namespace App.Forms
             this.groupBox1.Controls.Add(this.txtNote);
             this.groupBox1.Controls.Add(this.txtFaturaTarihi);
             this.groupBox1.Controls.Add(this.cmbUrunAdi);
-            this.groupBox1.Controls.Add(this.txtDosyaTeslimTarihi);
             this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Controls.Add(this.txtDosyaNo);
             this.groupBox1.Controls.Add(this.label3);
@@ -528,6 +513,16 @@ namespace App.Forms
             this.groupBox1.TabIndex = 25;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Ekleme İşlemi";
+            // 
+            // dtpAddTarih
+            // 
+            this.dtpAddTarih.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpAddTarih.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpAddTarih.Location = new System.Drawing.Point(170, 66);
+            this.dtpAddTarih.MinDate = new System.DateTime(2020, 1, 1, 0, 0, 0, 0);
+            this.dtpAddTarih.Name = "dtpAddTarih";
+            this.dtpAddTarih.Size = new System.Drawing.Size(165, 27);
+            this.dtpAddTarih.TabIndex = 36;
             // 
             // button2
             // 
@@ -557,6 +552,15 @@ namespace App.Forms
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // cmbUpdateFirmaAdi
+            // 
+            this.cmbUpdateFirmaAdi.FormattingEnabled = true;
+            this.cmbUpdateFirmaAdi.Location = new System.Drawing.Point(170, 149);
+            this.cmbUpdateFirmaAdi.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.cmbUpdateFirmaAdi.Name = "cmbUpdateFirmaAdi";
+            this.cmbUpdateFirmaAdi.Size = new System.Drawing.Size(164, 26);
+            this.cmbUpdateFirmaAdi.TabIndex = 4;
+            // 
             // HububatFarkOdemesiForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 18F);
@@ -568,7 +572,7 @@ namespace App.Forms
             this.Font = new System.Drawing.Font("Tahoma", 9F);
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "HububatFarkOdemesiForm";
-            this.Text = "HububatFarkOdemesiForm";
+            this.Text = "Hububat Fark Ödemesi Başvuru Formu";
             this.Load += new System.EventHandler(this.HububatFarkOdemesiForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgwListe)).EndInit();
             this.panel2.ResumeLayout(false);
@@ -586,7 +590,6 @@ namespace App.Forms
         private System.Windows.Forms.TextBox txtFiyat;
         private System.Windows.Forms.TextBox txtMiktar;
         private System.Windows.Forms.TextBox txtFaturaTarihi;
-        private System.Windows.Forms.TextBox txtDosyaTeslimTarihi;
         private System.Windows.Forms.TextBox txtDosyaNo;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.TextBox txtFaturaNo;
@@ -611,12 +614,10 @@ namespace App.Forms
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.TextBox txtUpdateFiyat;
-        private System.Windows.Forms.ComboBox cmbUpdateFirmaAdi;
         private System.Windows.Forms.TextBox txtUpdateMiktar;
         private System.Windows.Forms.TextBox txtUpdateNote;
         private System.Windows.Forms.TextBox txtUpdateFaturaTarihi;
         private System.Windows.Forms.ComboBox cmbUpdateUrunAdi;
-        private System.Windows.Forms.TextBox txtUpdatedosyaTeslimTarihi;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.TextBox txtUpdateDosyaNo;
         private System.Windows.Forms.Label label14;
@@ -628,5 +629,8 @@ namespace App.Forms
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.DateTimePicker dtpUpdateTarih;
+        private System.Windows.Forms.DateTimePicker dtpAddTarih;
+        private System.Windows.Forms.ComboBox cmbUpdateFirmaAdi;
     }
 }

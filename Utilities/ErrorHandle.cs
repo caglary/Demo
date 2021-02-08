@@ -15,29 +15,36 @@ namespace Utilities
             {
                 action.Invoke();
             }
-            catch (ArgumentOutOfRangeException exception)
+            catch (FormatException e)
             {
-                mesajVer(mesaj, exception);
+                Utilities.Mesaj.MessageBoxWarning("Yanlış formatta veri girdiniz. Girdiğiniz verileri kontrol edin.");
             }
             catch (Exception exception)
             {
-                if (exception.Message== "Input string was not in a correct format.")
-                {
-                    mesajVer("Uygun olmayan bir veri girişi yapmayak istediniz.\nGirdiğiniz verileri kontrol ediniz.", exception);
-
-                }
-                else mesajVer(mesaj, exception);
-             
-
+                mesajVer(mesaj, exception);
             }
+
 
             void mesajVer(string text, Exception exception)
             {
                 if (!string.IsNullOrEmpty(text))
                     Mesaj.MessageBoxError(text);
-                else                
-                    Mesaj.MessageBoxError(exception.Message);
-             
+                else
+                {
+                    Exception ie = exception.InnerException;
+                    if (ie != null)
+                    {
+                       
+                        Mesaj.MessageBoxError($"GetType: {exception.GetType().Name}  --inner type:{ie.GetType().Name}\nMesaj: {exception.Message}--inner message:{ie.Message}\nStackTrace: {exception.StackTrace} --inner stacktrace:{ie.StackTrace}");
+                    }
+                    else
+                    {
+                        Mesaj.MessageBoxError($"Mesaj: {exception.Message}\nStackTrace: {exception.StackTrace}\nGetType: {exception.GetType().Name}");
+                    }
+                    
+                }
+
+
 
             }
         }

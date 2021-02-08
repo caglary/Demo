@@ -36,6 +36,7 @@ namespace App.Forms
             this.toolStripStatusExcel = new System.Windows.Forms.ToolStripSplitButton();
             this.excelToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.jsonToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.databaseInfo = new System.Windows.Forms.ToolStripStatusLabel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.btnListeler = new System.Windows.Forms.Button();
@@ -43,15 +44,18 @@ namespace App.Forms
             this.btnSearch = new System.Windows.Forms.Button();
             this.label10 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.dtpAddTarih = new System.Windows.Forms.DateTimePicker();
             this.txtTcSearch = new System.Windows.Forms.TextBox();
             this.btnAdd = new System.Windows.Forms.Button();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
+            this.txtAddDosyaNo = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.cmboxMahalleKoy = new System.Windows.Forms.ComboBox();
             this.btnHububatFarkOdemesi = new System.Windows.Forms.Button();
             this.btnYemBitkileri = new System.Windows.Forms.Button();
             this.btnSertifikaliTohum = new System.Windows.Forms.Button();
-            this.txtKayitTarihi = new System.Windows.Forms.TextBox();
             this.txtBabaAdi = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.txtEvTelefon = new System.Windows.Forms.TextBox();
@@ -71,7 +75,7 @@ namespace App.Forms
             this.btnSil = new System.Windows.Forms.Button();
             this.btnGuncelle = new System.Windows.Forms.Button();
             this.lblKayitSayisi = new System.Windows.Forms.Label();
-            this.databaseInfo = new System.Windows.Forms.ToolStripStatusLabel();
+            this.dtpUpdateTarih = new System.Windows.Forms.DateTimePicker();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgwListe)).BeginInit();
             this.statusStrip2.SuspendLayout();
@@ -87,10 +91,10 @@ namespace App.Forms
             this.panel1.Controls.Add(this.dgwListe);
             this.panel1.Controls.Add(this.statusStrip2);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 284);
+            this.panel1.Location = new System.Drawing.Point(0, 312);
             this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1209, 369);
+            this.panel1.Size = new System.Drawing.Size(1209, 341);
             this.panel1.TabIndex = 2;
             // 
             // dgwListe
@@ -102,7 +106,7 @@ namespace App.Forms
             this.dgwListe.Name = "dgwListe";
             this.dgwListe.RowHeadersWidth = 51;
             this.dgwListe.RowTemplate.Height = 24;
-            this.dgwListe.Size = new System.Drawing.Size(1209, 343);
+            this.dgwListe.Size = new System.Drawing.Size(1209, 315);
             this.dgwListe.TabIndex = 1;
             this.dgwListe.DataSourceChanged += new System.EventHandler(this.dgwListe_DataSourceChanged);
             this.dgwListe.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgwListe_CellClick);
@@ -113,7 +117,7 @@ namespace App.Forms
             this.statusStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripStatusExcel,
             this.databaseInfo});
-            this.statusStrip2.Location = new System.Drawing.Point(0, 343);
+            this.statusStrip2.Location = new System.Drawing.Point(0, 315);
             this.statusStrip2.Name = "statusStrip2";
             this.statusStrip2.Padding = new System.Windows.Forms.Padding(1, 0, 16, 0);
             this.statusStrip2.Size = new System.Drawing.Size(1209, 26);
@@ -144,6 +148,14 @@ namespace App.Forms
             this.jsonToolStripMenuItem.Text = "To Json";
             this.jsonToolStripMenuItem.Click += new System.EventHandler(this.jsonToolStripMenuItem_Click);
             // 
+            // databaseInfo
+            // 
+            this.databaseInfo.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.databaseInfo.Name = "databaseInfo";
+            this.databaseInfo.Size = new System.Drawing.Size(117, 20);
+            this.databaseInfo.Text = "Which Database";
+            this.databaseInfo.Click += new System.EventHandler(this.toolStripStatusLabel1_Click);
+            // 
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
@@ -159,12 +171,12 @@ namespace App.Forms
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Margin = new System.Windows.Forms.Padding(4);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1209, 284);
+            this.panel2.Size = new System.Drawing.Size(1209, 312);
             this.panel2.TabIndex = 3;
             // 
             // txtSearch
             // 
-            this.txtSearch.Location = new System.Drawing.Point(696, 184);
+            this.txtSearch.Location = new System.Drawing.Point(696, 214);
             this.txtSearch.Name = "txtSearch";
             this.txtSearch.Size = new System.Drawing.Size(252, 24);
             this.txtSearch.TabIndex = 13;
@@ -174,7 +186,7 @@ namespace App.Forms
             this.btnListeler.BackColor = System.Drawing.Color.Green;
             this.btnListeler.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnListeler.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnListeler.Location = new System.Drawing.Point(944, 239);
+            this.btnListeler.Location = new System.Drawing.Point(944, 269);
             this.btnListeler.Margin = new System.Windows.Forms.Padding(4);
             this.btnListeler.Name = "btnListeler";
             this.btnListeler.Size = new System.Drawing.Size(122, 35);
@@ -187,7 +199,7 @@ namespace App.Forms
             // 
             this.btnCiftciler.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.btnCiftciler.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCiftciler.Location = new System.Drawing.Point(1074, 239);
+            this.btnCiftciler.Location = new System.Drawing.Point(1074, 269);
             this.btnCiftciler.Margin = new System.Windows.Forms.Padding(4);
             this.btnCiftciler.Name = "btnCiftciler";
             this.btnCiftciler.Size = new System.Drawing.Size(122, 35);
@@ -200,7 +212,7 @@ namespace App.Forms
             // 
             this.btnSearch.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.btnSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSearch.Location = new System.Drawing.Point(955, 178);
+            this.btnSearch.Location = new System.Drawing.Point(955, 208);
             this.btnSearch.Margin = new System.Windows.Forms.Padding(4);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(85, 37);
@@ -212,7 +224,7 @@ namespace App.Forms
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(693, 163);
+            this.label10.Location = new System.Drawing.Point(693, 193);
             this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(217, 18);
@@ -221,28 +233,43 @@ namespace App.Forms
             // 
             // groupBox2
             // 
+            this.groupBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.groupBox2.Controls.Add(this.dtpAddTarih);
             this.groupBox2.Controls.Add(this.txtTcSearch);
             this.groupBox2.Controls.Add(this.btnAdd);
+            this.groupBox2.Controls.Add(this.label12);
+            this.groupBox2.Controls.Add(this.label11);
             this.groupBox2.Controls.Add(this.label9);
+            this.groupBox2.Controls.Add(this.txtAddDosyaNo);
             this.groupBox2.Location = new System.Drawing.Point(678, 3);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(400, 140);
+            this.groupBox2.Size = new System.Drawing.Size(518, 178);
             this.groupBox2.TabIndex = 10;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Yeni Kayıt İşlemleri";
+            // 
+            // dtpAddTarih
+            // 
+            this.dtpAddTarih.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpAddTarih.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpAddTarih.Location = new System.Drawing.Point(118, 131);
+            this.dtpAddTarih.MinDate = new System.DateTime(2020, 1, 1, 0, 0, 0, 0);
+            this.dtpAddTarih.Name = "dtpAddTarih";
+            this.dtpAddTarih.Size = new System.Drawing.Size(152, 27);
+            this.dtpAddTarih.TabIndex = 13;
             // 
             // txtTcSearch
             // 
             this.txtTcSearch.Location = new System.Drawing.Point(18, 62);
             this.txtTcSearch.Name = "txtTcSearch";
-            this.txtTcSearch.Size = new System.Drawing.Size(259, 24);
+            this.txtTcSearch.Size = new System.Drawing.Size(252, 24);
             this.txtTcSearch.TabIndex = 0;
             // 
             // btnAdd
             // 
-            this.btnAdd.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.btnAdd.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.btnAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAdd.Location = new System.Drawing.Point(18, 93);
+            this.btnAdd.Location = new System.Drawing.Point(336, 56);
             this.btnAdd.Margin = new System.Windows.Forms.Padding(4);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(85, 37);
@@ -250,6 +277,26 @@ namespace App.Forms
             this.btnAdd.Text = "Ekle";
             this.btnAdd.UseVisualStyleBackColor = false;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(14, 136);
+            this.label12.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(97, 18);
+            this.label12.TabIndex = 12;
+            this.label12.Text = "Tarih Seçiniz.";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(14, 99);
+            this.label11.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(79, 18);
+            this.label11.TabIndex = 12;
+            this.label11.Text = "Dosya No:";
             // 
             // label9
             // 
@@ -261,13 +308,22 @@ namespace App.Forms
             this.label9.TabIndex = 12;
             this.label9.Text = "Eklemek istediğiniz Tc numarası girniz.";
             // 
+            // txtAddDosyaNo
+            // 
+            this.txtAddDosyaNo.Location = new System.Drawing.Point(118, 96);
+            this.txtAddDosyaNo.Margin = new System.Windows.Forms.Padding(4);
+            this.txtAddDosyaNo.Name = "txtAddDosyaNo";
+            this.txtAddDosyaNo.Size = new System.Drawing.Size(58, 24);
+            this.txtAddDosyaNo.TabIndex = 0;
+            // 
             // groupBox1
             // 
+            this.groupBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.groupBox1.Controls.Add(this.dtpUpdateTarih);
             this.groupBox1.Controls.Add(this.cmboxMahalleKoy);
             this.groupBox1.Controls.Add(this.btnHububatFarkOdemesi);
             this.groupBox1.Controls.Add(this.btnYemBitkileri);
             this.groupBox1.Controls.Add(this.btnSertifikaliTohum);
-            this.groupBox1.Controls.Add(this.txtKayitTarihi);
             this.groupBox1.Controls.Add(this.txtBabaAdi);
             this.groupBox1.Controls.Add(this.label8);
             this.groupBox1.Controls.Add(this.txtEvTelefon);
@@ -285,7 +341,7 @@ namespace App.Forms
             this.groupBox1.Controls.Add(this.panel3);
             this.groupBox1.Location = new System.Drawing.Point(3, 3);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(669, 256);
+            this.groupBox1.Size = new System.Drawing.Size(669, 302);
             this.groupBox1.TabIndex = 9;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Güncelleme İşlemleri";
@@ -336,14 +392,6 @@ namespace App.Forms
             this.btnSertifikaliTohum.Text = "Sertifikalı T.";
             this.btnSertifikaliTohum.UseVisualStyleBackColor = false;
             this.btnSertifikaliTohum.Click += new System.EventHandler(this.btnSertifikaliTohum_Click);
-            // 
-            // txtKayitTarihi
-            // 
-            this.txtKayitTarihi.Location = new System.Drawing.Point(456, 140);
-            this.txtKayitTarihi.Margin = new System.Windows.Forms.Padding(4);
-            this.txtKayitTarihi.Name = "txtKayitTarihi";
-            this.txtKayitTarihi.Size = new System.Drawing.Size(180, 24);
-            this.txtKayitTarihi.TabIndex = 7;
             // 
             // txtBabaAdi
             // 
@@ -460,7 +508,7 @@ namespace App.Forms
             this.txtDosyaNo.Location = new System.Drawing.Point(104, 46);
             this.txtDosyaNo.Margin = new System.Windows.Forms.Padding(4);
             this.txtDosyaNo.Name = "txtDosyaNo";
-            this.txtDosyaNo.Size = new System.Drawing.Size(203, 24);
+            this.txtDosyaNo.Size = new System.Drawing.Size(86, 24);
             this.txtDosyaNo.TabIndex = 0;
             // 
             // label1
@@ -484,7 +532,7 @@ namespace App.Forms
             // 
             // flowLayoutPanel1
             // 
-            this.flowLayoutPanel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.flowLayoutPanel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.flowLayoutPanel1.Controls.Add(this.btnSil);
             this.flowLayoutPanel1.Controls.Add(this.btnGuncelle);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -523,20 +571,22 @@ namespace App.Forms
             // lblKayitSayisi
             // 
             this.lblKayitSayisi.AutoSize = true;
-            this.lblKayitSayisi.Location = new System.Drawing.Point(679, 239);
+            this.lblKayitSayisi.Location = new System.Drawing.Point(679, 269);
             this.lblKayitSayisi.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblKayitSayisi.Name = "lblKayitSayisi";
             this.lblKayitSayisi.Size = new System.Drawing.Size(23, 18);
             this.lblKayitSayisi.TabIndex = 12;
             this.lblKayitSayisi.Text = "---";
             // 
-            // databaseInfo
+            // dtpUpdateTarih
             // 
-            this.databaseInfo.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.databaseInfo.Name = "databaseInfo";
-            this.databaseInfo.Size = new System.Drawing.Size(117, 20);
-            this.databaseInfo.Text = "Which Database";
-            this.databaseInfo.Click += new System.EventHandler(this.toolStripStatusLabel1_Click);
+            this.dtpUpdateTarih.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpUpdateTarih.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpUpdateTarih.Location = new System.Drawing.Point(456, 140);
+            this.dtpUpdateTarih.MinDate = new System.DateTime(2020, 1, 1, 0, 0, 0, 0);
+            this.dtpUpdateTarih.Name = "dtpUpdateTarih";
+            this.dtpUpdateTarih.Size = new System.Drawing.Size(180, 27);
+            this.dtpUpdateTarih.TabIndex = 13;
             // 
             // CksForm
             // 
@@ -580,7 +630,6 @@ namespace App.Forms
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.ComboBox cmboxMahalleKoy;
-        private System.Windows.Forms.TextBox txtKayitTarihi;
         private System.Windows.Forms.TextBox txtBabaAdi;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox txtEvTelefon;
@@ -616,6 +665,11 @@ namespace App.Forms
         private System.Windows.Forms.Button btnHububatFarkOdemesi;
         private System.Windows.Forms.Button btnListeler;
         private System.Windows.Forms.ToolStripStatusLabel databaseInfo;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.TextBox txtAddDosyaNo;
+        private System.Windows.Forms.DateTimePicker dtpAddTarih;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.DateTimePicker dtpUpdateTarih;
     }
 }
 

@@ -11,7 +11,7 @@ namespace Database.Concrete.Sqlite
 {
     public class BaseSqlite
     {
-      
+
         SQLiteConnection connection;
         public SQLiteDataReader dataReader;
         public SQLiteCommand command;
@@ -26,7 +26,7 @@ namespace Database.Concrete.Sqlite
         {
             try
             {
-                
+
                 connection = new SQLiteConnection(database._connectionString);
                 command = new SQLiteCommand(connection);
 
@@ -36,12 +36,26 @@ namespace Database.Concrete.Sqlite
             }
             catch (Exception exception)
             {
+                Utilities.ErrorHandle._try(() => { throw exception; });
                 //connectionstring dosyasını sil ve database tekrar göster
-                
-                string _path = @".\connectionstring.txt";
-                File.Delete(_path);
-                System.Windows.Forms.MessageBox.Show("Programı şimdi kapanacak. Uygun bir database seçin.");
-                Environment.Exit(0);
+                //if (exception.HResult == -2147473489)
+                //{
+                //    System.Windows.Forms.MessageBox.Show("Kayıtlı bir Tc numarası veya dosya numarası ile kayıt yapmaya çalışıyorsunuz.");
+
+                //}
+                //else if (exception.HResult == -2146233033)
+                //{
+                //    System.Windows.Forms.MessageBox.Show("Form üzerinde eksik ya da yanlış bilgi girişi yaptınız.");
+
+                //}
+                //else
+                //{
+                //    //string _path = @".\connectionstring.txt";
+                //    //File.Delete(_path);
+                //    System.Windows.Forms.MessageBox.Show($"{exception.Message}  {exception.HResult}");
+                //    //Environment.Exit(0);
+                //}
+
 
             }
             finally

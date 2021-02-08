@@ -58,6 +58,7 @@ namespace App.Forms
                     int result = _ciftcilerManager.Add(ciftci);
                     if (result > 0)
                     {
+                        dgwList.DataSource = _ciftcilerManager.GetAll().OrderByDescending(I => I.Id).ToList();
                         Utilities.Mesaj.MessageBoxInformation("Kayıt Başarılı");
                         if (_formNerdenGeldi == FormNerdenGeldi.CksKayitDefteri)
                         {
@@ -127,6 +128,8 @@ namespace App.Forms
 
         private Ciftci FormToEntity()
         {
+            if (txtTc.Text.Length != 11) throw new Exception("Tc Numarasını kontrol ediniz.");
+
             Ciftci ciftci = new Ciftci()
             {
                 TcKimlikNo = string.IsNullOrEmpty(txtTc.Text) ? "" : txtTc.Text,
