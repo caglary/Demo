@@ -9,7 +9,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
 namespace App.Forms
 {
     public partial class HububatFarkOdemesiForm : Form
@@ -28,11 +27,9 @@ namespace App.Forms
             _urunManager = new UrunManager();
             _firmaManager = new FirmaManager();
         }
-
         private void HububatFarkOdemesiForm_Load(object sender, EventArgs e)
         {
             Utilities.FormPreferences.FromSettings(this);
-
             int id = _ciftci.Id;
             GetAllList();
             Utilities.FormPreferences.DataGridSettings(dgwListe, new string[] { "Id" });
@@ -48,23 +45,18 @@ namespace App.Forms
             dgwListe.Columns[5].HeaderText = "Miktar";
             dgwListe.Columns[6].HeaderText = "Birim Fiyatı";
             dgwListe.Columns[7].HeaderText = "Toplam Tutar";
-
             dtpAddTarih.Value = DateTime.Now;
             dtpUpdateTarih.Value = DateTime.Now;
-
         }
-
         private void GetAllList()
         {
             dgwListe.DataSource = _bll.GetDataTable(_ciftci.Id);
         }
-
         private void btnAdd_Click(object sender, EventArgs e)
         {
             Utilities.ErrorHandle._try(() =>
             {
                 HububatFarkOdemesi h = new HububatFarkOdemesi();
-
                 h.CksId = _ciftci.Id;
                 h.HububatDosyaNo = Convert.ToInt32(txtDosyaNo.Text);
                 h.FirmaId = (int)cmbFirmaAdi.SelectedValue;
@@ -75,25 +67,16 @@ namespace App.Forms
                 h.Fiyat = txtFiyat.Text;
                 h.Miktar = txtMiktar.Text;
                 h.Not = txtNote.Text;
-
                 if (h.CksId != 0)
                 {
                     _bll.Add(h);
                     GetAllList();
                 }
-
-
-
-
             });
-
         }
-
         private HububatFarkOdemesi FormToEntityForUpdate()
         {
             HububatFarkOdemesi h = _bll.GetAll().Where(I => I.Id == Convert.ToInt32(dgwListe.Tag)).FirstOrDefault();
-
-
             h.HububatDosyaNo = Convert.ToInt32(txtUpdateDosyaNo.Text);
             h.FirmaId = (int)cmbUpdateFirmaAdi.SelectedValue;
             h.UrunId = (int)cmbUpdateUrunAdi.SelectedValue;
@@ -114,21 +97,13 @@ namespace App.Forms
                 dtpUpdateTarih.Value =Convert.ToDateTime( h.MuracaatTarihi);
                 txtUpdateFaturaTarihi.Text = h.FaturaTarihi;
                 txtUpdateFaturaNo.Text = h.FaturaNo;
-
-
-               
                 cmbUpdateFirmaAdi.SelectedValue = h.FirmaId;
-               
-
                 cmbUpdateUrunAdi.SelectedValue = h.UrunId;
                 txtUpdateFiyat.Text = h.Fiyat;
                 txtUpdateMiktar.Text = h.Miktar;
                 txtUpdateNote.Text = h.Not;
             }
-
-
         }
-
         private void dgwListe_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             int rowIndex = dgwListe.CurrentRow.Index;
@@ -136,10 +111,7 @@ namespace App.Forms
             var id = dgwListe.Rows[rowIndex].Cells[0].Value;
             dgwListe.Tag = Convert.ToInt32(id);
             EntityToFormForUpdate();
-           
-
         }
-
         private void btnUpdate_Click(object sender, EventArgs e)
         {
             Utilities.ErrorHandle._try(() =>
@@ -156,9 +128,7 @@ namespace App.Forms
                     Utilities.Mesaj.MessageBoxWarning("Listeden güncellemek istediğiniz kaydı seçiniz.");
                 }
             });
-
         }
-
         private void btnDelete_Click(object sender, EventArgs e)
         {
             HububatFarkOdemesi h = _bll.GetAll().Where(I => I.Id == Convert.ToInt32(dgwListe.Tag)).FirstOrDefault();
@@ -168,7 +138,6 @@ namespace App.Forms
                 {
                     var deletedEntity = FormToEntityForUpdate();
                     _bll.Delete(deletedEntity);
-
                     txtUpdateDosyaNo.Text = "";
                     dtpUpdateTarih.Value = DateTime.Now;
                     txtUpdateFaturaNo.Text = "";
@@ -176,38 +145,26 @@ namespace App.Forms
                     txtUpdateFiyat.Text = "";
                     txtUpdateMiktar.Text = "";
                     txtUpdateNote.Text = "";
-
                     GetAllList();
                     dgwListe.Tag = 0;
                 },$"{h.FaturaNo} fatura nolu kaydı silmek istiyor musunuz?");
-
-
             }
             else
             {
                 Utilities.Mesaj.MessageBoxWarning("Listeden silmek istediğiniz kaydı seçiniz.");
             }
-
         }
-
         private void button2_Click(object sender, EventArgs e)
         {
             Utilities.FormPreferences.FormOpen("FirmaForm",new FirmaForm(), true);
             Utilities.FormPreferences.ComboxSetFirma(cmbFirmaAdi, _firmaManager.GetAll());
             Utilities.FormPreferences.ComboxSetFirma(cmbUpdateFirmaAdi, _firmaManager.GetAll());
         }
-
-      
-
         private void button1_Click(object sender, EventArgs e)
         {
             Utilities.FormPreferences.FormOpen("UrunForm", new UrunForm(), true);
             Utilities.FormPreferences.ComboxSetUrun(cmbUrunAdi, _urunManager.GetAll());
             Utilities.FormPreferences.ComboxSetUrun(cmbUpdateUrunAdi, _urunManager.GetAll());
-
-
-
         }
-
     }
 }

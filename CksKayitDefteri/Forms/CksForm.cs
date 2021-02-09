@@ -4,31 +4,25 @@ using System;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
 namespace App.Forms
 {
     public partial class CksForm : Form
     {
         CksManager _cksManager;
         CiftcilerManager _ciftcilerManager;
-
         static Cks _cksKaydi = new Cks() { Id = -1 };
         public CksForm()
         {
             InitializeComponent();
             _cksManager = new CksManager();
             _ciftcilerManager = new CiftcilerManager();
-
         }
-
         private void Form1_Load(object sender, EventArgs e)
         {
             Utilities.FormPreferences.FromSettings(this);
             dgwListe.DataSource = _cksManager.GetAll();
             Utilities.FormPreferences.DataGridSettings(dgwListe, new string[] { "Id" });
-
             cmboxMahalleKoy.DataSource = Utilities.RequiredLists.VillageNameList();
-
             dgwListe.Columns[1].HeaderText = "Dosya No";
             dgwListe.Columns[2].HeaderText = "Tc Numarası";
             dgwListe.Columns[3].HeaderText = "İsim";
@@ -38,16 +32,8 @@ namespace App.Forms
             dgwListe.Columns[7].HeaderText = "Ev Telefonu";
             dgwListe.Columns[8].HeaderText = "Kayıt Tarihi";
             dgwListe.Columns[9].HeaderText = "Not";
-
             txtAddDosyaNo.Text = _cksManager.DosyaNoFactory().ToString();
-
-           
-
-
-
-
         }
-
         private void dgwListe_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             Utilities.ErrorHandle._try(() =>
@@ -68,11 +54,7 @@ namespace App.Forms
                 txtTc.Text = _cksKaydi.Tc;
                 cmboxMahalleKoy.Text = _cksKaydi.KoyMahalle;
             });
-
-
         }
-
-
         private void btnAdd_Click(object sender, EventArgs e)
         {
             int returnValue = 0;
@@ -85,22 +67,15 @@ namespace App.Forms
                 {
                     CiftciForm form = new CiftciForm(tc);
                     form.ShowDialog();
-
                     //form kapandıktan sonra işleme devam edecek..
                     var kaydedilenciftci = _ciftcilerManager.GetByTc(tc);
-
-
                     Cks cks = new Cks();
                     cks.KayitTarihi = dtpAddTarih.Value.ToShortDateString();
-                    
                     cks.DosyaNo = Convert.ToInt32(txtAddDosyaNo.Text);
                     cks.BabaAdi = kaydedilenciftci.FatherName;
-
-
                     cks.CepTelefonu = kaydedilenciftci.MobilePhone;
                     cks.EvTelefonu = kaydedilenciftci.HomePhone;
                     cks.IsimSoyisim = kaydedilenciftci.NameSurname;
-
                     cks.KoyMahalle = kaydedilenciftci.Village;
                     cks.Tc = tc;
                     returnValue = _cksManager.Add(cks);
@@ -109,22 +84,16 @@ namespace App.Forms
                         dgwListe.DataSource = _cksManager.GetAll();
                         Utilities.Mesaj.MessageBoxInformation("Kaydettiğiniz çiftçi ÇKS listesine kaydedildi.");
                     }
-
                 }
                 else
                 {
-                    
                     Cks cks = new Cks();
                     cks.KayitTarihi = dtpAddTarih.Value.ToShortDateString();
-
                     cks.DosyaNo =Convert.ToInt32( txtAddDosyaNo.Text);
                     cks.BabaAdi = ciftci.FatherName;
-
-
                     cks.CepTelefonu = ciftci.MobilePhone;
                     cks.EvTelefonu = ciftci.HomePhone;
                     cks.IsimSoyisim = ciftci.NameSurname;
-
                     cks.KoyMahalle = ciftci.Village;
                     cks.Tc = tc;
                     returnValue = _cksManager.Add(cks);
@@ -135,11 +104,7 @@ namespace App.Forms
                     }
                 }
             });
-
         }
-
-       
-
         private void UpdateFormFill(Cks cksKaydi)
         {
             txtDosyaNo.Text = cksKaydi.DosyaNo.ToString();
@@ -151,7 +116,6 @@ namespace App.Forms
             txtTc.Text = cksKaydi.Tc;
             cmboxMahalleKoy.Text = cksKaydi.KoyMahalle;
         }
-
         private void btnSil_Click(object sender, EventArgs e)
         {
             Utilities.ErrorHandle._try(() =>
@@ -162,8 +126,6 @@ namespace App.Forms
                 {
                     _cksKaydi = new Cks() { Id = -1 };
                     dgwListe.DataSource = _cksManager.GetAll();
-
-
                     txtBabaAdi.Text = "";
                     txtCepTelefon.Text = "";
                     txtDosyaNo.Text = "";
@@ -172,17 +134,10 @@ namespace App.Forms
                     dtpUpdateTarih.Value = DateTime.Now;
                     txtTc.Text = "";
                     cmboxMahalleKoy.Text = "";
-
                     Utilities.Mesaj.MessageBoxInformation("Silme işlemi başarılı");
-
                 }
-
             });
-
         }
-
-      
-
         private void btnGuncelle_Click(object sender, EventArgs e)
         {
             Utilities.ErrorHandle._try(() =>
@@ -196,20 +151,15 @@ namespace App.Forms
                 _cksKaydi.CepTelefonu = txtCepTelefon.Text;
                 _cksKaydi.EvTelefonu = txtEvTelefon.Text;
                 _cksKaydi.KayitTarihi = dtpUpdateTarih.Value.ToShortDateString();
-
                 int result = _cksManager.Update(_cksKaydi);
                 if (result == 1)
                 {
                     dgwListe.DataSource = _cksManager.GetAll();
                     Utilities.Mesaj.MessageBoxInformation("Güncelleme işlemi başarılı");
-
                     UpdateFormFill(_cksKaydi);
-
                 }
-
             });
         }
-
         private void excelToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Utilities.Question.IfYes(() =>
@@ -218,7 +168,6 @@ namespace App.Forms
             {
                 var liste = _cksManager.GetAll().OrderBy(I => I.DosyaNo).ToList();
                 var dataTable = Utilities.ExcelExport.ConvertToDataTable(liste);
-
                 var location = Utilities.FolderBrowser.Path();
                 var path = location + @"\CksListesi.xlsx";
                 Task t = Task.Run(() =>
@@ -229,12 +178,10 @@ namespace App.Forms
             });
             }, "Devam etmek istiyor musunuz?");
         }
-
         private void jsonToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Utilities.Question.IfYes(() =>
             {
-
                 Utilities.ErrorHandle._try(() =>
                 {
                     var path = Utilities.FolderBrowser.Path();
@@ -242,16 +189,11 @@ namespace App.Forms
                     {
                         var listCks = _cksManager.GetAll().OrderBy(I => I.DosyaNo).ToList();
                         Utilities.Json.Backup(listCks, "Cks", path);
-
                         Utilities.Mesaj.MessageBoxInformation("Backup işlemi başarılı.");
                     });
-
                 });
-
-
             }, "Devam etmek istiyor musunuz?");
         }
-
         private void btnSearch_Click(object sender, EventArgs e)
         {
             if (!string.IsNullOrEmpty(txtSearch.Text))
@@ -263,71 +205,55 @@ namespace App.Forms
                 dgwListe.DataSource = _cksManager.GetAll();
             }
         }
-
         private void dgwListe_DataSourceChanged(object sender, EventArgs e)
         {
             lblKayitSayisi.Text = $"Listede bulunan toplam kayıt sayısı: {dgwListe.RowCount.ToString()}";
             txtAddDosyaNo.Text = _cksManager.DosyaNoFactory().ToString();
-
         }
-
         private void btnCiftciler_Click(object sender, EventArgs e)
         {
             CiftciForm form = new CiftciForm();
             form.ShowDialog();
         }
-
         private void btnSertifikaliTohum_Click(object sender, EventArgs e)
         {
             Utilities.ErrorHandle._try(() =>
             {
                 if (_cksKaydi.Id == -1) throw new Exception("Listeden çiftçi seçiniz.");
-
                 Form _form = new SertifikaliTohumForm(_cksKaydi.Tc);
                 _form.ShowDialog();
             });
-
         }
-
         private void btnYemBitkileri_Click(object sender, EventArgs e)
         {
             Utilities.ErrorHandle._try(() =>
             {
                 if (_cksKaydi.Id == -1) throw new Exception("Listeden çiftçi seçiniz.");
-
                 Form _form = new YemBitkileriForm(_cksKaydi.Tc);
                 _form.ShowDialog();
             });
         }
-
         private void btnHububatFarkOdemesi_Click(object sender, EventArgs e)
         {
             Utilities.ErrorHandle._try(() =>
             {
                 if (_cksKaydi.Id == -1) throw new Exception("Listeden çiftçi seçiniz.");
-
                 Form _form = new HububatFarkOdemesiForm(_cksKaydi);
                 _form.ShowDialog();
             });
         }
-
         private void btnListeler_Click(object sender, EventArgs e)
         {
             Utilities.ErrorHandle._try(() =>
             {
-
                 Form _form = new DestekListesiForm();
                 _form.ShowDialog();
             });
         }
-
         private void toolStripStatusLabel1_Click(object sender, EventArgs e)
         {
-
             Database.Concrete.Sqlite.DatabaseDb db = new Database.Concrete.Sqlite.DatabaseDb();
             Utilities.Mesaj.MessageBoxInformation($"Database Info: {db._connectionString}");
         }
-
-       
     }
 }

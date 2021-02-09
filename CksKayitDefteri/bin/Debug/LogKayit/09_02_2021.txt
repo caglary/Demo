@@ -1,0 +1,55 @@
+Mesaj: Listeden çiftçi seçiniz.
+StackTrace:    at App.Forms.CksForm.<>c.<btnYemBitkileri_Click>b__16_0() in C:\Users\caglar\Documents\GitHub\Demo\CksKayitDefteri\Forms\CksForm.cs:line 296
+   at Utilities.ErrorHandle._try(Action action, String mesaj) in C:\Users\caglar\Documents\GitHub\Demo\Utilities\ErrorHandle.cs:line 16
+GetType: Exception09/02/2021 2:12:24 AM - Mesaj: Listeden çiftçi seçiniz.
+StackTrace:    at App.Forms.CksForm.<>c.<btnHububatFarkOdemesi_Click>b__17_0() in C:\Users\caglar\Documents\GitHub\Demo\CksKayitDefteri\Forms\CksForm.cs:line 307
+   at Utilities.ErrorHandle._try(Action action, String mesaj) in C:\Users\caglar\Documents\GitHub\Demo\Utilities\ErrorHandle.cs:line 16
+GetType: Exception09/02/2021 2:13:02 AM - Mesaj: Listeden çiftçi seçiniz.
+StackTrace:    at App.Forms.CksForm.<>c.<btnHububatFarkOdemesi_Click>b__17_0() in C:\Users\caglar\Documents\GitHub\Demo\CksKayitDefteri\Forms\CksForm.cs:line 307
+   at Utilities.ErrorHandle._try(Action action, String mesaj) in C:\Users\caglar\Documents\GitHub\Demo\Utilities\ErrorHandle.cs:line 16
+GetType: Exception
+09/02/2021 2:13:37 AM - Mesaj: Listeden çiftçi seçiniz.
+StackTrace:    at App.Forms.CksForm.<>c.<btnHububatFarkOdemesi_Click>b__17_0() in C:\Users\caglar\Documents\GitHub\Demo\CksKayitDefteri\Forms\CksForm.cs:line 307
+   at Utilities.ErrorHandle._try(Action action, String mesaj) in C:\Users\caglar\Documents\GitHub\Demo\Utilities\ErrorHandle.cs:line 16
+GetType: Exception
+09/02/2021 2:14:30 AM - Mesaj: Listeden çiftçi seçiniz.
+StackTrace:    at App.Forms.CksForm.<>c.<btnSertifikaliTohum_Click>b__15_0() in C:\Users\caglar\Documents\GitHub\Demo\CksKayitDefteri\Forms\CksForm.cs:line 284
+   at Utilities.ErrorHandle._try(Action action, String mesaj) in C:\Users\caglar\Documents\GitHub\Demo\Utilities\ErrorHandle.cs:line 16
+GetType: Exception
+09/02/2021 2:15:24 AM - Mesaj: Listeden çiftçi seçiniz.
+StackTrace:    at App.Forms.CksForm.<>c.<btnHububatFarkOdemesi_Click>b__17_0() in C:\Users\caglar\Documents\GitHub\Demo\CksKayitDefteri\Forms\CksForm.cs:line 307
+   at Utilities.ErrorHandle._try(Action action, String mesaj) in C:\Users\caglar\Documents\GitHub\Demo\Utilities\ErrorHandle.cs:line 16
+GetType: Exception
+09/02/2021 2:16:40 AM - Mesaj: Listeden çiftçi seçiniz.
+StackTrace:    at App.Forms.CksForm.<>c.<btnYemBitkileri_Click>b__16_0() in C:\Users\caglar\Documents\GitHub\Demo\CksKayitDefteri\Forms\CksForm.cs:line 296
+   at Utilities.ErrorHandle._try(Action action, String mesaj) in C:\Users\caglar\Documents\GitHub\Demo\Utilities\ErrorHandle.cs:line 16
+GetType: Exception
+09/02/2021 2:16:42 AM - Mesaj: Listeden çiftçi seçiniz.
+StackTrace:    at App.Forms.CksForm.<>c.<btnHububatFarkOdemesi_Click>b__17_0() in C:\Users\caglar\Documents\GitHub\Demo\CksKayitDefteri\Forms\CksForm.cs:line 307
+   at Utilities.ErrorHandle._try(Action action, String mesaj) in C:\Users\caglar\Documents\GitHub\Demo\Utilities\ErrorHandle.cs:line 16
+GetType: Exception
+09/02/2021 2:16:46 AM - Mesaj: Listeden çiftçi seçiniz.
+StackTrace:    at App.Forms.CksForm.<>c.<btnSertifikaliTohum_Click>b__15_0() in C:\Users\caglar\Documents\GitHub\Demo\CksKayitDefteri\Forms\CksForm.cs:line 284
+   at Utilities.ErrorHandle._try(Action action, String mesaj) in C:\Users\caglar\Documents\GitHub\Demo\Utilities\ErrorHandle.cs:line 16
+GetType: Exception
+09/02/2021 2:16:49 AM - Mesaj: Listeden çiftçi seçiniz.
+StackTrace:    at App.Forms.CksForm.<>c.<btnYemBitkileri_Click>b__16_0() in C:\Users\caglar\Documents\GitHub\Demo\CksKayitDefteri\Forms\CksForm.cs:line 296
+   at Utilities.ErrorHandle._try(Action action, String mesaj) in C:\Users\caglar\Documents\GitHub\Demo\Utilities\ErrorHandle.cs:line 16
+GetType: Exception
+09/02/2021 2:16:58 AM - Mesaj: Listeden kayıt seçiniz.
+StackTrace:    at App.Forms.YemBitkileriForm.<btnGuncelle_Click>b__10_0() in C:\Users\caglar\Documents\GitHub\Demo\CksKayitDefteri\Forms\YemBitkileriForm.cs:line 136
+   at Utilities.ErrorHandle._try(Action action, String mesaj) in C:\Users\caglar\Documents\GitHub\Demo\Utilities\ErrorHandle.cs:line 16
+GetType: Exception
+09/02/2021 2:17:00 AM - Mesaj: Listeden kayıt seçiniz.
+StackTrace:    at App.Forms.YemBitkileriForm.<btnSil_Click>b__11_0() in C:\Users\caglar\Documents\GitHub\Demo\CksKayitDefteri\Forms\YemBitkileriForm.cs:line 176
+   at Utilities.ErrorHandle._try(Action action, String mesaj) in C:\Users\caglar\Documents\GitHub\Demo\Utilities\ErrorHandle.cs:line 16
+GetType: Exception
+09/02/2021 2:18:45 AM - Mesaj: Listeden çiftçi seçiniz.
+StackTrace:    at App.Forms.CksForm.<>c.<btnHububatFarkOdemesi_Click>b__17_0() in C:\Users\caglar\Documents\GitHub\Demo\CksKayitDefteri\Forms\CksForm.cs:line 307
+   at Utilities.ErrorHandle._try(Action action, String mesaj) in C:\Users\caglar\Documents\GitHub\Demo\Utilities\ErrorHandle.cs:line 16
+GetType: Exception
+09/02/2021 2:18:50 AM - Yanlış formatta veri girdiniz. Girdiğiniz verileri kontrol edin.
+09/02/2021 2:21:05 AM - 
+FormatException
+Yanlış formatta veri girdiniz. Girdiğiniz verileri kontrol edin.
+09/02/2021 2:22:10 AM -  FormatException Yanlış formatta veri girdiniz. Girdiğiniz verileri kontrol edin.

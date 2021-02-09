@@ -7,20 +7,14 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
 namespace CksKayitDefteri.Business
 {
     public class YemBitkileriManager : BaseService<YemBitkileri>
     {
-        
         public YemBitkileriManager()
         {
             _dal = new YemBitkileriDal();
         }
-
-        
-
-
         internal DataTable GetAllDataTable(int id)
         {
             return _dal.GetAllDataTable(id);

@@ -1,5 +1,4 @@
 ﻿using System;
-
 namespace Entities.Abstract
 {
     public interface ICks:IEntity
@@ -12,7 +11,5 @@ namespace Entities.Abstract
         string CepTelefonu { set; get; }
         string EvTelefonu { set; get; }
         string KayitTarihi { set; get; }
-
-
     }
 }

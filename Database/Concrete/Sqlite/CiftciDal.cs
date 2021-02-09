@@ -7,7 +7,6 @@ using System.Data.SQLite;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
 namespace Database.Concrete.Sqlite
 {
     public class CiftciDal : BaseSqlite, IDatabase<Ciftci>
@@ -32,14 +31,11 @@ namespace Database.Concrete.Sqlite
                 command.Parameters.AddWithValue("@Town", Entity.Town);
                 command.Parameters.AddWithValue("@Village", Entity.Village);
                 command.Parameters.AddWithValue("@Note", Entity.Not);
-
                 command.Prepare();
                 result = command.ExecuteNonQuery();
             });
             return result;
-
         }
-
         public int Delete(Ciftci Entity)
         {
             _try(() =>
@@ -49,14 +45,11 @@ namespace Database.Concrete.Sqlite
                 command.Prepare();
                 result = command.ExecuteNonQuery();
             });
-
             return result;
         }
-
         //public Ciftci Get(string Tc)
         //{
         //    Ciftci ciftci = new Ciftci();
-
         //    _try(() =>
         //    {
         //        command.CommandText = "SELECT * FROM Ciftciler WHERE TcKimlikNo=@TcKimlikNo";
@@ -64,7 +57,6 @@ namespace Database.Concrete.Sqlite
         //        dataReader = command.ExecuteReader();
         //        if (dataReader.HasRows)
         //        {
-
         //            while (dataReader.Read())
         //            {
         //                ciftci.Id = dataReader.IsDBNull(0) ? 0 : dataReader.GetInt32(0);
@@ -83,19 +75,14 @@ namespace Database.Concrete.Sqlite
         //                ciftci.Town = dataReader.IsDBNull(13) ? "" : dataReader.GetString(13);
         //                ciftci.Village = dataReader.IsDBNull(14) ? "" : dataReader.GetString(14);
         //                ciftci.Not = dataReader.IsDBNull(15) ? "" : dataReader.GetString(15);
-
-
         //            }
-
         //        }
         //    });
         //    return ciftci;
         //}
-
         public List<Ciftci> GetAll()
         {
             List<Ciftci> liste = new List<Ciftci>();
-
             _try(() =>
             {
                 command.CommandText = "SELECT * FROM Ciftciler ";
@@ -121,34 +108,26 @@ namespace Database.Concrete.Sqlite
                         ciftci.Village = dataReader.IsDBNull(14) ? "" : dataReader.GetString(14);
                         ciftci.Not = dataReader.IsDBNull(15) ? "" : dataReader.GetString(15);
                         liste.Add(ciftci);
-
                     }
                 }
             });
             return liste;
         }
-
         public DataTable GetAllByQuery(string query)
         {
             DataTable dt = new DataTable();
-
             _try(() =>
             {
-
                 command.CommandText = query;
                 dataReader = command.ExecuteReader();
-
                 dt.Load(dataReader);
-
             });
             return dt;
         }
-
         public DataTable GetAllDataTable(int id)
         {
             throw new NotImplementedException();
         }
-
         public int Update(Ciftci Entity)
         {
             _try(() =>
@@ -170,12 +149,10 @@ namespace Database.Concrete.Sqlite
                 command.Parameters.AddWithValue("@Town", Entity.Town);
                 command.Parameters.AddWithValue("@Village", Entity.Village);
                 command.Parameters.AddWithValue("@Note", Entity.Not);
-
                 command.Prepare();
                 result = command.ExecuteNonQuery();
             });
             return result;
-
         }
     }
 }

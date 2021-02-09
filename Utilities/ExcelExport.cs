@@ -3,8 +3,6 @@ using System.Data;
 using System.Reflection;
 using System.Threading.Tasks;
 using Excel = Microsoft.Office.Interop.Excel;
-
-
 namespace Utilities
 {
     public static class ExcelExport
@@ -13,7 +11,6 @@ namespace Utilities
         {
             DataSet dataSet = new DataSet();
             dataSet.Tables.Add(dataTable);
-
             // create a excel app along side with workbook and worksheet and give a name to it
             Excel.Application excelApp = new Excel.Application();
             Excel.Workbook excelWorkBook = excelApp.Workbooks.Add();
@@ -24,13 +21,11 @@ namespace Utilities
                 //Add a new worksheet to workbook with the Datatable name
                 Excel.Worksheet excelWorkSheet = excelWorkBook.Sheets.Add();
                 excelWorkSheet.Name = table.TableName;
-
                 // add all the columns
                 for (int i = 1; i < table.Columns.Count + 1; i++)
                 {
                     excelWorkSheet.Cells[1, i] = table.Columns[i - 1].ColumnName;
                 }
-
                 // add all the rows
                 for (int j = 0; j < table.Rows.Count; j++)
                 {
@@ -47,12 +42,9 @@ namespace Utilities
         }
         public static DataTable ConvertToDataTable<T>(List<T> models)
         {
-           
             DataTable dataTable = new DataTable(typeof(T).Name);
-
             //Get all the properties
             PropertyInfo[] Props = typeof(T).GetProperties(BindingFlags.Public | BindingFlags.Instance);
-
             // Loop through all the properties            
             // Adding Column to our datatable
             foreach (PropertyInfo prop in Props)

@@ -1,0 +1,4 @@
+Mesaj: Listeden çiftçi seçiniz.
+StackTrace:    at App.Forms.CksForm.<>c.<btnHububatFarkOdemesi_Click>b__17_0() in C:\Users\caglar\Documents\GitHub\Demo\CksKayitDefteri\Forms\CksForm.cs:line 307
+   at Utilities.ErrorHandle._try(Action action, String mesaj) in C:\Users\caglar\Documents\GitHub\Demo\Utilities\ErrorHandle.cs:line 16
+GetType: Exception

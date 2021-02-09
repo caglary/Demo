@@ -9,7 +9,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
 namespace App.Forms
 {
     public partial class UrunForm : Form
@@ -21,22 +20,17 @@ namespace App.Forms
             InitializeComponent();
             _bll = new UrunManager();
         }
-
         private void UrunForm_Load(object sender, EventArgs e)
         {
             GetAllList();
             Utilities.FormPreferences.DataGridSettings(dgwListe, new string[] { "Id" });
             dgwListe.Tag = 0;
             dgwListe.Columns[1].HeaderText = "Ürün Adı";
-
-
         }
-
         private void GetAllList()
         {
             dgwListe.DataSource = _bll.GetAll();
         }
-
         private void btnAdd_Click(object sender, EventArgs e)
         {
             Utilities.ErrorHandle._try(() =>
@@ -50,15 +44,12 @@ namespace App.Forms
                     {
                         txtAddProductName.Text = "";
                         GetAllList();
-
                         Utilities.Mesaj.MessageBoxInformation("İşleminiz başarı ile gerçekleşti.");
-
                     }
                 }
                 else Utilities.Mesaj.MessageBoxWarning("Gerekli alanları doldurunuz.");
             });
         }
-
         private void dgwListe_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             int rowIndex = dgwListe.CurrentRow.Index;
@@ -68,7 +59,6 @@ namespace App.Forms
             _urun = _bll.GetAll().Where(I => I.Id == (int)dgwListe.Tag).FirstOrDefault();
             txtUpdateProductName.Text = _urun.UrunAdi;
         }
-
         private void btnUpdate_Click(object sender, EventArgs e)
         {
             Utilities.ErrorHandle._try(() =>
@@ -76,47 +66,34 @@ namespace App.Forms
                 if (_urun != null)
                 {
                     _urun.UrunAdi = txtUpdateProductName.Text;
-                    
                     int result = _bll.Update(_urun);
                     if (result == 1)
                     {
                         txtUpdateProductName.Text = "";
-                     
                         GetAllList();
-
                         Utilities.Mesaj.MessageBoxInformation("İşleminiz başarı ile gerçekleşti.");
                         _urun = null;
-
-
                     }
                 }
                 else Utilities.Mesaj.MessageBoxWarning("Listeden ürün seçiniz.");
-
             });
         }
-
         private void btnDelete_Click(object sender, EventArgs e)
         {
             Utilities.ErrorHandle._try(() =>
             {
                 if (_urun != null)
                 {
-
                     int result = _bll.Delete(_urun);
                     if (result == 1)
                     {
                         txtUpdateProductName.Text = "";
-                 
                         GetAllList();
-
                         Utilities.Mesaj.MessageBoxInformation("İşleminiz başarı ile gerçekleşti.");
                         _urun = null;
-
-
                     }
                 }
                 else Utilities.Mesaj.MessageBoxWarning("Listeden ürün seçiniz.");
-
             });
         }
     }

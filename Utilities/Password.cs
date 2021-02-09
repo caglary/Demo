@@ -1,5 +1,4 @@
 ﻿using System.IO;
-
 namespace Utilities
 {
     public class Password
@@ -12,13 +11,9 @@ namespace Utilities
             if (!File.Exists(_path))
                 File.Create(_path).Close();
         }
-
         public string GetPassword()
         {
             return File.ReadAllText(_path);
         }
-
-        
     }
-    
 }

@@ -1,5 +1,4 @@
-﻿
-namespace App.Forms
+﻿namespace App.Forms
 {
     partial class YemBitkileriForm
     {
@@ -7,7 +6,6 @@ namespace App.Forms
         /// Required designer variable.
         /// </summary>
         private System.ComponentModel.IContainer components = null;
-
         /// <summary>
         /// Clean up any resources being used.
         /// </summary>
@@ -20,9 +18,7 @@ namespace App.Forms
             }
             base.Dispose(disposing);
         }
-
         #region Windows Form Designer generated code
-
         /// <summary>
         /// Required method for Designer support - do not modify
         /// the contents of this method with the code editor.
@@ -677,9 +673,7 @@ namespace App.Forms
             this.groupBox2.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.ResumeLayout(false);
-
         }
-
         #endregion
         private System.Windows.Forms.TextBox txtAddTespitEdilenAlan;
         private System.Windows.Forms.Button btnSil;

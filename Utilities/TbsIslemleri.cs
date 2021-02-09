@@ -4,11 +4,8 @@ using OpenQA.Selenium.Chrome;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-
-
 namespace Utilities
 {
-
     public static class TbsIslemleri
     {
         public static IWebDriver driver { get; set; }
@@ -35,7 +32,6 @@ namespace Utilities
             {
                 goto google;
             }
-
             driver.FindElement(By.Id("btnLogin")).Click();
             Bekle();
         }
@@ -129,9 +125,7 @@ namespace Utilities
         }
         public static void GerçekKişiKayitIslemleri(string TcNumarasi)
         {
-
             driver.Url = "http://tbsapp.tarbil.gov.tr/Modules/ACM/CKSList.aspx?CorporationType=1#person";
-
             var textbox = driver.FindElement(By.Id("ctl00_ctl00_bodyCPH_ContentPlaceHolder1_HoldingSearchControlUC_RadPanelBar1_i0_edtIdNo11"));
             textbox.Click();
             textbox.SendKeys(Keys.Backspace);
@@ -142,9 +136,7 @@ namespace Utilities
             var buttonDetay = driver.FindElement(By.Id("ctl00_ctl00_bodyCPH_ContentPlaceHolder1_grdList_ctl00_ctl04_EditButton"));
             buttonDetay.Click();
             Bekle(3000);
-
         }
-
         public static Ciftci IsletmeBilgileri()
         {
             Ciftci person = new Ciftci();
@@ -155,16 +147,13 @@ namespace Utilities
             var BabaAdi = driver.FindElement(By.Id("bodyCPH_ContentPlaceHolder1_HoldingDetailControl_edtFatherName"));
             var AnneAdi = driver.FindElement(By.Id("bodyCPH_ContentPlaceHolder1_HoldingDetailControl_edtMotherName"));
             var DogumTarihi = driver.FindElement(By.Id("bodyCPH_ContentPlaceHolder1_HoldingDetailControl_edtBirthdate"));
-            
             var MedeniDurum = driver.FindElement(By.Id("bodyCPH_ContentPlaceHolder1_HoldingDetailControl_txtMaritalStatus"));
             var Il = driver.FindElement(By.Id("ctl00_ctl00_bodyCPH_ContentPlaceHolder1_HoldingDetailControl_CityTownVillageControl_edtCityId_Input"));
             var Ilce = driver.FindElement(By.Name("ctl00$ctl00$bodyCPH$ContentPlaceHolder1$HoldingDetailControl$CityTownVillageControl$edtTownId"));
             var CepTelefonu = driver.FindElement(By.Id("ctl00_ctl00_bodyCPH_ContentPlaceHolder1_HoldingDetailControl_edtMobilePhone"));
             var EvTelefonu = driver.FindElement(By.Id("ctl00_ctl00_bodyCPH_ContentPlaceHolder1_HoldingDetailControl_edtPhone"));
             var Email = driver.FindElement(By.Id("ctl00_ctl00_bodyCPH_ContentPlaceHolder1_HoldingDetailControl_edtEmail"));
-
             person.NameSurname = Isim.Text+" "+Soyisim.Text;
-            
             person.Village = Mahalle.GetAttribute("value");
             person.Gender = Cinsiyet.Text;
             person.FatherName = BabaAdi.Text;
@@ -176,16 +165,11 @@ namespace Utilities
             person.MobilePhone = CepTelefonu.GetAttribute("value");
             person.HomePhone = EvTelefonu.GetAttribute("value");
             person.Email = Email.Text;
-         
             return person;
         }
-
-
         static void Bekle(int Süre = 2000)
         {
             System.Threading.Thread.Sleep(Süre);
         }
-
     }
-
 }

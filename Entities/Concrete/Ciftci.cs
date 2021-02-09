@@ -1,6 +1,5 @@
 ﻿using Entities.Abstract;
 using System;
-
 namespace Entities.Concrete
 {
     public class Ciftci:IEntity,IPerson
@@ -21,6 +20,5 @@ namespace Entities.Concrete
         public string Town { get; set; }
         public string Village { get; set; }
         public string Not { get; set; }
-     
     }
 }

@@ -11,7 +11,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
 namespace App.Forms
 {
     public partial class YemBitkileriForm : Form
@@ -32,14 +31,11 @@ namespace App.Forms
         private void YemBitkileriForm_Load(object sender, EventArgs e)
         {
             Utilities.FormPreferences.FromSettings(this);
-
             this.Text = $"Yem Bitkileri Destekleme Başvuru Formu - ({_cksKayit.IsimSoyisim})";
             Utilities.FormPreferences.ComboxSetUrun(cmbAddUrun, _urunManager.GetAll());
             Utilities.FormPreferences.ComboxSetUrun(cmbUpdateUrun, _urunManager.GetAll());
-
             cmbAddMahalle.DataSource = Utilities.RequiredLists.VillageNameList();
             cmbUpdateMahalle.DataSource = Utilities.RequiredLists.VillageNameList();
-
             AllList();
             Utilities.FormPreferences.DataGridSettings(dgwListe, new string[] { "Id" });
             dgwListe.Columns[1].HeaderText = "Dosya No";
@@ -49,15 +45,12 @@ namespace App.Forms
             dgwListe.Columns[5].HeaderText = "Parsel";
             dgwListe.Columns[6].HeaderText = "Müracaat Alanı";
             dgwListe.Columns[7].HeaderText = "Başvuru Tarihi";
-
             dtpAddTarih.Value = DateTime.Now;
             dtpUpdateTarih.Value = DateTime.Now;
-
         }
         private void AllList()
         {
             dgwListe.DataSource = _yemManager.GetAllDataTable(_cksKayit.Id);
-
             //dgwListe.DataSource = _yemManager.GetByCiftci(_cksKayit.Id);
         }
         private void btnYeniKayit_Click(object sender, EventArgs e)
@@ -83,9 +76,6 @@ namespace App.Forms
                 AllList();
             });
         }
-
-
-
         private void dgwListe_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             Utilities.ErrorHandle._try(() =>
@@ -107,9 +97,7 @@ namespace App.Forms
                 txtUpdateKontrolEdenler.Text = yemkayit.KontrolEdenler;
                 txtUpdateNot.Text = yemkayit.Not;
             });
-
         }
-
         private void btnGuncelle_Click(object sender, EventArgs e)
         {
             Utilities.ErrorHandle._try(() =>
@@ -128,17 +116,13 @@ namespace App.Forms
                     _yemKayit.KontrolTarihi = txtUpdateKontrolTarihi.Text;
                     _yemKayit.KontrolEdenler = txtUpdateKontrolEdenler.Text;
                     _yemKayit.Not = txtUpdateNot.Text;
-
                     int result = _yemManager.Update(_yemKayit);
                     if (result > 0) Utilities.Mesaj.MessageBoxInformation("Güncelleme işlemi başarılı");
                     AllList();
                 }
                 else throw new Exception("Listeden kayıt seçiniz.");
             });
-
-
         }
-
         private void btnSil_Click(object sender, EventArgs e)
         {
             Utilities.ErrorHandle._try(() =>
@@ -150,7 +134,6 @@ namespace App.Forms
                         int result = _yemManager.Delete(_yemKayit);
                         if (result > 0)
                         {
-
                             txtUpdateDosyaNo.Text = "";
                             dtpUpdateTarih.Value=DateTime.Now;
                             //cmbUpdateUrun.Text = "";
@@ -164,25 +147,19 @@ namespace App.Forms
                             txtUpdateKontrolEdenler.Text = "";
                             txtUpdateNot.Text = "";
                             AllList();
-
                             Utilities.Mesaj.MessageBoxInformation("Silme işlemi başarılı");
                             _yemKayit = null;
-
                         }
                     },"Kaydı silmek istiyor musunuz?");
-
-
                 }
                 else throw new Exception("Listeden kayıt seçiniz.");
             });
         }
-
         private void button2_Click(object sender, EventArgs e)
         {
             Utilities.FormPreferences.FormOpen("UrunForm", new UrunForm(), true);
             Utilities.FormPreferences.ComboxSetUrun(cmbAddUrun, _urunManager.GetAll());
             Utilities.FormPreferences.ComboxSetUrun(cmbUpdateUrun, _urunManager.GetAll());
-
         }
     }
 }

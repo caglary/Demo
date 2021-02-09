@@ -6,7 +6,6 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
 namespace App.Forms
 {
     public partial class CiftciForm : Form
@@ -17,7 +16,6 @@ namespace App.Forms
         private FormNerdenGeldi _formNerdenGeldi;
         //static Ciftci _activeCiftci = new Ciftci() { TcKimlikNo = string.Empty };
         static Ciftci _activeCiftci = null;
-
         public CiftciForm(string tc)
         {
             InitializeComponent();
@@ -34,7 +32,6 @@ namespace App.Forms
         private void CiftciForm_Load(object sender, EventArgs e)
         {
             Utilities.FormPreferences.FromSettings(this);
-
             txtTc.Text = _tc;
             comboBoxGender.DataSource = Utilities.RequiredLists.GenderList();
             comboBoxMaritalStatus.DataSource = Utilities.RequiredLists.MaritalStatusList();
@@ -45,8 +42,6 @@ namespace App.Forms
             dgwList.Columns[2].HeaderText = "İsim Soyisim";
             dgwList.Columns[3].HeaderText = "Baba Adı";
             dgwList.Columns[14].HeaderText = "Mahalle/Köy";
-
-
         }
         private void btnAdd_Click(object sender, EventArgs e)
         {
@@ -70,8 +65,6 @@ namespace App.Forms
                                     DataGridView dgw = (DataGridView)item;
                                     CksManager cksManager = new CksManager();
                                     dgw.DataSource = cksManager.GetAll();
-
-
                                 }
                             }
                             this.Close();
@@ -88,17 +81,11 @@ namespace App.Forms
                     FormuTemizle();
                     //Listeyi güncelle
                     dgwList.DataSource = _ciftcilerManager.GetAll().OrderByDescending(I => I.Id).ToList();
-
                     btnAdd.Text = "Yeni Kayıt Ekle";
                     Islem = Operation.EklemeIslemi;
                 }
-
             });
-
-
-
         }
-
         private void FormuTemizle()
         {
             foreach (var item in this.Controls)
@@ -125,11 +112,9 @@ namespace App.Forms
                 }
             }
         }
-
         private Ciftci FormToEntity()
         {
             if (txtTc.Text.Length != 11) throw new Exception("Tc Numarasını kontrol ediniz.");
-
             Ciftci ciftci = new Ciftci()
             {
                 TcKimlikNo = string.IsNullOrEmpty(txtTc.Text) ? "" : txtTc.Text,
@@ -147,13 +132,9 @@ namespace App.Forms
                 Town = string.IsNullOrEmpty(txtTown.Text) ? "" : txtTown.Text,
                 Village = string.IsNullOrEmpty(comboBoxVillage.Text) ? "" : comboBoxVillage.Text,
                 Not = string.IsNullOrEmpty(txtNote.Text) ? "" : txtNote.Text
-
             };
             return ciftci;
         }
-
-       
-
         private void btnTbs_Click(object sender, EventArgs e)
         {
             Utilities.ErrorHandle._try(() =>
@@ -165,8 +146,6 @@ namespace App.Forms
                 {
                                         FileStream fs = File.Create(path);
                     fs.Close();
-                 
-
                 }
                 else
                 {
@@ -176,31 +155,23 @@ namespace App.Forms
                     {
                         userInfo.Add(line);
                     }
-
                     userName = (string)userInfo[0];
                     password = (string)userInfo[1];
                 }
-
-
-
                 if (txtTc.Text.Length == 11)
                 {
                     if (Utilities.TbsIslemleri.driver == null)
                     {
                         Utilities.TbsIslemleri.ChromeAc();
-
                         Utilities.TbsIslemleri.TbsGiris(userName, password);
                     }
-
                     Utilities.TbsIslemleri.GerçekKişiKayitIslemleri(txtTc.Text);
                     var person = Utilities.TbsIslemleri.IsletmeBilgileri();
                     person.TcKimlikNo = txtTc.Text;
                     PersonToForm(person);
-
                 }
             });
         }
-
         private void PersonToForm(Ciftci person)
         {
             txtNameSurname.Text = person.NameSurname;
@@ -217,9 +188,7 @@ namespace App.Forms
             txtTown.Text = person.Town;
             comboBoxVillage.Text = person.Village;
             txtNote.Text = person.Not;
-
         }
-
         private void dgwList_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             Utilities.ErrorHandle._try(() =>
@@ -227,10 +196,8 @@ namespace App.Forms
                 int index = dgwList.CurrentCell.RowIndex;
                 string Tc = dgwList.Rows[index].Cells["TcKimlikNo"].Value.ToString();
                 _activeCiftci = _ciftcilerManager.GetByTc(Tc);
-
             });
         }
-
         private void btnDelete_Click(object sender, EventArgs e)
         {
             if (_activeCiftci != null)
@@ -249,19 +216,16 @@ namespace App.Forms
                 Utilities.Mesaj.MessageBoxWarning("Listeden çiftçi seçiniz.");
             }
         }
-
         private void dgwList_DataSourceChanged(object sender, EventArgs e)
         {
             lblKayitSayisi.Text = $"Listede bulunan toplam kayıt sayısı: {dgwList.RowCount.ToString()}";
         }
-
         private void dgwList_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             Utilities.ErrorHandle._try(() =>
             {
                 int index = dgwList.CurrentCell.RowIndex;
                 string Tc = dgwList.Rows[index].Cells["TcKimlikNo"].Value.ToString();
-
                 _activeCiftci = _ciftcilerManager.GetByTc(Tc);
                 //gelen çiftçinin Id sini txttc tag içerisinde saklıyoruz....
                 txtTc.Tag = (object)_activeCiftci.Id;
@@ -280,32 +244,20 @@ namespace App.Forms
                 txtTown.Text = _activeCiftci.Town;
                 comboBoxVillage.Text = _activeCiftci.Village;
                 txtNote.Text = _activeCiftci.Not;
-
-
-
-
-
                 btnAdd.Text = "Güncelle";
                 Islem = Operation.GuncellemeIslemi;
             });
         }
-
         private void excelToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
             var datatable = Utilities.ExcelExport.ConvertToDataTable<Ciftci>(_ciftcilerManager.GetAll());
             var path = Utilities.FolderBrowser.Path();
             path = path + @"\Ciftciler.xlsx";
             Task.Run(() => { Utilities.ExcelExport.GenerateExcel(datatable, path); });
-
-
-
         }
-
         private void jsonToolStripMenuItem_Click(object sender, EventArgs e)
         {
             var path = Utilities.FolderBrowser.Path();
-
             Utilities.Json.Backup<Ciftci>(_ciftcilerManager.GetAll(), "Ciftciler", path);
         }
     }

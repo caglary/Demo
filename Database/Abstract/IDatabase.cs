@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.Data;
-
 namespace Database.Abstract
 {
     public interface IDatabase<T>

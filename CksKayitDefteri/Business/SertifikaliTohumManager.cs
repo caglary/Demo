@@ -8,18 +8,14 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
 namespace CksKayitDefteri.Business
 {
     public class SertifikaliTohumManager : BaseService<SertifikaliTohum>
     {
-
         public SertifikaliTohumManager()
         {
             _dal = new SertifikaliTohumDal();
         }
-
-
         public override int Add(SertifikaliTohum Entity)
         {
             //EntityControl(Entity);
@@ -53,12 +49,9 @@ namespace CksKayitDefteri.Business
         {
             return _dal.GetAll().Where(I => I.Id == Id).FirstOrDefault();
         }
-
         internal DataTable GetAllByQuery(string query)
         {
             return _dal.GetAllByQuery(query);
         }
-
-      
     }
 }

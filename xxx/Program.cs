@@ -4,8 +4,6 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.IO;
-
-
 namespace xxx
 {
     class Program
@@ -14,11 +12,7 @@ namespace xxx
         {
             //InsertCks2020ToDb();
             //InsertCiftcilerToDb();
-
             //Update
-
-
-
             //try
             //{
             //    result = dal.Update(new Cks2020
@@ -33,15 +27,12 @@ namespace xxx
             //        Tc = "54766547408"
             //    });
             //    Console.WriteLine($"{result} Row efected");
-
             //    Listele();
-
             //}
             //catch (Exception exception)
             //{
             //    Console.WriteLine(exception.Message);
             //}
-
             //find Get by Tc
             //try
             //{
@@ -49,38 +40,30 @@ namespace xxx
             //    if (cks.Tc!=null)
             //    {
             //        Console.WriteLine($"{cks.Tc} was finded!");
-
             //    }
             //    else
             //    {
             //        Console.WriteLine("Tc is not found");
             //    }
-
             //}
             //catch (Exception exception)
             //{
             //    Console.WriteLine(exception.Message);
             //}
             //Console.ReadLine();
-
-
             //delete
             //try
             //{
             //    result = dal.Delete(new Cks2020 { Tc = "54766547408" });
             //    Console.WriteLine($"{result} Row efected");
             //    Listele();
-
             //}
             //catch (Exception exception)
             //{
             //    Console.WriteLine(exception.Message);
             //}
             //Console.ReadLine();
-
-
         }
-
         private static void InsertCiftcilerToDb()
         {
             //insert ciftciler to db
@@ -106,7 +89,6 @@ namespace xxx
                 ciftci.Village = item.Village;
                 //ciftci.Note = item.Note;
                 ciftciler.Add(ciftci);
-
             }
             CiftciDal ciftciDal = new CiftciDal();
             foreach (var _ciftci in ciftciler)
@@ -115,25 +97,19 @@ namespace xxx
                 {
                     int result = ciftciDal.Add(_ciftci);
                     Console.WriteLine($"{result} Row efected  {_ciftci.TcKimlikNo} {_ciftci.NameSurname} {_ciftci.Village}");
-
-
                 }
                 catch (Exception exception)
                 {
                     Console.WriteLine(exception.Message);
                     Console.ReadLine();
                 }
-
             }
-
             Console.WriteLine("Bitti....");
             Console.ReadLine();
         }
-
         private static void InsertCks2020ToDb()
         {
             int result;
-
             //Insert
             string cks2020 = File.ReadAllText(@"C:\Users\caglar\Google Drive\YesilyurtProjects\Archive\Yesilyurt.UI.2021\bin\Debug\Backup\Cks2020.json");
             var liste = DeserializeObject<MyClass>(cks2020);
@@ -151,17 +127,13 @@ namespace xxx
                 cks.BabaAdi = item.FatherName;
                 cksListe.Add(cks);
             }
-
             CksDal dal = new CksDal();
-
             foreach (var kayit in cksListe)
             {
                 try
                 {
                     result = dal.Add(kayit);
                     Console.WriteLine($"{result} Row efected  {kayit.DosyaNo} {kayit.Tc} {kayit.IsimSoyisim} {kayit.KoyMahalle}");
-
-
                 }
                 catch (Exception exception)
                 {
@@ -172,7 +144,6 @@ namespace xxx
             Listele();
             Console.ReadLine();
         }
-
         public static string SerializeObject<T>(IList<T> liste)
         {
             return JsonConvert.SerializeObject(liste);
@@ -180,14 +151,11 @@ namespace xxx
         public static List<T> DeserializeObject<T>(string seralized)
         {
             return JsonConvert.DeserializeObject<List<T>>(seralized);
-
         }
-
         private static void Listele()
         {
             // GetAll
             CksDal dal = new CksDal();
-
             var liste = dal.GetAll();
             foreach (var item in liste)
             {
@@ -197,59 +165,34 @@ namespace xxx
     }
     public class MyClass
     {
-      
         public int Id { get; set; }
-
         public int CksDosyaNo { get; set; }
-
         public string TcKimlikNo { get; set; }
-
-       
         public string NameSurname { get; set; }
-
-    
         public string FatherName { get; set; }
-
-      
         public string Village { get; set; }
-
         public string MobilePhone { get; set; }
-
         public string HomePhone { get; set; }
-
         public DateTime? FileDeliveryDate { get; set; } = DateTime.Now;
-
         public string Note { get; set; }
     }
     public class Person
     {
         public int Id { get; set; }
-
         public string TcKimlikNo { get; set; }
         public string NameSurname { get; set; }
         public string FatherName { get; set; }
         public string MotherName { get; set; }
         public DateTime? Birthday { get; set; }
-
         public DateTime? DateOfDeath { get; set; }
-
         public string Gender { get; set; }
-
         public string MaritalStatus { get; set; }
-
         public string MobilePhone { get; set; }
-
         public string HomePhone { get; set; }
-
         public string Email { get; set; }
-
         public string City { get; set; }
-
         public string Town { get; set; }
-
         public string Village { get; set; }
-
         public string Note { get; set; }
-
     }
 }

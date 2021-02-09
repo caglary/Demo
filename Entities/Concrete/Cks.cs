@@ -1,11 +1,9 @@
 ﻿using Entities.Abstract;
-
 namespace Entities.Concrete
 {
     public class Cks : ICks
     {
         public int Id { set; get; }
-
         public int DosyaNo { set; get; }
         public string Tc { set; get; }
         public string IsimSoyisim { set; get; }
@@ -15,6 +13,5 @@ namespace Entities.Concrete
         public string EvTelefonu { set; get; }
         public string KayitTarihi { set; get; }
         public string Not { get; set; }
-
     }
 }

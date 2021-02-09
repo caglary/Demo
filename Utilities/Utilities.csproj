@@ -57,6 +57,7 @@
     <Compile Include="FolderBrowser.cs" />
     <Compile Include="FormPreferences.cs" />
     <Compile Include="Json.cs" />
+    <Compile Include="Logging.cs" />
     <Compile Include="Password.cs" />
     <Compile Include="RequiredLists.cs" />
     <Compile Include="Mesaj.cs" />

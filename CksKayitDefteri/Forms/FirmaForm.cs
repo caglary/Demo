@@ -4,7 +4,6 @@ using System;
 using System.Data;
 using System.Linq;
 using System.Windows.Forms;
-
 namespace App.Forms
 {
     public partial class FirmaForm : Form
@@ -15,9 +14,7 @@ namespace App.Forms
         {
             InitializeComponent();
             _bll = new FirmaManager();
-
         }
-
         private void FirmaForm_Load(object sender, EventArgs e)
         {
             GetAllList();
@@ -26,15 +23,11 @@ namespace App.Forms
             dgwListe.Columns[1].HeaderText = "Firma/Kişi Adı";
             dgwListe.Columns[2].HeaderText = "Vergi/TC No";
             dgwListe.Columns[3].HeaderText = "Not";
-
-
         }
-
         private void GetAllList()
         {
             dgwListe.DataSource = _bll.GetAll();
         }
-
         private void dgwListe_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             int rowIndex = dgwListe.CurrentRow.Index;
@@ -46,7 +39,6 @@ namespace App.Forms
             txtUpdateTaxNumber.Text = _firma.VergiNo;
             txtUpdateNote.Text = _firma.Not;
         }
-
         private void btnAdd_Click(object sender, EventArgs e)
         {
             Utilities.ErrorHandle._try(() =>
@@ -64,18 +56,12 @@ namespace App.Forms
                         txtAddNote.Text = "";
                         txtAddTaxNumber.Text = "";
                         GetAllList();
-
                         Utilities.Mesaj.MessageBoxInformation("İşleminiz başarı ile gerçekleşti.");
-
                     }
                 }
                 else Utilities.Mesaj.MessageBoxWarning("Gerekli alanları doldurunuz.");
             });
-
-
-
         }
-
         private void btnUpdate_Click(object sender, EventArgs e)
         {
             Utilities.ErrorHandle._try(() =>
@@ -92,25 +78,19 @@ namespace App.Forms
                         txtUpdateNote.Text = "";
                         txtUpdateTaxNumber.Text = "";
                         GetAllList();
-
                         Utilities.Mesaj.MessageBoxInformation("İşleminiz başarı ile gerçekleşti.");
                         _firma = null;
-
-
                     }
                 }
                 else Utilities.Mesaj.MessageBoxWarning("Listeden Kişi/Firma seçiniz.");
-
             });
         }
-
         private void btnDelete_Click(object sender, EventArgs e)
         {
             Utilities.ErrorHandle._try(() =>
             {
                 if (_firma != null)
                 {
-
                     int result = _bll.Delete(_firma);
                     if (result == 1)
                     {
@@ -118,15 +98,11 @@ namespace App.Forms
                         txtUpdateNote.Text = "";
                         txtUpdateTaxNumber.Text = "";
                         GetAllList();
-
                         Utilities.Mesaj.MessageBoxInformation("İşleminiz başarı ile gerçekleşti.");
                         _firma = null;
-
-
                     }
                 }
                 else Utilities.Mesaj.MessageBoxWarning("Listeden Kişi/Firma seçiniz.");
-
             });
         }
     }

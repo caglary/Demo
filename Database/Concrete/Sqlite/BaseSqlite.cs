@@ -6,12 +6,10 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
 namespace Database.Concrete.Sqlite
 {
     public class BaseSqlite
     {
-
         SQLiteConnection connection;
         public SQLiteDataReader dataReader;
         public SQLiteCommand command;
@@ -20,18 +18,14 @@ namespace Database.Concrete.Sqlite
         public BaseSqlite()
         {
             database = new DatabaseDb();
-
         }
         public void _try(Action action)
         {
             try
             {
-
                 connection = new SQLiteConnection(database._connectionString);
                 command = new SQLiteCommand(connection);
-
                 connection.Open();
-
                 action.Invoke();
             }
             catch (Exception exception)
@@ -41,12 +35,10 @@ namespace Database.Concrete.Sqlite
                 //if (exception.HResult == -2147473489)
                 //{
                 //    System.Windows.Forms.MessageBox.Show("Kayıtlı bir Tc numarası veya dosya numarası ile kayıt yapmaya çalışıyorsunuz.");
-
                 //}
                 //else if (exception.HResult == -2146233033)
                 //{
                 //    System.Windows.Forms.MessageBox.Show("Form üzerinde eksik ya da yanlış bilgi girişi yaptınız.");
-
                 //}
                 //else
                 //{
@@ -55,8 +47,6 @@ namespace Database.Concrete.Sqlite
                 //    System.Windows.Forms.MessageBox.Show($"{exception.Message}  {exception.HResult}");
                 //    //Environment.Exit(0);
                 //}
-
-
             }
             finally
             {

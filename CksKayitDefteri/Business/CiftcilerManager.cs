@@ -4,7 +4,6 @@ using Entities.Concrete;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-
 namespace App.Business
 {
     public class CiftcilerManager : BaseService<Ciftci>
@@ -14,7 +13,6 @@ namespace App.Business
         {
             _dal = new CiftciDal();
         }
-      
         public Ciftci GetByTc(string Tc)
         {
             if (!string.IsNullOrEmpty(Tc) && Tc.Length == 11)
@@ -26,7 +24,6 @@ namespace App.Business
                 throw new Exception("Tc Numarasını kontrol ediniz.");
             }
         }
-
         public override int Add(Ciftci ciftci)
         {
             int returnValue = 0;
@@ -37,14 +34,12 @@ namespace App.Business
             returnValue= _dal.Add(ciftci);
             return returnValue;
         }
-
         public override int Delete(Ciftci ciftci)
         {
             int returnValue = 0;
             returnValue = _dal.Delete(ciftci);
             return returnValue;
         }
-
         public override int Update(Ciftci ciftci)
         {
             int returnValue = 0;

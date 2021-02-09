@@ -9,7 +9,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
 namespace App.Forms
 {
     public partial class DestekListesiForm : Form
@@ -33,103 +32,65 @@ namespace App.Forms
             _yemListe = _yemManager.GetAllByQuery(queryYem);
             _hububatListe = _hububatManager.GetAllByQuery(queryHububat);
             _sertifikaliListe = _sertifikaliTohumManager.GetAllByQuery(querySertifikali);
-
-
         }
-
         private void DestekListesiForm_Load(object sender, EventArgs e)
         {
             Utilities.FormPreferences.FromSettings(this);
-
             lblBaslik.BackColor = btnYem.BackColor;
-
-
             _basilanButon = BasilanButon.Yem;
-
             lblBaslik.Text = "Yem Bitkisi Başvuru Listesi";
-
-
             dgwListe.DataSource = _yemListe;
             lblKayitSayisi.Text = $"Toplam Kayıt Sayısı: {dgwListe.Rows.Count.ToString()}";
-
-
         }
-
-
         private void btnYem_Click(object sender, EventArgs e)
         {
             lblBaslik.BackColor = btnYem.BackColor;
-
             _basilanButon = BasilanButon.Yem;
             Button btn = (Button)sender;
             lblBaslik.Text = btn.Text + " Listesi";
-
             dgwListe.DataSource = _yemListe;
             lblKayitSayisi.Text = $"Toplam Kayıt Sayısı: {dgwListe.Rows.Count.ToString()}";
-
         }
-
         private void btnHububat_Click(object sender, EventArgs e)
         {
             lblBaslik.BackColor = btnHububat.BackColor;
-
             Button btn = (Button)sender;
             lblBaslik.Text = btn.Text + " Listesi";
             _basilanButon = BasilanButon.Hububat;
-
             dgwListe.DataSource = _hububatListe;
             lblKayitSayisi.Text = $"Toplam Kayıt Sayısı: {dgwListe.Rows.Count.ToString()}";
-
-
-
         }
-
         private void btnSertifikali_Click(object sender, EventArgs e)
         {
             lblBaslik.BackColor = btnSertifikali.BackColor;
-
             Button btn = (Button)sender;
             lblBaslik.Text = btn.Text + " Listesi";
             _basilanButon = BasilanButon.Sertfifikali;
-
             dgwListe.DataSource = _sertifikaliListe;
             lblKayitSayisi.Text = $"Toplam Kayıt Sayısı: {dgwListe.Rows.Count.ToString()}";
-
-
-
         }
-
         private void button1_Click(object sender, EventArgs e)
         {
             string path = Utilities.FolderBrowser.Path();
-
-
             switch (_basilanButon)
             {
-
                 case BasilanButon.Yem:
                     path = path + "\\Yem_Bitkileri_Destek_Basvuru_Listesi.xlsx";
                     Utilities.ExcelExport.GenerateExcel(_yemListe, path);
-
                     break;
                 case BasilanButon.Hububat:
                     path = path + "\\Hububat_Fark_Odemesi_Destek_Basvuru_Listesi.xlsx";
-
                     Utilities.ExcelExport.GenerateExcel(_hububatListe, path);
-
                     break;
                 case BasilanButon.Sertfifikali:
                     path = path + "\\Sertifikali_Tohum_Destek_Basvuru_Listesi.xlsx";
-
                     Utilities.ExcelExport.GenerateExcel(_sertifikaliListe, path);
-
                     break;
                 default:
                     Utilities.Mesaj.MessageBoxError("Herhangi bir liste seçimi yapılamadı.");
                     break;
             }
         }
-
         private void txtArama_TextChanged(object sender, EventArgs e)
         {
             TextBox textBox = (TextBox)sender;
@@ -137,9 +98,7 @@ namespace App.Forms
             DataView dw;
             switch (_basilanButon)
             {
-
                 case BasilanButon.Yem:
-
                     if (!string.IsNullOrEmpty(searchValue))
                     {
                         dw = new DataView(_yemListe);
@@ -152,7 +111,6 @@ namespace App.Forms
                     }
                     break;
                 case BasilanButon.Hububat:
-
                     if (!string.IsNullOrEmpty(searchValue))
                     {
                         dw = new DataView(_hububatListe);
@@ -165,7 +123,6 @@ namespace App.Forms
                     }
                     break;
                 case BasilanButon.Sertfifikali:
-
                     if (!string.IsNullOrEmpty(searchValue))
                     {
                         dw = new DataView(_sertifikaliListe);
@@ -177,15 +134,9 @@ namespace App.Forms
                         dgwListe.DataSource = _sertifikaliListe;
                     }
                     break;
-
             }
-
-
-
         }
     }
-
-
     enum BasilanButon
     {
         Yem, Sertfifikali, Hububat, Basilmadi

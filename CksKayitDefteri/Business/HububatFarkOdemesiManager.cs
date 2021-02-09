@@ -7,12 +7,10 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
 namespace App.Business
 {
     public class HububatFarkOdemesiManager : BaseService<HububatFarkOdemesi>
     {
-        
         public HububatFarkOdemesiManager()
         {
             _dal = new HububatFarkOdemesiDal();
@@ -21,7 +19,6 @@ namespace App.Business
         {
            return _dal.GetAllDataTable(cksid);
         }
-
         internal DataTable GetAllByQuery(string query)
         {
             return _dal.GetAllByQuery(query);

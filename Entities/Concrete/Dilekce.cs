@@ -1,5 +1,4 @@
 ﻿using System;
-
 namespace Entities.Concrete
 {
     public class Dilekce :Abstract.IEntity
@@ -14,7 +13,5 @@ namespace Entities.Concrete
         public string Durum { get; set; }
         public DateTime? CreationDate { get; set; } = DateTime.Now;
         public string Note { get; set; }
-       
     }
-
 }

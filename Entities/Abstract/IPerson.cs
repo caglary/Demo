@@ -1,6 +1,4 @@
 ﻿using System;
-
-
 namespace Entities.Abstract
 {
     public interface IPerson:IEntity
@@ -20,6 +18,5 @@ namespace Entities.Abstract
         string Town { get; set; }
         string Village { get; set; }
         string Not { get; set; }
-
     }
 }

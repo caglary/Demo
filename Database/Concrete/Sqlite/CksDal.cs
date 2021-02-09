@@ -4,12 +4,10 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SQLite;
-
 namespace Database.Concrete.Sqlite
 {
     public class CksDal : BaseSqlite, IDatabase<Cks>
     {
-
         public int Add(Cks Entity)
         {
             result = 0;
@@ -26,11 +24,9 @@ namespace Database.Concrete.Sqlite
                 command.Parameters.AddWithValue("@KayitTarihi", Entity.KayitTarihi);
                 command.Prepare();
                 result = command.ExecuteNonQuery();
-
             });
             return result;
         }
-
         public int Delete(Cks Entity)
         {
             result = 0;
@@ -41,24 +37,18 @@ namespace Database.Concrete.Sqlite
                 command.Prepare();
                 result = command.ExecuteNonQuery();
             });
-
             return result;
-
         }
-
         public Cks Get(string Tc)
         {
             Cks cks = new Cks();
-
             _try(() =>
             {
                 command.CommandText = "SELECT * FROM Cks Where Tc=@Tc";
                 command.Parameters.AddWithValue("@Tc", Tc);
-
                 dataReader = command.ExecuteReader();
                 if (dataReader.HasRows)
                 {
-
                     while (dataReader.Read())
                     {
                         cks.Id = dataReader.GetInt32(0);
@@ -70,21 +60,17 @@ namespace Database.Concrete.Sqlite
                         cks.CepTelefonu = dataReader.IsDBNull(6) ? "" : dataReader.GetString(6);
                         cks.EvTelefonu = dataReader.IsDBNull(7) ? "" : dataReader.GetString(7);
                         cks.KayitTarihi = dataReader.GetString(8);
-
                     }
                 }
             });
             return cks;
-
         }
-
         public List<Cks> GetAll()
         {
             List<Cks> liste = new List<Cks>();
             _try(() =>
             {
                 command.CommandText = "SELECT * FROM Cks ORDER BY DosyaNo DESC";
-
                 dataReader = command.ExecuteReader();
                 while (dataReader.Read())
                 {
@@ -103,36 +89,27 @@ namespace Database.Concrete.Sqlite
                     {
                         cks.EvTelefonu = dataReader.GetString(7);
                     }
-
-
                     cks.KayitTarihi = dataReader.GetString(8);
                     liste.Add(cks);
                 }
             });
             return liste;
         }
-
         public DataTable GetAllByQuery(string query)
         {
             DataTable dt = new DataTable();
-
             _try(() =>
             {
-
                 command.CommandText = query;
                 dataReader = command.ExecuteReader();
-
                 dt.Load(dataReader);
-
             });
             return dt;
         }
-
         public DataTable GetAllDataTable(int id)
         {
             throw new NotImplementedException();
         }
-
         public int Update(Cks Entity)
         {
             result = 0;
@@ -151,13 +128,11 @@ namespace Database.Concrete.Sqlite
                 command.Parameters.AddWithValue("@EvTelefonu", Entity.EvTelefonu);
                 command.Parameters.AddWithValue("@KayitTarihi", Entity.KayitTarihi);
                 command.Parameters.AddWithValue("@Id", Entity.Id);
-
                 command.Prepare();
                 result = command.ExecuteNonQuery();
             });
             return result;
         }
-
     }
 }
 

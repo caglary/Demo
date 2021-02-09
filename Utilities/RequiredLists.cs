@@ -1,12 +1,9 @@
 ﻿using Entities.Concrete;
 using System.Collections.Generic;
 using System.IO;
-
-
 namespace Utilities
 {
     public static class RequiredLists
-
     {
         public static List<string> VillageNameList()
         {
@@ -21,30 +18,21 @@ namespace Utilities
                 {
                     villageList.Add(name);
                 }
-
                 return villageList;
-
             }
             else
             {
-
-
                 FileStream fs = File.Create(path);
                fs.Close();
-               
                var writer=new StreamWriter(path);
                foreach (var VARIABLE in initiliazeList)
                {
                    writer.WriteLine(VARIABLE);
                }
                writer.Close();
-                   
-               
-
                return initiliazeList;
             }
         }
-
         public static List<string> ProductList()
         {
             string currentDirectory = Directory.GetCurrentDirectory();
@@ -58,16 +46,11 @@ namespace Utilities
                  {
                         products.Add(productName);
                  }
-
                  return products;
-
              }
              else
              {
-                
-
                  File.Create(path).Close();
-                
                 var writer=new StreamWriter(path);
                 foreach (var itemProduct in initiliazeList)
                 {
@@ -75,10 +58,7 @@ namespace Utilities
                 }
                 writer.Close();
                 return initiliazeList;
-
              }
-
-            
         }
         public static List<Firma> CompanyList()
         {
@@ -95,10 +75,7 @@ namespace Utilities
             //    string JsonOkunanData = File.ReadAllText(path);
             //    return Newtonsoft.Json.JsonConvert.DeserializeObject<List<Company>>(JsonOkunanData);
             //}
-
-
         }
-
         public static List<string> GenderList()
         {
             return new List<string>{"Erkek","Kadın"};
@@ -111,7 +88,5 @@ namespace Utilities
         {
             return new List<string> { "2020","2021"};
         }
-        
-
     }
 }

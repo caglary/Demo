@@ -1,5 +1,4 @@
-﻿
-namespace App.Forms
+﻿namespace App.Forms
 {
     partial class DestekListesiForm
     {
@@ -7,7 +6,6 @@ namespace App.Forms
         /// Required designer variable.
         /// </summary>
         private System.ComponentModel.IContainer components = null;
-
         /// <summary>
         /// Clean up any resources being used.
         /// </summary>
@@ -20,9 +18,7 @@ namespace App.Forms
             }
             base.Dispose(disposing);
         }
-
         #region Windows Form Designer generated code
-
         /// <summary>
         /// Required method for Designer support - do not modify
         /// the contents of this method with the code editor.
@@ -228,11 +224,8 @@ namespace App.Forms
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             this.ResumeLayout(false);
-
         }
-
         #endregion
-
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.DataGridView dgwListe;
